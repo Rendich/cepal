@@ -63,6 +63,7 @@
           });
           var expensesByName = d3.nest()
             .key(function(d) { return d.ODS_grupo; })
+              //.key(function(d) { return d.ODS_subgrupo; })
             .entries(data);
             console.log(expensesByName)
 
@@ -76,6 +77,8 @@
     .attr('label',function (d) { return d.key})
   .selectAll('option')
     .data(function (d) { return d.values })
+    //.data(d3.map(expensesByName, function(d){return d.values;}).keys())
+
     .enter()
   .append('option')
     .attr('value',function (d) { return d.ODS_subgrupo })
@@ -106,7 +109,13 @@
             .data(columns)
             .enter()
           .append('th')
-            .text(function (d) { return d })
+            .text(function (d,i) {
+              //console.log(["113"]+i)
+              if(i==3)
+              {return "Objetivo Estratégico"}
+
+              return d
+            })
 
         var rows = tbody.selectAll('tr')
             .data(data)
@@ -136,7 +145,8 @@
             return d.value
           })*/
             //.text(function (d, i) {if (i != 1 && i != 2) return d.value })
-            .text(function (d, i) {if (i >0) return d.value })
+            //.text(function (d, i) {if (i >0) return d.value })
+            .text(function (d, i) {if (i != 0 && i != 3) return d.value })
   	.each(function(d, i) {
   		if (i == 0) {
       	var imgData = [];
@@ -155,6 +165,31 @@
           .attr("height", "110px")
           .attr("width", "110px");
       }
+      else
+      if(i == 3){
+
+        // https://www.stp.gov.py/v1/pnd-en-construccion/
+        	var imgData = [];
+          //console.log(d)
+          //console.log(d[i])
+          //console.log(i)
+//          console.log("---")
+          imgData.push(d.value);
+          //the_image = "https://www.un.org/sustainabledevelopment/es/wp-content/uploads/sites/3/2016/01/S_SDG_Icons-01-"
+          //if(d.value<10){the_image+="0"}
+          the_image="img/"+d.value;
+          //the_image="img/pnd1.1";
+
+          d3.select(this).selectAll("img")
+    				.data(imgData)
+            .enter()
+            .append("img") // doesn't append an <img> anywhere
+            //.attr("src", d.value)
+            .attr("src", the_image+".png")
+            .attr("height", "110px")
+            .attr("width", "110px");
+
+      }
   	})
 
         return table;
@@ -166,7 +201,8 @@
       //const columns = ["VALOR",'Eje','Objetivo Estratégico','Objetivo PND','Indicadores']
       //const columns = ['Eje','Objetivo Estratégico','Objetivo PND','Indicadores']
       //const columns = ["Objetivo Estratégico","Objetivo PND","ODS","Meta ODS"]
-      const columns = ["ODS","Meta ODS","Objetivo Estratégico","Objetivo PND"]
+      //const columns = ["ODS","Meta ODS","Objetivo Estratégico","Objetivo PND", "PND_grupo"]
+      const columns = ["ODS","Meta ODS","Objetivo PND", "PND_grupo"]
       tabulate(data,columns)
     });
 ////
