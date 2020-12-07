@@ -139,7 +139,8 @@
     d3.csv("data/my_input.csv", function(error, data) {
       //const columns = ["VALOR",'Eje','Objetivo Estratégico','Objetivo PND','Indicadores']
       //const columns = ['Eje','Objetivo Estratégico','Objetivo PND','Indicadores']
-      const columns = ["Objetivo Estratégico","Objetivo PND","ODS","Meta ODS"]
+      //const columns = ["Objetivo Estratégico","Objetivo PND","ODS","Meta ODS"]
+      const columns = ["ODS","Meta ODS","Objetivo Estratégico","Objetivo PND"]
       tabulate(data,columns)
     });
 ////
