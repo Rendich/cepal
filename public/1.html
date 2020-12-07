@@ -130,8 +130,34 @@
               })
           })
           .enter()
-        .append('td')
-          .text(function (d) { return d.value })
+        .append('td')/*
+          .text(function (d) {
+            //https://www.un.org/sustainabledevelopment/es/wp-content/uploads/sites/3/2016/01/S_SDG_Icons-01-12.jpg
+            return d.value
+          })*/
+            //.text(function (d, i) {if (i != 1 && i != 2) return d.value })
+            .text(function (d, i) {if (i >0) return d.value })
+  	.each(function(d, i) {
+  		if (i == 0) {
+      	var imgData = [];
+        //console.log(d.value)
+        imgData.push(d.value);
+        //the_image = "https://www.un.org/sustainabledevelopment/es/wp-content/uploads/sites/3/2016/01/S_SDG_Icons-01-"
+        //if(d.value<10){the_image+="0"}
+        the_image="img/ods"+d.value;
+
+        d3.select(this).selectAll("img")
+  				.data(imgData)
+          .enter()
+          .append("img") // doesn't append an <img> anywhere
+          //.attr("src", d.value)
+          .attr("src", the_image+".jpg")
+          .attr("height", "110px")
+          .attr("width", "110px");
+      }
+  	})
+
+        return table;
 
       return table;
     }
