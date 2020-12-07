@@ -229,7 +229,11 @@
         const y = d3.scaleSqrt()
             .range([maxRadius*.1, maxRadius]);
 
-        const color = d3.scaleOrdinal(d3.schemeCategory20);
+        const color2 = d3.scaleOrdinal(d3.schemeCategory20);
+
+        console.log("[233]")
+        console.log(color2)
+        console.log(color2())
 
         const partition = d3.partition();
 
@@ -308,10 +312,33 @@
             newSlice.append('title')
                 .text(d => d.data.name );
 
+                // Option 1: provide color names:
+                var myColor = d3.scaleOrdinal().domain(d3.range(17))
+                  .range([
+                  "123858","DC022F", "D4972D", "3F9336", "B80B24", "E72823", "26B2E0", "F9B912", "900B35", "EC5324", "D30055",
+                  "F48B21", "B07B22", "336E36", "1D83CA", "4BB037", "13558D",
+                  "FFFFFF"
+                ])
+
+                //svg.selectAll(".firstrow").data(data).enter().append("circle").attr("cx", function(d,i){return 30 + i*60}).attr("cy", 50).attr("r", 19).attr("fill", function(d){return myColor(d) })
+
+                newSlice.append('path')
+                    .attr('class', 'main-arc')
+                    .style('fill', function(d){
+                      //console.log(d.data.name.indexOf("."))
+                      val = d.data.ods_class
+                      //console.log(val)
+                      return myColor(val) })
+                    //color2((d.children ? d : d.parent).data.name))
+                    .attr('d', arc);
+
+/*
             newSlice.append('path')
                 .attr('class', 'main-arc')
-                .style('fill', d => color((d.children ? d : d.parent).data.name))
+                .style('fill', d =>
+                color2((d.children ? d : d.parent).data.name))
                 .attr('d', arc);
+                */
 
             newSlice.append('path')
                 .attr('class', 'hidden-arc')
