@@ -1,0 +1,44 @@
+[
+    {
+    "name":"root.Jobs.Freelance",
+    "imports":
+    [
+      {k:"root.Freelance.Montrose_High_School", l:0},
+      {k:"root.Freelance.Technology_in_Education", l:1}
+    ]
+    },
+
+    {
+    "name":"root.Jobs.Bayard",
+    "imports":
+    [
+      {k:"root.Bayard.ADP", l:1},
+      {k:"root.Bayard.Centeneasdasdad", l:0},
+      {k:"root.Bayard.Kaiser_Permanente", l:0}
+    ]
+    },
+    {
+    "name":"root.X.bbbbb",
+    "imports":
+    [
+      {k:"root.bbbbb.AAAAAA", l:0},
+      {k:"root.bbbbb.AAAAAA2", l:0},
+      {k:"root.Bayard.University_of_Kentucky", l:0}
+    ]
+  },
+
+    {"name":"root.Freelance.Montrose_High_School","imports":[]},
+    {"name":"root.Freelance.Technology_in_Education","imports":[]},
+    {"name":"root.Freelance.ICPA","imports":[]},
+    {"name":"root.Freelance._VVF","imports":[]},
+    {"name":"root.Freelance.Team_Tactical","imports":[]},
+
+    {"name":"root.Bayard.ADP","imports":[]},
+    {"name":"root.Bayard.Centeneasdasdad","imports":[]},
+    {"name":"root.Bayard.University_of_Kentucky", "imports":[]},
+    {"name":"root.Bayard.Six_Flags", "imports":[]},
+    {"name":"root.Bayard.Kaiser_Permanente", "imports":[]},
+    {"name":"root.Bayard.Ball_Aerospace", "imports":[]},
+    {"name":"root.bbbbb.AAAAAA", "imports":[]},
+    {"name":"root.bbbbb.AAAAAA2", "imports":[]}
+]
