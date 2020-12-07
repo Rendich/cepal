@@ -14,7 +14,7 @@
   <body>
 
     <div class="container-fluid">
-        <h2>Objetivos de Desarrollo Sustentable</h2>
+        <h2>Objetivos de Desarrollo Sustentable (ODS)</h2>
         <p>Haz click en las secciones de colores del gráfico de la izquierda para conocer cómo se componen los distintos Objetivos de Desarrollo Sustentable.
         </p>
         <p>Para volver al nivel anterior, haz click en el centro del mismo gráfico.
@@ -204,7 +204,7 @@
       return table;
     }
     //d3.csv("data/data2.csv", function(error, data) {
-    d3.csv("data/my_input.csv", function(error, data) {
+    d3.csv("data/my_input1.csv", function(error, data) {
       //const columns = ["VALOR",'Eje','Objetivo Estratégico','Objetivo PND','Indicadores']
       //const columns = ['Eje','Objetivo Estratégico','Objetivo PND','Indicadores']
       //const columns = ["Objetivo Estratégico","Objetivo PND","ODS","Meta ODS"]
@@ -231,9 +231,6 @@
 
         const color2 = d3.scaleOrdinal(d3.schemeCategory20);
 
-        console.log("[233]")
-        console.log(color2)
-        console.log(color2())
 
         const partition = d3.partition();
 
@@ -273,7 +270,7 @@
             .attr('viewBox', `${-width / 3} ${-height / 3} ${2/3*width} ${2/3*height}`)
             .on('click', () => focusOn()); // Reset zoom on canvas click
 
-        d3.json('data/flare.json', (error, root) => {
+        d3.json('data/my_input1.json', (error, root) => {
             if (error) throw error;
 
             root = d3.hierarchy(root);

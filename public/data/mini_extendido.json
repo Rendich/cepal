@@ -1,0 +1,53 @@
+[
+    {
+    "name":"root.Jobs.Freelance",
+    "relation":
+            {
+                "Total":
+                {
+                    "imports":
+                    [
+                      "root.Freelance.Technology_in_Education"
+                    ]
+                } ,
+                "Parcial":
+                {
+                    "imports":
+                    [
+                      "root.Freelance.Technology_in_Education"
+                    ]
+                }
+            }
+    },
+
+    {
+    "name":"root.Jobs.Bayard",
+    "relation":
+    {
+      "Total":{
+        "imports":
+        [
+          "root.Bayard.ADP",
+          "root.Bayard.Centeneasdasdad",
+          "root.Bayard.Kaiser_Permanente"
+        ]
+      }
+    }
+    },
+    {
+    "name":"root.X.bbbbb",
+    "relation":
+    {
+      "Parcial":{
+        "imports":
+        [
+          "root.bbbbb.AAAAAA",
+          "root.bbbbb.AAAAAA2"
+        ]
+      }
+    }
+  },
+
+    {"name":"root.bbbbb.AAAAAA", "imports":[]},
+    {"name":"root.bbbbb.AAAAAA2", "imports":[]}
+]

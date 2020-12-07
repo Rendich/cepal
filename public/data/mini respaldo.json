@@ -1,26 +1,31 @@
 [
     {
     "name":"root.Jobs.Freelance",
+    "relation":"Total",
     "imports":
     [
-      ["Total","root.Freelance.Montrose_High_School"],
-      ["Total","root.Freelance.Technology_in_Education"]
+      "root.Freelance.Montrose_High_School",
+      "root.Freelance.Technology_in_Education"
     ]
     },
 
     {
     "name":"root.Jobs.Bayard",
+    "relation":"Total",
     "imports":
     [
-      ["Total","root.Bayard.Kaiser_Permanente"]
+      "root.Bayard.ADP",
+      "root.Bayard.Centeneasdasdad",
+      "root.Bayard.Kaiser_Permanente"
     ]
     },
     {
     "name":"root.X.bbbbb",
+    "relation":"Parcial",
     "imports":
     [
-      ["Parcial","root.bbbbb.AAAAAA"],
-      ["Total","root.bbbbb.AAAAAA2"]
+      "root.bbbbb.AAAAAA",
+      "root.bbbbb.AAAAAA2"
     ]
   },
 

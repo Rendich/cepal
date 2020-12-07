@@ -21,7 +21,7 @@
   <body>
 
           <div class="container-fluid">
-              <h2>Relaciones</h2>
+              <h2>Relaciones entre ODS y PND</h2>
               <div class="row">
                 <div class="col-md-6">
                   <div id="bundle"></div>
@@ -83,11 +83,17 @@
           return table;
         }
         //d3.csv("data/data.csv", function(error, data) {
-        d3.csv("data/data3.csv", function(error, data) {
+        //d3.csv("data/data3.csv", function(error, data) {
+        d3.csv("data/my_input.csv", function(error, data) {
           //const columns = ["VALOR",'Eje','Objetivo Estratégico','Objetivo PND','Indicadores']
           //const columns = ['Eje','Objetivo Estratégico','Objetivo PND','Indicadores']
           //const columns = ["Objetivo","Meta ODS", "Objetivo Estratégico","Vinculación","Problemática ODS","Acción ODS","Sujeto ODS"]
-          const columns = ["Meta ODS", "Objetivo Estratégico","Vinculación","Problemática ODS","Acción ODS","Sujeto ODS"]
+          //const columns = ["Meta ODS", "Objetivo Estratégico","Vinculación","Problemática ODS","Acción ODS","Sujeto ODS"]
+          const columns = ["Meta ODS","Objetivo PND", //"PND_grupo",
+        "Vinculación",
+        //"Problemática ODS",	"Acción ODS",	"Sujeto ODS"
+        //Objetivo Estratégico	Objetivo PND	ODS	Meta ODS	PND_subgrupo	PND_grupo	ODS_grupo	ODS_subgrupo
+      ]
           //Eje_n	Eje	Objetivo Estratégico	Objetivo PND	Sujeto PND 	Problemática PND	Acción PND	ODS	Meta	Meta ODS	Sujeto ODS	Problemática ODS	Acción ODS	Vinculación
 
           tabulate3(data,columns)
@@ -155,8 +161,10 @@ d3.json("data/mini.json", function(classes) {
       .enter().append("svg:path")
         .attr("class", function(d) {
           //console.log("[79]")
-            //console.log(d)
-          return "link source-" + d.source.key + " target-" + d.target.key + " relation_"+d.relation;
+            console.log(d)
+          //return "link source-" + d.source.key + " target-" + d.target.key + " relation_"+d.relation;
+        //return "link source-" + d.source.key + " target-" + d.target.key ;
+        return "link source-" + d.source.key + " target-" + d.target.key + " relation_"+d.relation;
         })
         .attr("d", function(d, i) { return line(splines[i]); });
 
