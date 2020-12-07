@@ -37,9 +37,7 @@
     <script src='https://d3js.org/d3.v4.min.js'></script>
     <script type="text/javascript">
 
-    //d3.csv("data/data2.csv", function(error, data) {
-    d3.csv("data/my_input.csv", function(error, data) {
-
+    d3.csv("data/data2.csv", function(error, data) {
         var select = d3.select("#id_select")
           .append("div")
           .append("select").
@@ -62,7 +60,7 @@
                     })}
           });
           var expensesByName = d3.nest()
-            .key(function(d) { return d.ODS_grupo; })
+            .key(function(d) { return d.Grupo; })
             .entries(data);
             console.log(expensesByName)
 
@@ -78,14 +76,14 @@
     .data(function (d) { return d.values })
     .enter()
   .append('option')
-    .attr('value',function (d) { return d.ODS_subgrupo })
+    .attr('value',function (d) { return d.VALOR })
     //.text(function (d) { return d })
   .text(function (d) {
     max_string = 80 //18 // CARACTERES DE CADA OPTION DEL SELECT (LARGO)
-       if(d['Meta ODS'].length > max_string)
-           return d['Meta ODS'].substring(0,max_string)+'...';
+       if(d.Indicadores.length > max_string)
+           return d.Indicadores.substring(0,max_string)+'...';
        else
-           return d['Meta ODS'];
+           return d.Indicadores;
    });
 
    select.insert("option",":first-child").
@@ -115,7 +113,7 @@
             //console.log("267");
               //console.log(d);
              //return "FILA_"+d.VALOR +" "+d.Grupo
-            return d.ODS_grupo +" "+d.ODS_subgrupo
+            return d.VALOR +" "+d.Grupo
            }) //AQUI
              .each(function (d) {
                 d3.select(this).style("visibility", "collapse");
@@ -135,11 +133,10 @@
 
       return table;
     }
-    //d3.csv("data/data2.csv", function(error, data) {
-    d3.csv("data/my_input.csv", function(error, data) {
+    //d3.csv("data/data.csv", function(error, data) {
+    d3.csv("data/data2.csv", function(error, data) {
       //const columns = ["VALOR",'Eje','Objetivo Estratégico','Objetivo PND','Indicadores']
-      //const columns = ['Eje','Objetivo Estratégico','Objetivo PND','Indicadores']
-      const columns = ["Objetivo Estratégico","Objetivo PND","ODS","Meta ODS"]
+      const columns = ['Eje','Objetivo Estratégico','Objetivo PND','Indicadores']
       tabulate(data,columns)
     });
 ////
@@ -288,8 +285,13 @@
                        var rows = tbody.selectAll('tr')
                        .each(function (r) {
                           d3.select(this).style("visibility", function() {
+                              //return (d.VALOR%2==0) ? "visible" : "hidden";
+                              //return (d.VALOR%2==0) ? "table-cell" : "none";
+                              //console.log(d.data.id)
+                              //(r.VALOR%2==d.data.id)
+                              //console.log("r [445]")
                               //console.log(r) // AQUI AQUI
-                              return (r.ODS_subgrupo == d.data.id || r.ODS_grupo == d.data.id) ? "table-cell" : "collapse";
+                              return (r.VALOR == d.data.id || r.Grupo == d.data.id) ? "table-cell" : "collapse";
                               //return (r.VALOR%2==0) ? "table-cell" : "collapse";
                           });
                       });
