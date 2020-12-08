@@ -170,8 +170,26 @@ d3.json("data/mini.json", function(classes) {
 
     var groupData = svg.selectAll("g.group")
       .data(nodes.filter(function(d) {
-        return (d.key=='ODS_16_9' || d.key == 'ODS_3' || d.key == 'ODS_4' || d.key == 'ODS_16'
-        || d.key == 'PND_1_1') && d.children;
+        //return (d.key=='ODS_16_9' || d.key == 'ODS_3' || d.key == 'ODS_4' || d.key == 'ODS_16'
+        //|| d.key == 'PND_1_1') && d.children;
+        
+        var root_list = [];
+        for (var i = 1; i <= 17; i++) {
+            root_list.push("ODS_"+i);
+        }
+        for (var i = 1; i <= 4; i++) {
+          for (var j = 1; j <= 4; j++) {
+              root_list.push("PND_"+i+"_"+j);
+          }
+        }
+
+        //root_list = Array.from({length: 20}, (x, i) => "ODS_"+i);
+
+        return root_list.includes(d.key) && d.children;
+
+        //return d.key&&d.key.match(/(ODS_ \d+\.)/i) && d.children;
+
+
       }))
     .enter().append("group")
       .attr("class", "group");
