@@ -14,8 +14,12 @@
   <body>
 
     <div class="container-fluid">
-        <h2>Plan Nacional de Desarrollo (PND)</h2>
-        <p>Haz click en las secciones de colores del gráfico de la izquierda para conocer cómo se componen los distintos...
+        <h2>Plan Nacional de Desarrollo de Paraguay (PND)</h2>
+        <p>Haz click en las secciones de colores del gráfico de la izquierda para conocer cómo se compone el Plan Nacional de Desarrollo de Paraguay (PND).
+        </p>
+        <p>Para volver al nivel anterior, haz click en el centro del mismo gráfico.
+        </p>
+        <p>También puedes navegar utilizando la lista de la derecha.
         </p>
 
         <div class="row">
@@ -111,6 +115,10 @@
       var table = d3.select('#myTable')
       var thead = table.append('thead')
       var tbody = table.append('tbody')
+
+
+        data = data
+        .sort((a,b) => d3.ascending(a.PND_grupo, b.PND_grupo))
 
         thead.append('tr')
           .selectAll('th')
@@ -308,10 +316,12 @@
 
                 // Option 1: provide color names:
                 var myColor = d3.scaleOrdinal().domain(d3.range(17))
-                  .range([
-                  "123858","DC022F", "D4972D", "3F9336", "B80B24", "E72823", "26B2E0", "F9B912", "900B35", "EC5324", "D30055",
-                  "F48B21", "B07B22", "336E36", "1D83CA", "4BB037", "13558D",
-                  "FFFFFF"
+                  .range(["FFFFFF",
+                  "F2B729","F1B629", "F2B628", "F2B729",
+                  "F1B728", "1A3F7A", "1A3F79", "50872F",
+                  "F2B729", "1A3F79", "1A3F79", "508730",
+                  "F1B628", "E65631", "E55530", "508730"
+
                 ])
 
                 //svg.selectAll(".firstrow").data(data).enter().append("circle").attr("cx", function(d,i){return 30 + i*60}).attr("cy", 50).attr("r", 19).attr("fill", function(d){return myColor(d) })
