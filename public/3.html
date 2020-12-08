@@ -57,7 +57,7 @@
                 .data(data)
                 .enter()
               .append('tr').attr('class', function (d) {
-                console.log(d)
+                //console.log(d)
                 // Objetivo:
                 // "Numero" de Objetivo PND. Es "1.1.1" de "1.1.1 Garantizar a toda la población el derecho universal a la identidad."
                 // Meta:
@@ -171,26 +171,19 @@ d3.json("data/mini.json", function(classes) {
 
     var groupData = svg.selectAll("g.group")
       .data(nodes.filter(function(d) {
-        //return (d.key=='ODS_16_9' || d.key == 'ODS_3' || d.key == 'ODS_4' || d.key == 'ODS_16'
-        //|| d.key == 'PND_1_1') && d.children;
+          //return (d.key=='ODS_16_9' || d.key == 'ODS_3' || d.key == 'ODS_4' || d.key == 'ODS_16'
+          //|| d.key == 'PND_1_1') && d.children;
 
-        var root_list = [];
-        for (var i = 1; i <= 17; i++) {
-            root_list.push("ODS_"+i);
-        }
-        for (var i = 1; i <= 4; i++) {
-          for (var j = 1; j <= 4; j++) {
-              root_list.push("PND_"+i+"_"+j);
+          var root_list = [];
+          for (var i = 1; i <= 17; i++) {
+              root_list.push("ODS_"+i);
           }
-        }
-
-        //root_list = Array.from({length: 20}, (x, i) => "ODS_"+i);
-
-        return root_list.includes(d.key) && d.children;
-
-        //return d.key&&d.key.match(/(ODS_ \d+\.)/i) && d.children;
-
-
+          for (var i = 1; i <= 4; i++) {
+            for (var j = 1; j <= 4; j++) {
+                root_list.push("PND_"+i+"_"+j);
+            }
+          }
+          return root_list.includes(d.key) && d.children;
       }))
     .enter().append("group")
       .attr("class", "group");
@@ -221,43 +214,43 @@ d3.json("data/mini.json", function(classes) {
                     var colorScaleArc = function(d) {
                       //ODS_16
                       color_hash = {
-      "ODS_1":"123858",
-      "ODS_2":"DC022F",
-      "ODS_3":"D4972D",
-      "ODS_4":"3F9336",
-      "ODS_5":"B80B24",
-      "ODS_6":"E72823",
-      "ODS_7":"26B2E0",
-      "ODS_8":"F9B912",
-      "ODS_9":"900B35",
-      "ODS_10":"EC5324",
-      "ODS_11":"D30055",
-      "ODS_12":"F48B21",
-      "ODS_13":"B07B22",
-      "ODS_14":"336E36",
-      "ODS_15":"1D83CA",
-      "ODS_16":"4BB037",
-      "ODS_17":"13558D",
+                        "ODS_1":"123858",
+                        "ODS_2":"DC022F",
+                        "ODS_3":"D4972D",
+                        "ODS_4":"3F9336",
+                        "ODS_5":"B80B24",
+                        "ODS_6":"E72823",
+                        "ODS_7":"26B2E0",
+                        "ODS_8":"F9B912",
+                        "ODS_9":"900B35",
+                        "ODS_10":"EC5324",
+                        "ODS_11":"D30055",
+                        "ODS_12":"F48B21",
+                        "ODS_13":"B07B22",
+                        "ODS_14":"336E36",
+                        "ODS_15":"1D83CA",
+                        "ODS_16":"4BB037",
+                        "ODS_17":"13558D",
 
-      "PND_1_1":"F2B729",
-      "PND_1_2":"F1B629",
-      "PND_1_3":"F2B628",
-      "PND_1_4":"F2B729",
+                        "PND_1_1":"F2B729",
+                        "PND_1_2":"F1B629",
+                        "PND_1_3":"F2B628",
+                        "PND_1_4":"F2B729",
 
-      "PND_2_1":"F1B728",
-      "PND_2_2":"1A3F7A",
-      "PND_2_3":"1A3F79",
-      "PND_2_4":"50872F",
+                        "PND_2_1":"F1B728",
+                        "PND_2_2":"1A3F7A",
+                        "PND_2_3":"1A3F79",
+                        "PND_2_4":"50872F",
 
-      "PND_3_1":"F2B729",
-      "PND_3_2":"1A3F79",
-      "PND_3_3":"1A3F79",
-      "PND_3_4":"508730",
+                        "PND_3_1":"F2B729",
+                        "PND_3_2":"1A3F79",
+                        "PND_3_3":"1A3F79",
+                        "PND_3_4":"508730",
 
-      "PND_4_1":"F1B628",
-      "PND_4_2":"E65631",
-      "PND_4_3":"E55530",
-      "PND_4_4":"508730",
+                        "PND_4_1":"F1B628",
+                        "PND_4_2":"E65631",
+                        "PND_4_3":"E55530",
+                        "PND_4_4":"508730",
                       }
 
                       // ODS COLORS
@@ -323,8 +316,8 @@ function mouse(e) {
   return [e.pageX - rx, e.pageY - ry];
 }
 function clickfunction (e){
-  console.log(e.key);
-  console.log(e);
+  //console.log(e.key);
+  //console.log(e);
 
 
   // FILTRAR ROWS para == ekey
@@ -396,7 +389,7 @@ var tooltip = d3.select("body")
   //.html('<h1>ALGO</h1>'+'Otro<br />asd');
 
 function mouseover(d) {
-  //console.log(d)
+  console.log(d)
   //link source-ODS_16.9 target-PND_1.1.1 relation_Parcial
     svg.selectAll("path.link.target-" + d.key)
         .classed("target", true)
@@ -405,6 +398,10 @@ function mouseover(d) {
     svg.selectAll("path.link.source-" + d.key)
         .classed("source", true)
         .each(updateNodes("target", true));
+
+        // SECCION TOOLTIP
+
+        /*
 
       var msg = "<ul>";
       var node = (svg.selectAll("path.link.source-" + d.key)).filter(function(d2){
@@ -432,6 +429,7 @@ function mouseover(d) {
           tooltip.html( d.key+' tiene <b>'+N+'</b> conexiones'+ msg+"</li>" );
         }
         return tooltip.style("visibility", "visible");
+        */
 }
 
 function mouseout(d) {
