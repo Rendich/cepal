@@ -1,40 +1,41 @@
 [
     {
-    "name":"root*Jobs*Freelance",
+    "name":"Jobs*Freelance",
     "imports":
     [
-      ["Total","root*Freelance*Montrose_High_School"],
-      ["Parcial","root*Freelance*Technology_in_Education"]
+      ["Total","Freelance*Montrose_High_School"],
+      ["Parcial","Freelance*Technology_in_Education"]
     ]
     },
     {
-    "name":"root*Jobs*Bayard",
-    "imports":
-    [
-      ["Total","root*Bayard*ADP"],
-      ["Total","root*Bayard*Centeneasdasdad"],
-      ["Total","root*Bayard*Kaiser_Permanente"]
-    ]
+      "name":"Jobs*Bayard",
+      "imports":
+      [
+        ["Total","Bayard*ADP"],
+        ["Total","Bayard*Centeneasdasdad"],
+        ["Total","Bayard*Kaiser_Permanente"]
+      ]
     },
     {
-    "name":"root*X*bbbbb",
+    "name":"X*bbbbb",
     "imports":
     [
-      ["Total","root*bbbbb*AAAAAA"],
-      ["Parcial","root*bbbbb*AAAAAA2"]
+      ["Total","bbbbb*AAAAAA"],
+      ["Parcial","bbbbb*AAAAAA2"]
     ]
   },
-    {"name":"root*Freelance*Montrose_High_School","imports":[]},
-    {"name":"root*Freelance*Technology_in_Education","imports":[]},
-    {"name":"root*Freelance*ICPA","imports":[]},
-    {"name":"root*Freelance*_VVF","imports":[]},
-    {"name":"root*Freelance*Team_Tactical","imports":[]},
-    {"name":"root*Bayard*ADP","imports":[]},
-    {"name":"root*Bayard*Centeneasdasdad","imports":[]},
-    {"name":"root*Bayard*University_of_Kentucky", "imports":[]},
-    {"name":"root*Bayard*Six_Flags", "imports":[]},
-    {"name":"root*Bayard*Kaiser_Permanente", "imports":[]},
-    {"name":"root*Bayard*Ball_Aerospace", "imports":[]},
-    {"name":"root*bbbbb*AAAAAA", "imports":[]},
-    {"name":"root*bbbbb*AAAAAA2", "imports":[]}
+    {"name":"Freelance*Montrose_High_School","imports":[]},
+    {"name":"Freelance*Technology_in_Education","imports":[]},
+    {"name":"Freelance*ICPA","imports":[]},
+    {"name":"Freelance*_VVF","imports":[]},
+    {"name":"Freelance*Team_Tactical","imports":[]},
+
+    {"name":"Bayard*ADP","imports":[]},
+    {"name":"Bayard*Centeneasdasdad","imports":[]},
+    {"name":"Bayard*University_of_Kentucky", "imports":[]},
+    {"name":"Bayard*Six_Flags", "imports":[]},
+    {"name":"Bayard*Kaiser_Permanente", "imports":[]},
+    {"name":"Bayard*Ball_Aerospace", "imports":[]},
+    {"name":"bbbbb*AAAAAA", "imports":[]},
+    {"name":"bbbbb*AAAAAA2", "imports":[]}
 ]

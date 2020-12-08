@@ -14,7 +14,7 @@
   <body>
 
     <div class="container-fluid">
-        <h2>Plan Nacional de Desarrollo </h2>
+        <h2>Plan Nacional de Desarrollo (PND)</h2>
         <p>Haz click en las secciones de colores del gráfico de la izquierda para conocer cómo se componen los distintos...
         </p>
 
@@ -41,7 +41,9 @@
     <script type="text/javascript">
 
     //d3.csv("data/data2.csv", function(error, data) {
-    d3.csv("data/my_input.csv", function(error, data) {
+    d3.csv("data/my_input2.csv", function(error, data) {
+      //data = data
+      //.sort((a,b) => d3.ascending(a.PND_grupo, b.PND_grupo))
 
         var select = d3.select("#id_select")
           .append("div")
@@ -67,6 +69,7 @@
           var expensesByName = d3.nest()
             //.key(function(d) { return d.ODS_grupo; })
             .key(function(d) { return d.PND_grupo; })
+
               //.key(function(d) { return d.ODS_subgrupo; })
             .entries(data);
             console.log(expensesByName)
