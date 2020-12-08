@@ -8,20 +8,20 @@
         <link type="text/css" rel="stylesheet" href="https://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"/>
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
-
     <link type="text/css" rel="stylesheet" href="css/style.css"/>
     <link type="text/css" rel="stylesheet" href="css/style1.css"/>
-
-
-        <link type="text/css" rel="stylesheet" href="css/style2.css"/>
-            <link type="text/css" rel="stylesheet" href="css/style3.css"/>
-
+    <link type="text/css" rel="stylesheet" href="css/style2.css"/>
+    <link type="text/css" rel="stylesheet" href="css/style3.css"/>
   </head>
   <body>
-
           <div class="container-fluid">
               <h2>Relaciones entre ODS y PND</h2>
+              <br />
+              <br />
+              <p>El gráfico de la izquierda muestra las relaciones de los Objetivos de Desarrollo Sustentable (ODS) con el Plan Nacional de Desarrollo (PND).</p>
+              <p>Pasa el mouse sobre los distintos textos para destacar las relaciones, o haz click en ellos para mostrar la lista en la tabla de la derecha.</p>
+              <p>El color amarillo (<span class='block_relation_Parcial'>&#9634;</span>) indica una vinculación parcial, mientras que el color color rojo (<span class='block_relation_Total'>&#9634;</span>) indica una vinculación total.</p>
+
               <div class="row">
                 <div class="col-md-6">
                   <div id="bundle"></div>
@@ -84,7 +84,7 @@
         }
         //d3.csv("data/data.csv", function(error, data) {
         //d3.csv("data/data3.csv", function(error, data) {
-        d3.csv("data/my_input.csv", function(error, data) {
+        d3.csv("data/my_input3.csv", function(error, data) {
           //const columns = ["VALOR",'Eje','Objetivo Estratégico','Objetivo PND','Indicadores']
           //const columns = ['Eje','Objetivo Estratégico','Objetivo PND','Indicadores']
           //const columns = ["Objetivo","Meta ODS", "Objetivo Estratégico","Vinculación","Problemática ODS","Acción ODS","Sujeto ODS"]

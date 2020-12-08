@@ -7,164 +7,16 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
-        <style>
-        	<!--[if !IE]><!-->
-        	<style>
-        	* {
-        	  margin: 0;
-        	  padding: 0;
-             }
-             body {
-        	   font: 14px/1.4 Georgia, Serif;
-             }
-            #page-wrap {
-        	  /*margin: 50px;*/
-        	  margin: 0px;
-            }
-            p {
-        	 margin: 20px 0;
-            }
-
-        	/*
-        	Generic Styling, for Desktops/Laptops
-        	*/
-        	table {
-        		width: 100%;
-        		border-collapse: collapse;
-        	}
-        	/* Zebra striping */
-        	tr:nth-of-type(odd) {
-        		background: #eee;
-        	}
-        	th {
-        		background: #333;
-        		color: white;
-        		font-weight: bold;
-        		/*cursor: s-resize;*/
-        		background-repeat: no-repeat;
-                background-position: 3% center;
-        	}
-        	td, th {
-        		padding: 6px;
-        		border: 1px solid #ccc;
-        		text-align: left;
-        	}
-
-        	th.des:after {
-              content: "\21E9";
-            }
-
-            th.aes:after {
-              content: "\21E7";
-            }
-
-        	/*
-        	Max width before this PARTICULAR table gets nasty
-        	This query will take effect for any screen smaller than 760px
-        	and also iPads specifically.
-        	*/
-        	@media
-        	only screen and (max-width: 760px),
-        	(min-device-width: 768px) and (max-device-width: 1024px)  {
-
-        		/* Force table to not be like tables anymore */
-        		table, thead, tbody, th, td, tr {
-        			display: block;
-        		}
-
-        		/* Hide table headers (but not display: none;, for accessibility) */
-        		thead tr {
-        			position: absolute;
-        			top: -9999px;
-        			left: -9999px;
-        		}
-
-        		tr { border: 1px solid #ccc; }
-
-        		td {
-        			/* Behave  like a "row" */
-        			border: none;
-        			border-bottom: 1px solid #eee;
-        			position: relative;
-        			padding-left: 50%;
-        		}
-
-        		td:before {
-        			/* Now like a table header */
-        			position: absolute;
-        			/* Top/left values mimic padding */
-        			top: 6px;
-        			left: 6px;
-        			width: 45%;
-        			padding-right: 10px;
-        			white-space: nowrap;
-        		}
-
-        		/*
-        		Label the data
-        		*/
-        		td:before {
-        		  content: attr(data-th) ": ";
-                  font-weight: bold;
-                  width: 6.5em;
-                  display: inline-block;
-        		}
-        	}
-
-        	/* Smartphones (portrait and landscape) ----------- */
-        	@media only screen
-        	and (min-device-width : 320px)
-        	and (max-device-width : 480px) {
-        		body {
-        			padding: 0;
-        			margin: 0;
-        			width: 320px; }
-        		}
-
-        	/* iPads (portrait and landscape) ----------- */
-        	@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-		body {
-			width: 495px;
-		}
-	}
-        </style>
-
-
-
-
-
-            <style>
-
-                .slice {
-                    cursor: pointer;
-                }
-
-                .slice .main-arc {
-                    stroke: #fff;
-                    stroke-width: 1px;
-                }
-
-                .slice .hidden-arc {
-                    fill: none;
-                }
-
-                .slice text {
-                    pointer-events: none;
-                    dominant-baseline: middle;
-                    text-anchor: middle;
-                }
-                #partitionSVG{
-                }
-            </style>
-
-    <title>Prototipo 1 - Ricardo Rendich</title>
+    <link type="text/css" rel="stylesheet" href="css/style1.css"/>
+    <title>Versión 2 - Ricardo Rendich</title>
 
   </head>
   <body>
 
     <div class="container-fluid">
-        <h2>Entrada por PND</h2>
+        <h2>Plan Nacional de Desarrollo </h2>
+        <p>Haz click en las secciones de colores del gráfico de la izquierda para conocer cómo se componen los distintos...
+        </p>
 
         <div class="row">
           <div class="col-md-6">
@@ -185,305 +37,394 @@
           <p>Sitio desarrollado por Ricardo Rendich</p>
         </footer>
 
-            <script src='https://d3js.org/d3.v4.min.js'></script>
-            <script type="text/javascript">
-          /*
-              ORIGINAL SOURCES:
-              - http://bl.ocks.org/AMDS/4a61497182b8fcb05906
-              - https://gist.github.com/sandeepkumarsingh01/0d112a3448ccafb219cc737493b31498
-              */
-            //d3.csv("data/data.csv", function(error, data) {
-            //const whiteSpaceParser = d3.dsvFormat(";");
-            //const data = whiteSpaceParser.parse(file, d3.autoType);
-            //d3.dsv(";", "data2/data.csv").then((data) => {
-            d3.csv("data/data2.csv", function(error, data) {
-            var select = d3.select("#id_select")
-              .append("div")
-              .append("select").
-              attr("class", "btn btn-danger").
-              attr("id", "queryDays")
+    <script src='https://d3js.org/d3.v4.min.js'></script>
+    <script type="text/javascript">
+
+    //d3.csv("data/data2.csv", function(error, data) {
+    d3.csv("data/my_input.csv", function(error, data) {
+
+        var select = d3.select("#id_select")
+          .append("div")
+          .append("select").
+          attr("class", "btn btn-danger").
+          attr("id", "queryDays")
+
+        select
+          .on("change", function(d) {
+            var v = d3.select(this).property("value");
+            console.log(v)
+            moveStackToFront(v);
+            function moveStackToFront(elD) {
+                console.log("SI2: " + elD);
+                svg.selectAll('.slice').filter(d => d.data.id == elD)
+                //svg.selectAll('.slice').filter(d => d.value == elD)
+                    .each(function(d) {
+                        console.log("SI")
+                        focusOn(d)
+                        paint(d)
+                    })}
+          });
+          var expensesByName = d3.nest()
+            //.key(function(d) { return d.ODS_grupo; })
+            .key(function(d) { return d.PND_grupo; })
+              //.key(function(d) { return d.ODS_subgrupo; })
+            .entries(data);
+            console.log(expensesByName)
+
 
             select
-              .on("change", function(d) {
-                var v = d3.select(this).property("value");
-                console.log(v)
-                moveStackToFront(v);
-                function moveStackToFront(elD) {
-                    console.log("SI2: " + elD)
-                    svg.selectAll('.slice').filter(d => d.value == elD)
-                        .each(function(d) {
-                            console.log("SI")
-                            focusOn(d)
-                            paint(d)
-                        })}
-              });
+  .selectAll('optgroup')
+    .data(expensesByName)
+    .enter()
+  .append('optgroup')
+    .attr('value',function (d) { return d.key })
+    .attr('label',function (d) { return d.key})
+  .selectAll('option')
+    .data(function (d) { return d.values })
+    //.data(d3.map(expensesByName, function(d){return d.values;}).keys())
 
-            select.selectAll("option")
-              .data(data)
-              .enter()
-                .append("option")
-                .attr("value", function (d) { return d.VALOR; })
-                .text(function (d) {
-                  max_string = 88
-                     if(d.Indicadores.length > max_string)
-                         return d.Indicadores.substring(0,max_string)+'...';
-                     else
-                         return d.Indicadores;
-                 });
-                 select.insert("option",":first-child").
-                 attr('selected', 'selected').
-                 attr('value', 956129). // REVISAR valor default
-                 text('Filtrar')
+    .enter()
+  .append('option')
+    //.attr('value',function (d) { return d.ODS_subgrupo })
+    .attr('value',function (d) { return d.PND_subgrupo })
+    //.text(function (d) { return d })
+  .text(function (d) {
+    max_string = 80 //18 // CARACTERES DE CADA OPTION DEL SELECT (LARGO)
+       if(d['Objetivo PND'].length > max_string)
+           return d['Objetivo PND'].substring(0,max_string)+'...';
+       else
+           return d['Objetivo PND'];
+   });
 
-          }); // d3.csv("data.csv", function(error, data) {
+   select.insert("option",":first-child").
+   attr('selected', 'selected').
+   attr('value', 0). // REVISAR valor default
+   text('Filtrar')
 
-          ///////////////////
-          var tabulate = function (data,columns) {
-              var table = d3.select('#myTable')
-              var thead = table.append('thead')
-              var tbody = table.append('tbody')
+  }); // d3.csv("data.csv", function(error, data) {
 
-                thead.append('tr')
-                  .selectAll('th')
-                    .data(columns)
-                    .enter()
-                  .append('th')
-                    .text(function (d) { return d })
+  ///////////////////
+  var tabulate = function (data,columns) {
+      var table = d3.select('#myTable')
+      var thead = table.append('thead')
+      var tbody = table.append('tbody')
 
-                var rows = tbody.selectAll('tr')
-                    .data(data)
-                    .enter()
-                  .append('tr')
+        thead.append('tr')
+          .selectAll('th')
+            .data(columns)
+            .enter()
+          .append('th')
+            .text(function (d,i) {
+              //console.log(["113"]+i)
+              if(i==3)
+              {return "Objetivo Estratégico"}
 
-                var cells = rows.selectAll('td')
-                    .data(function(row, row_index) {
-                        return columns.map(function (column, column_index) {
-                          //console.log("row["+column+"("+row_index+"-"+column_index+")]: "+row[column])
-                            return { column: column, value: row[column] }
-                      })
-                  })
-                  .enter()
-                .append('td')
-                  .text(function (d) { return d.value })
+              return d
+            })
 
-              return table;
-            }
-            //d3.csv("data/data.csv", function(error, data) {
-            d3.csv("data/data2.csv", function(error, data) {
-              const columns = ["VALOR",'Eje','Objetivo Estratégico','Objetivo PND','Indicadores']
-              tabulate(data,columns)
+        var rows = tbody.selectAll('tr')
+            .data(data)
+            .enter()
+          .append('tr').attr('class', function (d) {
+            //return d.ODS_grupo +" "+d.ODS_subgrupo
+              return d.PND_grupo +" "+d.PND_subgrupo
+           }) //AQUI
+             .each(function (d) {
+                d3.select(this).style("visibility", "collapse");
             });
-        ////
-            d3.csv("data/data.csv", function(error, data) {
-        		  if (error) throw error;
 
-        		  var sortAscending = true;
-        		  var table = d3.select('#page-wrap').append('table');
-        		  var titles = d3.keys(data[0]);
-        		  var headers = table.append('thead').append('tr')
-        		                   .selectAll('th')
-        		                   .data(titles).enter()
-        		                   .append('th')
-        		                   .text(function (d) {
-        			                    return d;
-        		                    })
-                                /*
-        		                   .on('click', function (d) {
-        		                	   headers.attr('class', 'header');
-        		                	   if (sortAscending) {
-        		                	     rows.sort(function(a, b) { return b[d] < a[d]; });
-        		                	     sortAscending = false;
-        		                	     this.className = 'aes';
-        		                	   } else {
-        		                		 rows.sort(function(a, b) { return b[d] > a[d]; });
-        		                		 sortAscending = true;
-        		                		 this.className = 'des';
-        		                	   }
-        		                   });*/
 
-        		  var rows = table.append('tbody').selectAll('tr')
-        		               .data(data).enter()
-        		               .append('tr');
+        var cells = rows.selectAll('td')
+            .data(function(row, row_index) {
+                return columns.map(function (column, column_index) {
+                  //console.log("row["+column+"("+row_index+"-"+column_index+")]: "+row[column])
+                    return { column: column, value: row[column] }
+              })
+          })
+          .enter()
+        .append('td')/*
+          .text(function (d) {
+            //https://www.un.org/sustainabledevelopment/es/wp-content/uploads/sites/3/2016/01/S_SDG_Icons-01-12.jpg
+            return d.value
+          })*/
+            //.text(function (d, i) {if (i != 1 && i != 2) return d.value })
+            //.text(function (d, i) {if (i >0) return d.value })
+            .text(function (d, i) {if (i != 0 && i != 3) return d.value })
+  	.each(function(d, i) {
+  		//if (i == 0) {
+      if (i == 3) {
+      	var imgData = [];
+        //console.log(d.value)
+        imgData.push(d.value);
+        //the_image = "https://www.un.org/sustainabledevelopment/es/wp-content/uploads/sites/3/2016/01/S_SDG_Icons-01-"
+        //if(d.value<10){the_image+="0"}
+        the_image="img/ods"+d.value;
 
-        		  rows.selectAll('td')
-        		    .data(function (d) {
-        		    	return titles.map(function (k) {
-        		    		return { 'value': d[k], 'name': k};
-        		    	});
-        		    }).enter()
-        		    .append('td')
-        		    .attr('data-th', function (d) {
-        		    	return d.name;
-        		    })
-        		    .text(function (d) {
-        		    	return d.value;
-        		    });
-        	  });
-        	</script>
-            <script>
-                const width = window.innerWidth,
-                    height = window.innerHeight,
-                    maxRadius = (Math.min(width, height) / 2) - 5;
+        d3.select(this).selectAll("img")
+  				.data(imgData)
+          .enter()
+          .append("img") // doesn't append an <img> anywhere
+          //.attr("src", d.value)
+          .attr("src", the_image+".jpg")
+          .attr("height", "110px")
+          .attr("width", "110px");
+      }
+      else
+      //if(i == 3){
+      if(i == 0){
 
-                const formatNumber = d3.format(',d');
+        // https://www.stp.gov.py/v1/pnd-en-construccion/
+        	var imgData = [];
+          //console.log(d)
+          //console.log(d[i])
+          //console.log(i)
+//          console.log("---")
+          imgData.push(d.value);
+          //the_image = "https://www.un.org/sustainabledevelopment/es/wp-content/uploads/sites/3/2016/01/S_SDG_Icons-01-"
+          //if(d.value<10){the_image+="0"}
+          the_image="img/"+d.value;
+          //the_image="img/pnd1.1";
 
-                const x = d3.scaleLinear()
-                    .range([0, 2 * Math.PI])
-                    .clamp(true);
+          d3.select(this).selectAll("img")
+    				.data(imgData)
+            .enter()
+            .append("img") // doesn't append an <img> anywhere
+            //.attr("src", d.value)
+            .attr("src", the_image+".png")
+            .attr("height", "110px")
+            .attr("width", "110px");
 
-                const y = d3.scaleSqrt()
-                    .range([maxRadius*.1, maxRadius]);
+      }
+  	})
 
-                const color = d3.scaleOrdinal(d3.schemeCategory20);
+        return table;
 
-                const partition = d3.partition();
+      return table;
+    }
+    d3.csv("data/my_input2.csv", function(error, data) {
+      //const columns = ["ODS","Meta ODS","Objetivo PND", "PND_grupo"]
+      const columns = ["PND_grupo","Objetivo PND","Meta ODS", "ODS"]
+      tabulate(data,columns)
+    });
+////
 
-                const arc = d3.arc()
-                    .startAngle(d => x(d.x0))
-                    .endAngle(d => x(d.x1))
-                    .innerRadius(d => Math.max(0, y(d.y0)))
-                    .outerRadius(d => Math.max(0, y(d.y1)));
+	</script>
+    <script>
+        const width = window.innerWidth,
+            height = window.innerHeight,
+            maxRadius = (Math.min(width, height) / 2) - 5;
 
-                const middleArcLine = d => {
-                    const halfPi = Math.PI/2;
-                    const angles = [x(d.x0) - halfPi, x(d.x1) - halfPi];
-                    const r = Math.max(0, (y(d.y0) + y(d.y1)) / 2);
+        const formatNumber = d3.format(',d');
 
-                    const middleAngle = (angles[1] + angles[0]) / 2;
-                    const invertDirection = middleAngle > 0 && middleAngle < Math.PI; // On lower quadrants write text ccw
-                    if (invertDirection) { angles.reverse(); }
+        const x = d3.scaleLinear()
+            .range([0, 2 * Math.PI])
+            .clamp(true);
 
-                    const path = d3.path();
-                    path.arc(0, 0, r, angles[0], angles[1], invertDirection);
-                    return path.toString();
-                };
+        const y = d3.scaleSqrt()
+            .range([maxRadius*.1, maxRadius]);
 
-                const textFits = d => {
-                    const CHAR_SPACE = 6;
+        const color2 = d3.scaleOrdinal(d3.schemeCategory20);
 
-                    const deltaAngle = x(d.x1) - x(d.x0);
-                    const r = Math.max(0, (y(d.y0) + y(d.y1)) / 2);
-                    const perimeter = r * deltaAngle;
 
-                    return d.data.name.length * CHAR_SPACE < perimeter;
-                };
+        const partition = d3.partition();
 
-                const svg = d3.select('#partitionSVG').append('svg')
-                        .style('width', '100vw')
-                        .style('height', '100vh')
-                    .attr('viewBox', `${-width / 3} ${-height / 3} ${2/3*width} ${2/3*height}`)
-                    .on('click', () => focusOn()); // Reset zoom on canvas click
+        const arc = d3.arc()
+            .startAngle(d => x(d.x0))
+            .endAngle(d => x(d.x1))
+            .innerRadius(d => Math.max(0, y(d.y0)))
+            .outerRadius(d => Math.max(0, y(d.y1)));
 
-                d3.json('data/flare.json', (error, root) => {
-                    if (error) throw error;
+        const middleArcLine = d => {
+            const halfPi = Math.PI/2;
+            const angles = [x(d.x0) - halfPi, x(d.x1) - halfPi];
+            const r = Math.max(0, (y(d.y0) + y(d.y1)) / 2);
 
-                    root = d3.hierarchy(root);
-                  	console.log(root)
-                    root.sum(d => d.value);
+            const middleAngle = (angles[1] + angles[0]) / 2;
+            const invertDirection = middleAngle > 0 && middleAngle < Math.PI; // On lower quadrants write text ccw
+            if (invertDirection) { angles.reverse(); }
 
-                    const slice = svg.selectAll('g.slice')
-                        .data(partition(root).descendants());
+            const path = d3.path();
+            path.arc(0, 0, r, angles[0], angles[1], invertDirection);
+            return path.toString();
+        };
 
-                    slice.exit().remove();
+        const textFits = d => {
+            const CHAR_SPACE = 6;
 
-                    const newSlice = slice.enter()
-                        .append('g').attr('class', 'slice')
-                        .on('click', d => {
-                            d3.event.stopPropagation();
-                            console.log("- AGREGANDO: ")
-                            console.log(d)
-                            console.log("d.value: "+d.value)
-                            if(d.value != d3.select("#queryDays").value){
-                              console.log(d.value +" - "+ d3.select("#queryDays").node().value)
+            const deltaAngle = x(d.x1) - x(d.x0);
+            const r = Math.max(0, (y(d.y0) + y(d.y1)) / 2);
+            const perimeter = r * deltaAngle;
 
-                              d3.select("#queryDays").node().value = d.value
-                              //d3.select("#queryDays").node().value = d3.select("#queryDays").node().value?d3.select("#queryDays").node().value:0
+            return d.data.name.length * CHAR_SPACE < perimeter;
+        };
 
-                              paint(d)
-                            }
-                            focusOn(d);
-                        });
+        const svg = d3.select('#partitionSVG').append('svg')
+                .style('width', '100vw')
+                .style('height', '100vh')
+            .attr('viewBox', `${-width / 3} ${-height / 3} ${2/3*width} ${2/3*height}`)
+            .on('click', () => focusOn()); // Reset zoom on canvas click
 
-                    newSlice.append('title')
-                        .text(d => d.data.name + '\n' + formatNumber(d.value));
+        d3.json('data/my_input2.json', (error, root) => {
+            if (error) throw error;
 
-                    newSlice.append('path')
-                        .attr('class', 'main-arc')
-                        .style('fill', d => color((d.children ? d : d.parent).data.name))
-                        .attr('d', arc);
+            root = d3.hierarchy(root);
+          	console.log(root)
+            //root.sum(d => d.value);
+            root.sum(d => d.value);
+            //root.sum(d => d.id);
 
-                    newSlice.append('path')
-                        .attr('class', 'hidden-arc')
-                        .attr('id', (_, i) => `hiddenArc${i}`)
-                        .attr('d', middleArcLine);
+            const slice = svg.selectAll('g.slice')
+                .data(partition(root).descendants());
 
-                    const text = newSlice.append('text')
-                        .attr('display', d => textFits(d) ? null : 'none');
+            slice.exit().remove();
 
-                    // Add white contour
-                    text.append('textPath')
-                        .attr('startOffset','50%')
-                        .attr('xlink:href', (_, i) => `#hiddenArc${i}` )
-                        .text(d => d.data.name)
-                        .style('fill', 'none')
-                        .style('stroke', '#fff')
-                        .style('stroke-width', 5)
-                        .style('stroke-linejoin', 'round');
+            const newSlice = slice.enter()
+                .append('g').attr('class', 'slice')
+                .on('click', d => {
+                    d3.event.stopPropagation();
+                    //if(d.value != d3.select("#queryDays").value){
+                    if(d.data.id != d3.select("#queryDays").value){
+                      console.log(d)
+                      console.log("[376] "+d.data.id +" - "+d.value +" - "+ d3.select("#queryDays").node().value)
+                      d3.select("#queryDays").node().value = d.data.id
+                      console.log(d3.select("#queryDays").node().value)
+                      // PENDIENTE: AGREGAR GROUP
+                      //if(!d3.select("#queryDays").node().value)
+                      //{d3.select("#queryDays").node().value = d.data.id}
 
-                    text.append('textPath')
-                        .attr('startOffset','50%')
-                        .attr('xlink:href', (_, i) => `#hiddenArc${i}` )
-                        .text(d => d.data.name);
+                      if(!d3.select("#queryDays").node().value)
+                      {d3.select("#queryDays").node().value = 0}
+                      paint(d)
+                    }
+                    focusOn(d);
                 });
 
-                        function paint(d){
+            //newSlice.append('title').text(d => d.data.name + '\n' + formatNumber(d.value));
+            newSlice.append('title')
+                .text(d => d.data.name );
 
-                          const tds = d3.selectAll("td")
-                            .each(function(x, y) {
-                              d3.select(this).style("background-color", this.innerHTML == d.value ? "yellow" : null)
-                            })
-                        }
-                function focusOn(d = { x0: 0, x1: 1, y0: 0, y1: 1 }) {
-                    // Reset to top-level if no data point specified
+                // Option 1: provide color names:
+                var myColor = d3.scaleOrdinal().domain(d3.range(17))
+                  .range([
+                  "123858","DC022F", "D4972D", "3F9336", "B80B24", "E72823", "26B2E0", "F9B912", "900B35", "EC5324", "D30055",
+                  "F48B21", "B07B22", "336E36", "1D83CA", "4BB037", "13558D",
+                  "FFFFFF"
+                ])
 
-                    const transition = svg.transition()
-                        .duration(750)
-                        .tween('scale', () => {
-                            const xd = d3.interpolate(x.domain(), [d.x0, d.x1]),
-                                yd = d3.interpolate(y.domain(), [d.y0, 1]);
-                            return t => { x.domain(xd(t)); y.domain(yd(t)); };
-                        });
+                //svg.selectAll(".firstrow").data(data).enter().append("circle").attr("cx", function(d,i){return 30 + i*60}).attr("cy", 50).attr("r", 19).attr("fill", function(d){return myColor(d) })
 
-                    transition.selectAll('path.main-arc')
-                        .attrTween('d', d => () => arc(d));
+                newSlice.append('path')
+                    .attr('class', 'main-arc')
+                    .style('fill', function(d){
+                      //console.log(d.data.name.indexOf("."))
+                      //val = d.data.ods_class
+                      val = d.data.pnd_class
+                      //console.log(val)
+                      return myColor(val) })
+                    //color2((d.children ? d : d.parent).data.name))
+                    .attr('d', arc);
 
-                    transition.selectAll('path.hidden-arc')
-                        .attrTween('d', d => () => middleArcLine(d));
+/*
+            newSlice.append('path')
+                .attr('class', 'main-arc')
+                .style('fill', d =>
+                color2((d.children ? d : d.parent).data.name))
+                .attr('d', arc);
+                */
 
-                    transition.selectAll('text')
-                        .attrTween('display', d => () => textFits(d) ? null : 'none');
-                }
+            newSlice.append('path')
+                .attr('class', 'hidden-arc')
+                .attr('id', (_, i) => `hiddenArc${i}`)
+                .attr('d', middleArcLine);
 
-                    d3.select("#queryDays").on("change", function() {
-                      //var v = d3.select(this)[0][0].value;
-                      //var v = d3.select(this);
-                      var v = this.value;
-                      console.log(v)
-                      moveStackToFront(v);
-                                  function moveStackToFront(elD) {
-                                      console.log("SI2: " + elD)
-                                      svg.selectAll('.slice').filter(d => d.value == elD)
-                                          .each(function(d) {
-                                              console.log("SI")
-                                              focusOn(d)
-                                              paint(d)
-                                          })
-                                  }
+            const text = newSlice.append('text')
+                .attr('display', d => textFits(d) ? null : 'none');
+
+            // Add white contour
+            text.append('textPath')
+                .attr('startOffset','50%')
+                .attr('xlink:href', (_, i) => `#hiddenArc${i}` )
+                .text(d => d.data.name)
+                .style('fill', 'none')
+                .style('stroke', '#fff')
+                .style('stroke-width', 5)
+                .style('stroke-linejoin', 'round');
+
+            text.append('textPath')
+                .attr('startOffset','50%')
+                .attr('xlink:href', (_, i) => `#hiddenArc${i}` )
+                .text(d => d.data.name);
+        });
+
+                function paint(d){
+                  //console.log("421")
+                    //console.log(d)
+
+                  const tds = d3.selectAll("td")
+                    .each(function(x, y) {
+                      d3.select(this).style("background-color", this.innerHTML == d.data.id ? "yellow" : null)
                     })
-            </script>
-            <!-- Optional JavaScript -->
-            <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-          </body>
-        </html>
+
+                    var table = d3.select('#myTable')
+                    var tbody = table.select('tbody');
+                      var rows = tbody.selectAll('tr')
+                      .each(function (d) {
+                         d3.select(this).style("visibility", function() {
+                             return (true) ? "visible" : "hidden";
+                         });
+                     });
+                     //tbody.selectAll('tr').selectAll(".FILA_1").style("visibility", function() {return true });
+                       var rows = tbody.selectAll('tr')
+                       .each(function (r) {
+                          d3.select(this).style("visibility", function() {
+                              //console.log(r) // AQUI AQUI
+                              //return (r.ODS_subgrupo == d.data.id || r.ODS_grupo == d.data.id) ? "table-cell" : "collapse";
+                              return (r.PND_subgrupo == d.data.id || r.PND_grupo == d.data.id) ? "table-cell" : "collapse";
+                              //return (r.VALOR%2==0) ? "table-cell" : "collapse";
+                          });
+                      });
+
+                }
+        function focusOn(d = { x0: 0, x1: 1, y0: 0, y1: 1 }) {
+            // Reset to top-level if no data point specified
+
+            const transition = svg.transition()
+                .duration(750)
+                .tween('scale', () => {
+                    const xd = d3.interpolate(x.domain(), [d.x0, d.x1]),
+                        yd = d3.interpolate(y.domain(), [d.y0, 1]);
+                    return t => { x.domain(xd(t)); y.domain(yd(t)); };
+                });
+
+            transition.selectAll('path.main-arc')
+                .attrTween('d', d => () => arc(d));
+
+            transition.selectAll('path.hidden-arc')
+                .attrTween('d', d => () => middleArcLine(d));
+
+            transition.selectAll('text')
+                .attrTween('display', d => () => textFits(d) ? null : 'none');
+        }
+
+            d3.select("#queryDays").on("change", function() {
+              var v = this.value;
+              console.log(v)
+              moveStackToFront(v);
+                          function moveStackToFront(elD) {
+                              console.log("SI2: " + elD)
+                              //svg.selectAll('.slice').filter(d => d.value == elD)
+                              svg.selectAll('.slice').filter(d => d.id == elD)
+                                  .each(function(d) {
+                                      console.log("SI")
+                                      focusOn(d)
+                                      paint(d)
+                                  })
+                          }
+            })
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -1,44 +1,38 @@
 [
     {
-    "name":"root.Jobs.Freelance",
-    "imports":
-    [
-      {k:"root.Freelance.Montrose_High_School", l:0},
-      {k:"root.Freelance.Technology_in_Education", l:1}
-    ]
-    },
-
-    {
-    "name":"root.Jobs.Bayard",
-    "imports":
-    [
-      {k:"root.Bayard.ADP", l:1},
-      {k:"root.Bayard.Centeneasdasdad", l:0},
-      {k:"root.Bayard.Kaiser_Permanente", l:0}
-    ]
+        "imports": [
+            [
+                "Parcial",
+                "root*ODS_16.9*16.9 De  para todos, en particular mediante el registro de nacimientos"
+            ]
+        ],
+        "name": "1.1.1 Garantizar a toda la  el derecho universal a la identidad.  "
     },
     {
-    "name":"root.X.bbbbb",
-    "imports":
-    [
-      {k:"root.bbbbb.AAAAAA", l:0},
-      {k:"root.bbbbb.AAAAAA2", l:0},
-      {k:"root.Bayard.University_of_Kentucky", l:0}
-    ]
-  },
+        "imports": [
+            [
+                "Total",
+                "root*ODS_4.2*4.2 De primaria"
+            ]
+        ],
+        "name": "1.1.11 Aumentar el a en la primera infancia con un enfoque integral"
+    },
+    {
+        "imports": [
+            [
+                "Parcial",
+                "root*ODS_1.4*1.4 Para 2030, garantizar que todos los hombres y "
+            ],
+            [
+                "Parcial",
+                "root*ODS_16.2*16.2 Poner fin al maltrato, la "
+            ]
+        ],
+        "name": "1.1.12 Garantizar el acceso de sus ."
+    },
 
-    {"name":"root.Freelance.Montrose_High_School","imports":[]},
-    {"name":"root.Freelance.Technology_in_Education","imports":[]},
-    {"name":"root.Freelance.ICPA","imports":[]},
-    {"name":"root.Freelance._VVF","imports":[]},
-    {"name":"root.Freelance.Team_Tactical","imports":[]},
-
-    {"name":"root.Bayard.ADP","imports":[]},
-    {"name":"root.Bayard.Centeneasdasdad","imports":[]},
-    {"name":"root.Bayard.University_of_Kentucky", "imports":[]},
-    {"name":"root.Bayard.Six_Flags", "imports":[]},
-    {"name":"root.Bayard.Kaiser_Permanente", "imports":[]},
-    {"name":"root.Bayard.Ball_Aerospace", "imports":[]},
-    {"name":"root.bbbbb.AAAAAA", "imports":[]},
-    {"name":"root.bbbbb.AAAAAA2", "imports":[]}
+      {"name":"root*ODS_16.9*16.9 De  para todos, en particular mediante el registro de nacimientos", "imports": []},
+{"name":"root*ODS_4.2*4.2 De primaria", "imports": []},
+{"name":"root*ODS_1.4*1.4 Para 2030, garantizar que todos los hombres y ", "imports": []},
+{"name":"root*ODS_16.2*16.2 Poner fin al maltrato, la ", "imports": []}
 ]

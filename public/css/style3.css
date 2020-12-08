@@ -116,3 +116,12 @@ div.tooltip {
     .relation_Parcial.link {
     stroke: #FFFF00; /*CONEXION amarillo oscuro*/
     }
+
+
+    .block_relation_Total {
+      background-color: #FF0000;
+    }
+
+    .block_relation_Parcial {
+      background-color: #FFFF00;
+    }
