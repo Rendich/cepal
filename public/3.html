@@ -279,9 +279,12 @@ d3.json("data/mini.json", function(classes) {
     //.style("fill-opacity", 0.5);
     .call(text => text.append("title").text( (d,i) =>
       {
-        return  `ODS ${i}
-      ${d.__data__.name} :
-  Se compone de ${d.__data__.children.length} elementos`;
+        N = d.__data__.children.length;
+        msg = `${d.__data__.name} :
+        Se compone de ${N} elemento`
+        if(N>1)
+          {msg+="s"}
+        return  msg;
       }
     ))
     .style("fill", function(d, i) {
