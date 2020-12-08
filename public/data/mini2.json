@@ -3,36 +3,26 @@
         "imports": [
             [
                 "Parcial",
-                "root*ODS_16.9*16.9 De  para todos, en particular mediante el registro de nacimientos"
+                "PND_1_1*PND_1_1_1"
             ]
         ],
-        "name": "1.1.1 Garantizar a toda la  el derecho universal a la identidad.  "
+        "name": "ODS_16*ODS_16_9"
     },
     {
         "imports": [
             [
                 "Total",
-                "root*ODS_4.2*4.2 De primaria"
+                "PND_1_1*PND_1_1_10"
             ]
         ],
-        "name": "1.1.11 Aumentar el a en la primera infancia con un enfoque integral"
+        "name": "ODS_3*ODS_3_2"
     },
     {
-        "imports": [
-            [
-                "Parcial",
-                "root*ODS_1.4*1.4 Para 2030, garantizar que todos los hombres y "
-            ],
-            [
-                "Parcial",
-                "root*ODS_16.2*16.2 Poner fin al maltrato, la "
-            ]
-        ],
-        "name": "1.1.12 Garantizar el acceso de sus ."
+        "imports": [],
+        "name": "PND_1_1*PND_1_1_1"
     },
-
-      {"name":"root*ODS_16.9*16.9 De  para todos, en particular mediante el registro de nacimientos", "imports": []},
-{"name":"root*ODS_4.2*4.2 De primaria", "imports": []},
-{"name":"root*ODS_1.4*1.4 Para 2030, garantizar que todos los hombres y ", "imports": []},
-{"name":"root*ODS_16.2*16.2 Poner fin al maltrato, la ", "imports": []}
+    {
+        "imports": [],
+        "name": "PND_1_1*PND_1_1_10"
+    }
 ]

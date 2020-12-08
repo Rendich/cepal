@@ -1,0 +1,41 @@
+[
+    {
+    "name":"Jobs*Freelance",
+    "imports":
+    [
+      ["Total","Freelance*Montrose_High_School"],
+      ["Parcial","Freelance*Technology_in_Education"]
+    ]
+    },
+    {
+      "name":"Jobs*Bayard",
+      "imports":
+      [
+        ["Total","Bayard*ADP"],
+        ["Total","Bayard*Centeneasdasdad"],
+        ["Total","Bayard*Kaiser_Permanente"]
+      ]
+    },
+    {
+    "name":"X*bbbbb",
+    "imports":
+    [
+      ["Total","bbbbb*AAAAAA"],
+      ["Parcial","bbbbb*AAAAAA2"]
+    ]
+  },
+    {"name":"Freelance*Montrose_High_School","imports":[]},
+    {"name":"Freelance*Technology_in_Education","imports":[]},
+    {"name":"Freelance*ICPA","imports":[]},
+    {"name":"Freelance*_VVF","imports":[]},
+    {"name":"Freelance*Team_Tactical","imports":[]},
+
+    {"name":"Bayard*ADP","imports":[]},
+    {"name":"Bayard*Centeneasdasdad","imports":[]},
+    {"name":"Bayard*University_of_Kentucky", "imports":[]},
+    {"name":"Bayard*Six_Flags", "imports":[]},
+    {"name":"Bayard*Kaiser_Permanente", "imports":[]},
+    {"name":"Bayard*Ball_Aerospace", "imports":[]},
+    {"name":"bbbbb*AAAAAA", "imports":[]},
+    {"name":"bbbbb*AAAAAA2", "imports":[]}
+]
