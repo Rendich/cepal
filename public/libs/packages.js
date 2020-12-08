@@ -41,10 +41,10 @@
         if (d.imports) d.imports.forEach(function(I) {
           i = I[1]
           // AQUI
-          console.log(I)
-          console.log(d)
+          //console.log(I)
+          //console.log(d)
           //console.log(i)
-          console.log("-----")
+          //console.log("-----")
           //imports.push({source: map[d.name], target: map[i], relation: d.relation});
           imports.push({source: map[d.name], target: map[i], relation: I[0]});
           //imports.push({source: map[d.name], target: map[i]});

@@ -57,15 +57,16 @@
                 .data(data)
                 .enter()
               .append('tr').attr('class', function (d) {
+                console.log(d)
                 // Objetivo:
                 // "Numero" de Objetivo PND. Es "1.1.1" de "1.1.1 Garantizar a toda la población el derecho universal a la identidad."
                 // Meta:
                 // "Numero" de Meta Meta ODS. Es "16.9" de "16.9 De aquí a 2030, proporcionar acceso a una identidad jurídica para todos, en particular mediante el registro de nacimientos."
-                return d.Objetivo +" "+d.Meta
+                return d.PND_subgrupo +" "+d.ODS_subgrupo
                }) //AQUI
                  .each(function (d) {
-                    //d3.select(this).style("visibility", "collapse");
-                    d3.select(this).style("visibility", "visible");
+                    d3.select(this).style("visibility", "collapse");
+                    //d3.select(this).style("visibility", "visible");
                 });
 
 
@@ -161,7 +162,7 @@ d3.json("data/mini.json", function(classes) {
       .enter().append("svg:path")
         .attr("class", function(d) {
           //console.log("[79]")
-            console.log(d)
+            //console.log(d)
           //return "link source-" + d.source.key + " target-" + d.target.key + " relation_"+d.relation;
         //return "link source-" + d.source.key + " target-" + d.target.key ;
         return "link source-" + d.source.key + " target-" + d.target.key + " relation_"+d.relation;
@@ -267,13 +268,12 @@ d3.json("data/mini.json", function(classes) {
                       //"F1B728", "1A3F7A", "1A3F79", "50872F",
                       //"F2B729", "1A3F79", "1A3F79", "508730",
                       //"F1B628", "E65631", "E55530", "508730"
-                      console.log("["+d+"]")
                       //console.log("---"+i)
                       c = color_hash[d]
-                      console.log(c)
+                      //console.log(c)
 
                       if(c)
-                      return c
+                      {return c}
                       return "00FF00"
                     }
 
@@ -292,7 +292,7 @@ d3.json("data/mini.json", function(classes) {
       }
     ))
     .style("fill", function(d, i) {
-      console.log(i+": "+d.__data__.name);
+      //console.log(i+": "+d.__data__.name);
       return colorScaleArc(d.__data__.name);
     }) // ARCOS ROJOS
     .style("fill-opacity", 0.5);
@@ -326,6 +326,26 @@ function clickfunction (e){
   console.log(e.key);
   console.log(e);
 
+
+  // FILTRAR ROWS para == ekey
+
+                      var table = d3.select('#myTable3')
+                      var tbody = table.select('tbody');
+                        var rows = tbody.selectAll('tr')
+                        .each(function (d) {
+                           d3.select(this).style("visibility", function() {
+                               return (true) ? "visible" : "hidden";
+                           });
+                       });
+                       //tbody.selectAll('tr').selectAll(".FILA_1").style("visibility", function() {return true });
+                         var rows = tbody.selectAll('tr')
+                         .each(function (r) {
+                            d3.select(this).style("visibility", function() {
+                                //console.log(r) // AQUI AQUI
+                                return (r.ODS_subgrupo == e.key || r.PND_subgrupo == e.key) ? "table-cell" : "collapse";
+                                //return (r.VALOR%2==0) ? "table-cell" : "collapse";
+                            });
+                        });
 /************************************************************************************************************
 
 AGREGAR ID AL EVENTO
@@ -376,7 +396,7 @@ var tooltip = d3.select("body")
   //.html('<h1>ALGO</h1>'+'Otro<br />asd');
 
 function mouseover(d) {
-  console.log(d)
+  //console.log(d)
   //link source-ODS_16.9 target-PND_1.1.1 relation_Parcial
     svg.selectAll("path.link.target-" + d.key)
         .classed("target", true)
