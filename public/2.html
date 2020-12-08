@@ -46,8 +46,6 @@
 
     //d3.csv("data/data2.csv", function(error, data) {
     d3.csv("data/my_input2.csv", function(error, data) {
-      //data = data
-      //.sort((a,b) => d3.ascending(a.PND_grupo, b.PND_grupo))
 
         var select = d3.select("#id_select")
           .append("div")
@@ -117,8 +115,8 @@
       var tbody = table.append('tbody')
 
 
-        data = data
-        .sort((a,b) => d3.ascending(a.PND_grupo, b.PND_grupo))
+        //data = data
+        //.sort((a,b) => d3.ascending(a.PND_grupo, b.PND_grupo))
 
         thead.append('tr')
           .selectAll('th')
@@ -127,7 +125,8 @@
           .append('th')
             .text(function (d,i) {
               //console.log(["113"]+i)
-              if(i==3)
+              //if(i==3)
+              if(i==0)
               {return "Objetivo Estratégico"}
 
               return d
