@@ -71,12 +71,11 @@
           var expensesByName = d3.nest()
             //.key(function(d) { return d.ODS_grupo; })
             .key(function(d) { return d.PND_grupo; })
-
-              //.key(function(d) { return d.ODS_subgrupo; })
+            .key(function(d) { return d.PND_subgrupo; })
             .entries(data);
             console.log(expensesByName)
 
-
+/*
             select
   .selectAll('optgroup')
     .data(expensesByName)
@@ -86,8 +85,6 @@
     .attr('label',function (d) { return d.key})
   .selectAll('option')
     .data(function (d) { return d.values })
-    //.data(d3.map(expensesByName, function(d){return d.values;}).keys())
-
     .enter()
   .append('option')
     //.attr('value',function (d) { return d.ODS_subgrupo })
@@ -99,7 +96,32 @@
            return d['Objetivo PND'].substring(0,max_string)+'...';
        else
            return d['Objetivo PND'];
-   });
+   });*/
+
+   select
+     .selectAll('optgroup')
+       .data(expensesByName)
+       .enter()
+     .append('optgroup')
+       .attr('value',function (d) { return d.key })
+       .attr('label',function (d) { return d.key})
+     .selectAll('option')
+       .data(function (d) { return d.values })
+       //.data(d3.map(expensesByName, function(d){return d.values;}).keys())
+
+       .enter()
+     .append('option')
+       .attr('value',function (d) { return d.key })
+       //.text(function (d) { return d })
+     .text(function (d) {
+       max_string = 80 //18 // CARACTERES DE CADA OPTION DEL SELECT (LARGO)
+       val = d.values[0]["Objetivo PND"]
+          if(val.length > max_string)
+              return val.substring(0,max_string)+'...';
+          else
+              return val;
+      });
+
 
    select.insert("option",":first-child").
    attr('selected', 'selected').
