@@ -403,7 +403,7 @@ function mouseover(d) {
         .each(updateNodes("target", true));
 
         // SECCION TOOLTIP
-
+if(false){
       var msg = "<ul>";
       var node = (svg.selectAll("path.link.source-" + d.key)).filter(function(d2){
           msa = d3.select(this).attr('class');
@@ -429,7 +429,7 @@ function mouseover(d) {
         }else{
           tooltip.html( d.key+' tiene <b>'+N+'</b> conexiones'+ msg+"</li>" );
         }
-        return tooltip.style("visibility", "visible");
+        return tooltip.style("visibility", "visible");}
 
 }
 
