@@ -30,10 +30,10 @@
           </div>
           <div class="col-md-6">
             <br>
-            <div id="id_select"  class="btn btn-danger "></div>
+            <div id="id_select2"  class="btn btn-danger "></div>
             <br>
             <br>
-            <div id="myTable"></div>
+            <div id="myTable2"></div>
           </div>
         </div>
     </div>
@@ -47,7 +47,7 @@
     //d3.csv("data/data2.csv", function(error, data) {
     d3.csv("data/my_input2.csv", function(error, data) {
 
-        var select = d3.select("#id_select")
+        var select = d3.select("#id_select2")
           .append("div")
           .append("select").
           attr("class", "btn btn-danger").
@@ -132,7 +132,7 @@
 
   ///////////////////
   var tabulate = function (data,columns) {
-      var table = d3.select('#myTable')
+      var table = d3.select('#myTable2')
       var thead = table.append('thead')
       var tbody = table.append('tbody')
 
@@ -399,7 +399,7 @@
                       d3.select(this).style("background-color", this.innerHTML == d.data.id ? "yellow" : null)
                     })
 
-                    var table = d3.select('#myTable')
+                    var table = d3.select('#myTable2')
                     var tbody = table.select('tbody');
                       var rows = tbody.selectAll('tr')
                       .each(function (d) {

@@ -8,13 +8,20 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" href="css/style1.css"/>
-    <title>Prototipo 1 - Ricardo Rendich</title>
+    <title>Versión 2 - Ricardo Rendich</title>
 
   </head>
   <body>
 
     <div class="container-fluid">
-        <h2>Entrada por ODS</h2>
+        <h2>Objetivos de Desarrollo Sustentable (ODS)</h2>
+        <p>Haz click en las secciones de colores del gráfico de la izquierda para conocer cómo se componen los distintos Objetivos de Desarrollo Sustentable.
+        </p>
+        <p>Para volver al nivel anterior, haz click en el centro del mismo gráfico.
+        </p>
+        <p>También puedes navegar utilizando la lista de la derecha.
+        </p>
+
         <div class="row">
           <div class="col-md-6">
             <div class="">
@@ -37,7 +44,9 @@
     <script src='https://d3js.org/d3.v4.min.js'></script>
     <script type="text/javascript">
 
-    d3.csv("data/data2.csv", function(error, data) {
+    //d3.csv("data/data2.csv", function(error, data) {
+    d3.csv("data/my_input.csv", function(error, data) {
+
         var select = d3.select("#id_select")
           .append("div")
           .append("select").
@@ -54,15 +63,29 @@
                 svg.selectAll('.slice').filter(d => d.data.id == elD)
                 //svg.selectAll('.slice').filter(d => d.value == elD)
                     .each(function(d) {
-                        console.log("SI")
+                        //console.log("SI")
                         focusOn(d)
                         paint(d)
                     })}
           });
           var expensesByName = d3.nest()
-            .key(function(d) { return d.Grupo; })
+            .key(function(d) { return d.ODS_grupo; })
+              .key(function(d) { return d.ODS_subgrupo; })
             .entries(data);
-            console.log(expensesByName)
+            //console.log(expensesByName)
+            /*
+            expensesByName.forEach((item, i) => {
+              console.log(i+":")
+              console.log(item)
+
+              item.values.forEach((item2, i2) => {
+                console.log(i2+":")
+                console.log(item2)
+
+              });
+            });*/
+
+
 
 
             select
@@ -74,16 +97,23 @@
     .attr('label',function (d) { return d.key})
   .selectAll('option')
     .data(function (d) { return d.values })
+    //.data(d3.map(expensesByName, function(d){return d.values;}).keys())
+
     .enter()
   .append('option')
-    .attr('value',function (d) { return d.VALOR })
+    .attr('value',function (d) { return d.key })
     //.text(function (d) { return d })
   .text(function (d) {
+
     max_string = 80 //18 // CARACTERES DE CADA OPTION DEL SELECT (LARGO)
-       if(d.Indicadores.length > max_string)
-           return d.Indicadores.substring(0,max_string)+'...';
+    val = d.values[0]["Meta ODS"]
+       if(val.length > max_string)
+           return val.substring(0,max_string)+'...';
        else
-           return d.Indicadores;
+           return val;
+
+           //console.log(d)
+           return val;
    });
 
    select.insert("option",":first-child").
@@ -104,7 +134,13 @@
             .data(columns)
             .enter()
           .append('th')
-            .text(function (d) { return d })
+            .text(function (d,i) {
+              //console.log(["113"]+i)
+              if(i==3)
+              {return "Objetivo Estratégico"}
+
+              return d
+            })
 
         var rows = tbody.selectAll('tr')
             .data(data)
@@ -113,7 +149,7 @@
             //console.log("267");
               //console.log(d);
              //return "FILA_"+d.VALOR +" "+d.Grupo
-            return d.VALOR +" "+d.Grupo
+            return d.ODS_grupo +" "+d.ODS_subgrupo
            }) //AQUI
              .each(function (d) {
                 d3.select(this).style("visibility", "collapse");
@@ -128,15 +164,70 @@
               })
           })
           .enter()
-        .append('td')
-          .text(function (d) { return d.value })
+        .append('td')/*
+          .text(function (d) {
+            //https://www.un.org/sustainabledevelopment/es/wp-content/uploads/sites/3/2016/01/S_SDG_Icons-01-12.jpg
+            return d.value
+          })*/
+            //.text(function (d, i) {if (i != 1 && i != 2) return d.value })
+            //.text(function (d, i) {if (i >0) return d.value })
+            .text(function (d, i) {if (i != 0 && i != 3) return d.value })
+  	.each(function(d, i) {
+  		if (i == 0) {
+      	var imgData = [];
+        //console.log(d.value)
+        imgData.push(d.value);
+        //the_image = "https://www.un.org/sustainabledevelopment/es/wp-content/uploads/sites/3/2016/01/S_SDG_Icons-01-"
+        //if(d.value<10){the_image+="0"}
+        the_image="img/ods"+d.value;
+
+        d3.select(this).selectAll("img")
+  				.data(imgData)
+          .enter()
+          .append("img") // doesn't append an <img> anywhere
+          //.attr("src", d.value)
+          .attr("src", the_image+".jpg")
+          .attr("height", "110px")
+          .attr("width", "110px");
+      }
+      else
+      if(i == 3){
+
+        // https://www.stp.gov.py/v1/pnd-en-construccion/
+        	var imgData = [];
+          //console.log(d)
+          //console.log(d[i])
+          //console.log(i)
+//          console.log("---")
+          imgData.push(d.value);
+          //the_image = "https://www.un.org/sustainabledevelopment/es/wp-content/uploads/sites/3/2016/01/S_SDG_Icons-01-"
+          //if(d.value<10){the_image+="0"}
+          the_image="img/"+d.value;
+          //the_image="img/pnd1.1";
+
+          d3.select(this).selectAll("img")
+    				.data(imgData)
+            .enter()
+            .append("img") // doesn't append an <img> anywhere
+            //.attr("src", d.value)
+            .attr("src", the_image+".png")
+            .attr("height", "110px")
+            .attr("width", "110px");
+
+      }
+  	})
+
+        return table;
 
       return table;
     }
-    //d3.csv("data/data.csv", function(error, data) {
-    d3.csv("data/data2.csv", function(error, data) {
+    //d3.csv("data/data2.csv", function(error, data) {
+    d3.csv("data/my_input1.csv", function(error, data) {
       //const columns = ["VALOR",'Eje','Objetivo Estratégico','Objetivo PND','Indicadores']
-      const columns = ['Eje','Objetivo Estratégico','Objetivo PND','Indicadores']
+      //const columns = ['Eje','Objetivo Estratégico','Objetivo PND','Indicadores']
+      //const columns = ["Objetivo Estratégico","Objetivo PND","ODS","Meta ODS"]
+      //const columns = ["ODS","Meta ODS","Objetivo Estratégico","Objetivo PND", "PND_grupo"]
+      const columns = ["ODS","Meta ODS","Objetivo PND", "PND_grupo"]
       tabulate(data,columns)
     });
 ////
@@ -156,7 +247,8 @@
         const y = d3.scaleSqrt()
             .range([maxRadius*.1, maxRadius]);
 
-        const color = d3.scaleOrdinal(d3.schemeCategory20);
+        const color2 = d3.scaleOrdinal(d3.schemeCategory20);
+
 
         const partition = d3.partition();
 
@@ -196,7 +288,7 @@
             .attr('viewBox', `${-width / 3} ${-height / 3} ${2/3*width} ${2/3*height}`)
             .on('click', () => focusOn()); // Reset zoom on canvas click
 
-        d3.json('data/flare.json', (error, root) => {
+        d3.json('data/my_input1.json', (error, root) => {
             if (error) throw error;
 
             root = d3.hierarchy(root);
@@ -235,10 +327,33 @@
             newSlice.append('title')
                 .text(d => d.data.name );
 
+                // Option 1: provide color names:
+                var myColor = d3.scaleOrdinal().domain(d3.range(17))
+                  .range([
+                  "123858","DC022F", "D4972D", "3F9336", "B80B24", "E72823", "26B2E0", "F9B912", "900B35", "EC5324", "D30055",
+                  "F48B21", "B07B22", "336E36", "1D83CA", "4BB037", "13558D",
+                  "FFFFFF"
+                ])
+
+                //svg.selectAll(".firstrow").data(data).enter().append("circle").attr("cx", function(d,i){return 30 + i*60}).attr("cy", 50).attr("r", 19).attr("fill", function(d){return myColor(d) })
+
+                newSlice.append('path')
+                    .attr('class', 'main-arc')
+                    .style('fill', function(d){
+                      //console.log(d.data.name.indexOf("."))
+                      val = d.data.ods_class
+                      //console.log(val)
+                      return myColor(val) })
+                    //color2((d.children ? d : d.parent).data.name))
+                    .attr('d', arc);
+
+/*
             newSlice.append('path')
                 .attr('class', 'main-arc')
-                .style('fill', d => color((d.children ? d : d.parent).data.name))
+                .style('fill', d =>
+                color2((d.children ? d : d.parent).data.name))
                 .attr('d', arc);
+                */
 
             newSlice.append('path')
                 .attr('class', 'hidden-arc')
@@ -265,8 +380,8 @@
         });
 
                 function paint(d){
-                  console.log("421")
-                    console.log(d)
+                  //console.log("421")
+                    //console.log(d)
 
                   const tds = d3.selectAll("td")
                     .each(function(x, y) {
@@ -285,13 +400,8 @@
                        var rows = tbody.selectAll('tr')
                        .each(function (r) {
                           d3.select(this).style("visibility", function() {
-                              //return (d.VALOR%2==0) ? "visible" : "hidden";
-                              //return (d.VALOR%2==0) ? "table-cell" : "none";
-                              //console.log(d.data.id)
-                              //(r.VALOR%2==d.data.id)
-                              //console.log("r [445]")
                               //console.log(r) // AQUI AQUI
-                              return (r.VALOR == d.data.id || r.Grupo == d.data.id) ? "table-cell" : "collapse";
+                              return (r.ODS_subgrupo == d.data.id || r.ODS_grupo == d.data.id) ? "table-cell" : "collapse";
                               //return (r.VALOR%2==0) ? "table-cell" : "collapse";
                           });
                       });

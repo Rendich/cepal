@@ -1,44 +1,4 @@
-<!DOCTYPE html PUBLIC “-//W3C//DTD XHTML 1.0 Transitional//EN” “http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd”>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-        <title>Versión 2 - Ricardo Rendich</title>
-        <link type="text/css" rel="stylesheet" href="https://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"/>
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link type="text/css" rel="stylesheet" href="css/style.css"/>
-    <link type="text/css" rel="stylesheet" href="css/style1.css"/>
-    <link type="text/css" rel="stylesheet" href="css/style2.css"/>
-    <link type="text/css" rel="stylesheet" href="css/style3.css"/>
-  </head>
-  <body>
-          <div class="container-fluid">
-              <h2>Relaciones entre ODS y PND</h2>
-              <br />
-              <br />
-              <p>El gráfico de la izquierda muestra las relaciones de los Objetivos de Desarrollo Sustentable (ODS) con el Plan Nacional de Desarrollo (PND).</p>
-              <p>Pasa el mouse sobre los distintos textos para destacar las relaciones, o haz click en ellos para mostrar la lista en la tabla de la derecha.</p>
-              <p>El color amarillo (<span class='block_relation_Parcial'>&#9634;</span>) indica una vinculación parcial, mientras que el color color rojo (<span class='block_relation_Total'>&#9634;</span>) indica una vinculación total.</p>
-
-              <div class="row">
-                <div class="col-md-6">
-                  <div id="bundle"></div>
-                </div>
-                <div class="col-md-6">
-                  <div id="myTable3">
-                  </div>
-                </div>
-              </div>
-            </div>
-      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-
-      <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-      <script type="text/javascript" src="libs/d3.v3.min.js"></script>
-      <script type="text/javascript" src="libs/packages.js"></script>
-    <script type="text/javascript">
+function f3(){
 
       ///////////////////
       var tabulate3 = function (data,columns) {
@@ -403,7 +363,7 @@ function mouseover(d) {
         .each(updateNodes("target", true));
 
         // SECCION TOOLTIP
-if(false){
+
       var msg = "<ul>";
       var node = (svg.selectAll("path.link.source-" + d.key)).filter(function(d2){
           msa = d3.select(this).attr('class');
@@ -429,7 +389,7 @@ if(false){
         }else{
           tooltip.html( d.key+' tiene <b>'+N+'</b> conexiones'+ msg+"</li>" );
         }
-        return tooltip.style("visibility", "visible");}
+        return tooltip.style("visibility", "visible");
 
 }
 
@@ -477,10 +437,5 @@ function findEndAngle(children) {
     return max;
 }
 ///////////////////
-
-
-    </script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-  </body>
-</html>
+}
+f3()

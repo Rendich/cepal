@@ -1,48 +1,8 @@
-<!DOCTYPE html PUBLIC “-//W3C//DTD XHTML 1.0 Transitional//EN” “http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd”>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-        <title>Versión 2 - Ricardo Rendich</title>
-        <link type="text/css" rel="stylesheet" href="https://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"/>
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link type="text/css" rel="stylesheet" href="css/style.css"/>
-    <link type="text/css" rel="stylesheet" href="css/style1.css"/>
-    <link type="text/css" rel="stylesheet" href="css/style2.css"/>
-    <link type="text/css" rel="stylesheet" href="css/style3.css"/>
-  </head>
-  <body>
-          <div class="container-fluid">
-              <h2>Relaciones entre ODS y PND</h2>
-              <br />
-              <br />
-              <p>El gráfico de la izquierda muestra las relaciones de los Objetivos de Desarrollo Sustentable (ODS) con el Plan Nacional de Desarrollo (PND).</p>
-              <p>Pasa el mouse sobre los distintos textos para destacar las relaciones, o haz click en ellos para mostrar la lista en la tabla de la derecha.</p>
-              <p>El color amarillo (<span class='block_relation_Parcial'>&#9634;</span>) indica una vinculación parcial, mientras que el color color rojo (<span class='block_relation_Total'>&#9634;</span>) indica una vinculación total.</p>
-
-              <div class="row">
-                <div class="col-md-6">
-                  <div id="bundle"></div>
-                </div>
-                <div class="col-md-6">
-                  <div id="myTable3">
-                  </div>
-                </div>
-              </div>
-            </div>
-      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-
-      <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-      <script type="text/javascript" src="libs/d3.v3.min.js"></script>
-      <script type="text/javascript" src="libs/packages.js"></script>
-    <script type="text/javascript">
+function f3(){
 
       ///////////////////
       var tabulate3 = function (data,columns) {
-          var table = d3.select('#myTable3')
+          var table = d3version3.select('#myTable3')
           var thead = table.append('thead')
           var tbody = table.append('tbody')
 
@@ -65,8 +25,8 @@
                 return d.PND_subgrupo +" "+d.ODS_subgrupo
                }) //AQUI
                  .each(function (d) {
-                    d3.select(this).style("visibility", "collapse");
-                    //d3.select(this).style("visibility", "visible");
+                    d3version3.select(this).style("visibility", "collapse");
+                    //d3version3.select(this).style("visibility", "visible");
                 });
 
 
@@ -83,9 +43,9 @@
 
           return table;
         }
-        //d3.csv("data/data.csv", function(error, data) {
-        //d3.csv("data/data3.csv", function(error, data) {
-        d3.csv("data/my_input3.csv", function(error, data) {
+        //d3version3.csv("data/data.csv", function(error, data) {
+        //d3version3.csv("data/data3.csv", function(error, data) {
+        d3version3.csv("data/my_input3.csv", function(error, data) {
           //const columns = ["VALOR",'Eje','Objetivo Estratégico','Objetivo PND','Indicadores']
           //const columns = ['Eje','Objetivo Estratégico','Objetivo PND','Indicadores']
           //const columns = ["Objetivo","Meta ODS", "Objetivo Estratégico","Vinculación","Problemática ODS","Acción ODS","Sujeto ODS"]
@@ -117,22 +77,22 @@ var w = 740,
 
 var splines = [];
 
-var cluster = d3.layout.cluster()
+var cluster = d3version3.layout.cluster()
     .size([360, ry - 180])
     // http://bl.ocks.org/mayblue9/dcc49ef6e3888f37f755177c4a248f2c ORDENAR
     .sort(function(a, b) { //console.log(a.key +" - "+ b.key);
-    return d3.ascending(a.key, b.key);
+    return d3version3.ascending(a.key, b.key);
   });
 
-var bundle = d3.layout.bundle();
+var bundle = d3version3.layout.bundle();
 
-var line = d3.svg.line.radial()
+var line = d3version3.svg.line.radial()
     .interpolate("bundle")
     .tension(.85)
     .radius(function(d) { return d.y; })
     .angle(function(d) { return d.x / 180 * Math.PI; });
 
-var div = d3.select("#bundle")
+var div = d3version3.select("#bundle")
     .style("width", w + "px")
     .style("height", w + "px")
     .style("position", "absolute");
@@ -145,12 +105,12 @@ var svg = div.append("svg:svg")
 
 svg.append("svg:path")
     .attr("class", "arc")
-    .attr("d", d3.svg.arc().outerRadius(ry - 180).innerRadius(0).startAngle(0).endAngle(2 * Math.PI))
+    .attr("d", d3version3.svg.arc().outerRadius(ry - 180).innerRadius(0).startAngle(0).endAngle(2 * Math.PI))
     .on("mousedown", mousedown);
 
-//d3.json("flare-imports.json", function(classes) {
-//d3.json("data/mini.json", function(classes) {
-d3.json("data/mini.json", function(classes) {
+//d3version3.json("flare-imports.json", function(classes) {
+//d3version3.json("data/mini.json", function(classes) {
+d3version3.json("data/mini.json", function(classes) {
 
     var nodes = cluster.nodes(packages.root(classes)),
         //links = packages.imports(nodes), // NOMBRE de las conexiones imports(nodes),
@@ -188,7 +148,7 @@ d3.json("data/mini.json", function(classes) {
     .enter().append("group")
       .attr("class", "group");
 
-    var groupArc = d3.svg.arc()
+    var groupArc = d3version3.svg.arc()
     .innerRadius(ry - 177)
     .outerRadius(ry - 157)
   	//.padAngle(.02)
@@ -198,7 +158,7 @@ d3.json("data/mini.json", function(classes) {
     var nODS = 17;
     var nPND = 4*4;
     /*
-    var colorScaleArc = d3.scale.quantize()
+    var colorScaleArc = d3version3.scale.quantize()
       //.domain([0,3])
       .domain([0,6])
       .range(["#FF0000", // Grupo 0 (fill: rgb(255, 0, 0); fill-opacity: 0.5;)
@@ -224,7 +184,7 @@ d3.json("data/mini.json", function(classes) {
                         "ODS_8":"F9B912",
                         "ODS_9":"900B35",
                         "ODS_10":"EC5324",
-                        "ODS_11":"D30055",
+                        "ODS_11":"d3version30055",
                         "ODS_12":"F48B21",
                         "ODS_13":"B07B22",
                         "ODS_14":"336E36",
@@ -254,7 +214,7 @@ d3.json("data/mini.json", function(classes) {
                       }
 
                       // ODS COLORS
-                      //"123858","DC022F", "D4972D", "3F9336", "B80B24", "E72823", "26B2E0", "F9B912", "900B35", "EC5324", "D30055",
+                      //"123858","DC022F", "D4972D", "3F9336", "B80B24", "E72823", "26B2E0", "F9B912", "900B35", "EC5324", "d3version30055",
                       //"F48B21", "B07B22", "336E36", "1D83CA", "4BB037", "13558D",
                       // PND COLORS
                       //"F2B729","F1B629", "F2B628", "F2B729",
@@ -311,7 +271,7 @@ d3.json("data/mini.json", function(classes) {
         .on("mousemove", function(){return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");});
 });
 
-d3.select(window)
+d3version3.select(window)
     .on("mousemove", mousemove)
     .on("mouseup", mouseup);
 
@@ -325,18 +285,18 @@ function clickfunction (e){
 
   // FILTRAR ROWS para == ekey
 
-                      var table = d3.select('#myTable3')
+                      var table = d3version3.select('#myTable3')
                       var tbody = table.select('tbody');
                         var rows = tbody.selectAll('tr')
                         .each(function (d) {
-                           d3.select(this).style("visibility", function() {
+                           d3version3.select(this).style("visibility", function() {
                                return (true) ? "visible" : "hidden";
                            });
                        });
                        //tbody.selectAll('tr').selectAll(".FILA_1").style("visibility", function() {return true });
                          var rows = tbody.selectAll('tr')
                          .each(function (r) {
-                            d3.select(this).style("visibility", function() {
+                            d3version3.select(this).style("visibility", function() {
                                 //console.log(r) // AQUI AQUI
                                 return (r.ODS_subgrupo == e.key || r.PND_subgrupo == e.key) ? "table-cell" : "collapse";
                                 //return (r.VALOR%2==0) ? "table-cell" : "collapse";
@@ -351,13 +311,13 @@ FILTRAR CLASS == ID
 
 }
 function mousedown() {
-  m0 = mouse(d3.event);
-  d3.event.preventDefault();
+  m0 = mouse(d3version3.event);
+  d3version3.event.preventDefault();
 }
 
 function mousemove() {
   if (m0) {
-    var m1 = mouse(d3.event),
+    var m1 = mouse(d3version3.event),
         dm = Math.atan2(cross(m0, m1), dot(m0, m1)) * 180 / Math.PI;
     div.style("-webkit-transform", "translate3d(0," + (ry - rx) + "px,0)rotate3d(0,0,0," + dm + "deg)translate3d(0," + (rx - ry) + "px,0)");
   }
@@ -365,7 +325,7 @@ function mousemove() {
 
 function mouseup() {
     if (m0) {
-        var m1 = mouse(d3.event),
+        var m1 = mouse(d3version3.event),
             dm = Math.atan2(cross(m0, m1), dot(m0, m1)) * 180 / Math.PI;
 
         rotate += dm;
@@ -383,7 +343,7 @@ function mouseup() {
     }
 }
 
-var tooltip = d3.select("body")
+var tooltip = d3version3.select("body")
 	.append("div")
   .attr("class", "tooltip")
 	.style("position", "absolute")
@@ -403,10 +363,10 @@ function mouseover(d) {
         .each(updateNodes("target", true));
 
         // SECCION TOOLTIP
-if(false){
+
       var msg = "<ul>";
       var node = (svg.selectAll("path.link.source-" + d.key)).filter(function(d2){
-          msa = d3.select(this).attr('class');
+          msa = d3version3.select(this).attr('class');
           msa.split(" ").forEach(function(a) {
             class_name = "target-";
             if(a != "link" && (a.includes(class_name)))
@@ -415,7 +375,7 @@ if(false){
         }); // filter
 
       var node = (svg.selectAll("path.link.target-" + d.key)).filter(function(d2){
-          msa = d3.select(this).attr('class');
+          msa = d3version3.select(this).attr('class');
           msa.split(" ").forEach(function(a) {
             class_name = "source-";
             if(a != "link" && (a.includes(class_name)))
@@ -429,7 +389,7 @@ if(false){
         }else{
           tooltip.html( d.key+' tiene <b>'+N+'</b> conexiones'+ msg+"</li>" );
         }
-        return tooltip.style("visibility", "visible");}
+        return tooltip.style("visibility", "visible");
 
 }
 
@@ -477,10 +437,5 @@ function findEndAngle(children) {
     return max;
 }
 ///////////////////
-
-
-    </script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-  </body>
-</html>
+}
+f3()

@@ -1,53 +1,9 @@
-<!doctype html>
-<html lang="es">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link type="text/css" rel="stylesheet" href="css/style1.css"/>
-    <title>Versión 2 - Ricardo Rendich</title>
+function f2(){
+    //d3version4.csv("data/data2.csv", function(error, data) {
+    d3version4.csv("data/my_input2.csv", function(error, data) {
 
-  </head>
-  <body>
-
-    <div class="container-fluid">
-        <h2>Objetivos de Desarrollo Sustentable (ODS)</h2>
-        <p>Haz click en las secciones de colores del gráfico de la izquierda para conocer cómo se componen los distintos Objetivos de Desarrollo Sustentable.
-        </p>
-        <p>Para volver al nivel anterior, haz click en el centro del mismo gráfico.
-        </p>
-        <p>También puedes navegar utilizando la lista de la derecha.
-        </p>
-
-        <div class="row">
-          <div class="col-md-6">
-            <div class="">
-              <svg id="partitionSVG1" width="100%" height="100%" viewBox="0 0 100 100"></svg>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <br>
-            <div id="id_select"  class="btn btn-danger "></div>
-            <br>
-            <br>
-            <div id="myTable"></div>
-          </div>
-        </div>
-    </div>
-        <footer class="text-center">
-          <p>Sitio desarrollado por Ricardo Rendich</p>
-        </footer>
-
-    <script src='https://d3js.org/d3.v4.min.js'></script>
-    <script type="text/javascript">
-
-    //d3.csv("data/data2.csv", function(error, data) {
-    d3.csv("data/my_input.csv", function(error, data) {
-
-        var select = d3.select("#id_select")
+        var select = d3version4.select("#id_select2")
           .append("div")
           .append("select").
           attr("class", "btn btn-danger").
@@ -55,7 +11,7 @@
 
         select
           .on("change", function(d) {
-            var v = d3.select(this).property("value");
+            var v = d3version4.select(this).property("value");
             console.log(v)
             moveStackToFront(v);
             function moveStackToFront(elD) {
@@ -63,31 +19,19 @@
                 svg.selectAll('.slice').filter(d => d.data.id == elD)
                 //svg.selectAll('.slice').filter(d => d.value == elD)
                     .each(function(d) {
-                        //console.log("SI")
+                        console.log("SI")
                         focusOn(d)
                         paint(d)
                     })}
           });
-          var expensesByName = d3.nest()
-            .key(function(d) { return d.ODS_grupo; })
-              .key(function(d) { return d.ODS_subgrupo; })
+          var expensesByName = d3version4.nest()
+            //.key(function(d) { return d.ODS_grupo; })
+            .key(function(d) { return d.PND_grupo; })
+            .key(function(d) { return d.PND_subgrupo; })
             .entries(data);
-            //console.log(expensesByName)
-            /*
-            expensesByName.forEach((item, i) => {
-              console.log(i+":")
-              console.log(item)
+            console.log(expensesByName)
 
-              item.values.forEach((item2, i2) => {
-                console.log(i2+":")
-                console.log(item2)
-
-              });
-            });*/
-
-
-
-
+/*
             select
   .selectAll('optgroup')
     .data(expensesByName)
@@ -97,37 +41,60 @@
     .attr('label',function (d) { return d.key})
   .selectAll('option')
     .data(function (d) { return d.values })
-    //.data(d3.map(expensesByName, function(d){return d.values;}).keys())
-
     .enter()
   .append('option')
-    .attr('value',function (d) { return d.key })
+    //.attr('value',function (d) { return d.ODS_subgrupo })
+    .attr('value',function (d) { return d.PND_subgrupo })
     //.text(function (d) { return d })
   .text(function (d) {
-
     max_string = 80 //18 // CARACTERES DE CADA OPTION DEL SELECT (LARGO)
-    val = d.values[0]["Meta ODS"]
-       if(val.length > max_string)
-           return val.substring(0,max_string)+'...';
+       if(d['Objetivo PND'].length > max_string)
+           return d['Objetivo PND'].substring(0,max_string)+'...';
        else
-           return val;
+           return d['Objetivo PND'];
+   });*/
 
-           //console.log(d)
-           return val;
-   });
+   select
+     .selectAll('optgroup')
+       .data(expensesByName)
+       .enter()
+     .append('optgroup')
+       .attr('value',function (d) { return d.key })
+       .attr('label',function (d) { return d.key})
+     .selectAll('option')
+       .data(function (d) { return d.values })
+       //.data(d3version4.map(expensesByName, function(d){return d.values;}).keys())
+
+       .enter()
+     .append('option')
+       .attr('value',function (d) { return d.key })
+       //.text(function (d) { return d })
+     .text(function (d) {
+       max_string = 80 //18 // CARACTERES DE CADA OPTION DEL SELECT (LARGO)
+       val = d.values[0]["Objetivo PND"]
+          if(val.length > max_string)
+              return val.substring(0,max_string)+'...';
+          else
+              return val;
+      });
+
 
    select.insert("option",":first-child").
    attr('selected', 'selected').
    attr('value', 0). // REVISAR valor default
    text('Filtrar')
 
-  }); // d3.csv("data.csv", function(error, data) {
+  }); // d3version4.csv("data.csv", function(error, data) {
 
   ///////////////////
   var tabulate = function (data,columns) {
-      var table = d3.select('#myTable')
+      var table = d3version4.select('#myTable2')
       var thead = table.append('thead')
       var tbody = table.append('tbody')
+
+
+        //data = data
+        //.sort((a,b) => d3version4.ascending(a.PND_grupo, b.PND_grupo))
 
         thead.append('tr')
           .selectAll('th')
@@ -136,7 +103,8 @@
           .append('th')
             .text(function (d,i) {
               //console.log(["113"]+i)
-              if(i==3)
+              //if(i==3)
+              if(i==0)
               {return "Objetivo Estratégico"}
 
               return d
@@ -146,13 +114,11 @@
             .data(data)
             .enter()
           .append('tr').attr('class', function (d) {
-            //console.log("267");
-              //console.log(d);
-             //return "FILA_"+d.VALOR +" "+d.Grupo
-            return d.ODS_grupo +" "+d.ODS_subgrupo
+            //return d.ODS_grupo +" "+d.ODS_subgrupo
+              return d.PND_grupo +" "+d.PND_subgrupo
            }) //AQUI
              .each(function (d) {
-                d3.select(this).style("visibility", "collapse");
+                d3version4.select(this).style("visibility", "collapse");
             });
 
 
@@ -173,7 +139,8 @@
             //.text(function (d, i) {if (i >0) return d.value })
             .text(function (d, i) {if (i != 0 && i != 3) return d.value })
   	.each(function(d, i) {
-  		if (i == 0) {
+  		//if (i == 0) {
+      if (i == 3) {
       	var imgData = [];
         //console.log(d.value)
         imgData.push(d.value);
@@ -181,7 +148,7 @@
         //if(d.value<10){the_image+="0"}
         the_image="img/ods"+d.value;
 
-        d3.select(this).selectAll("img")
+        d3version4.select(this).selectAll("img")
   				.data(imgData)
           .enter()
           .append("img") // doesn't append an <img> anywhere
@@ -191,7 +158,8 @@
           .attr("width", "110px");
       }
       else
-      if(i == 3){
+      //if(i == 3){
+      if(i == 0){
 
         // https://www.stp.gov.py/v1/pnd-en-construccion/
         	var imgData = [];
@@ -205,7 +173,7 @@
           the_image="img/"+d.value;
           //the_image="img/pnd1.1";
 
-          d3.select(this).selectAll("img")
+          d3version4.select(this).selectAll("img")
     				.data(imgData)
             .enter()
             .append("img") // doesn't append an <img> anywhere
@@ -221,38 +189,34 @@
 
       return table;
     }
-    //d3.csv("data/data2.csv", function(error, data) {
-    d3.csv("data/my_input1.csv", function(error, data) {
-      //const columns = ["VALOR",'Eje','Objetivo Estratégico','Objetivo PND','Indicadores']
-      //const columns = ['Eje','Objetivo Estratégico','Objetivo PND','Indicadores']
-      //const columns = ["Objetivo Estratégico","Objetivo PND","ODS","Meta ODS"]
-      //const columns = ["ODS","Meta ODS","Objetivo Estratégico","Objetivo PND", "PND_grupo"]
-      const columns = ["ODS","Meta ODS","Objetivo PND", "PND_grupo"]
+    d3version4.csv("data/my_input2.csv", function(error, data) {
+      //const columns = ["ODS","Meta ODS","Objetivo PND", "PND_grupo"]
+      const columns = ["PND_grupo","Objetivo PND","Meta ODS", "ODS"]
       tabulate(data,columns)
     });
 ////
+/************************************************************************************/
 
-	</script>
-    <script>
+
         const width = window.innerWidth,
             height = window.innerHeight,
             maxRadius = (Math.min(width, height) / 2) - 5;
 
-        const formatNumber = d3.format(',d');
+        const formatNumber = d3version4.format(',d');
 
-        const x = d3.scaleLinear()
+        const x = d3version4.scaleLinear()
             .range([0, 2 * Math.PI])
             .clamp(true);
 
-        const y = d3.scaleSqrt()
+        const y = d3version4.scaleSqrt()
             .range([maxRadius*.1, maxRadius]);
 
-        const color2 = d3.scaleOrdinal(d3.schemeCategory20);
+        const color2 = d3version4.scaleOrdinal(d3version4.schemeCategory20);
 
 
-        const partition = d3.partition();
+        const partition = d3version4.partition();
 
-        const arc = d3.arc()
+        const arc = d3version4.arc()
             .startAngle(d => x(d.x0))
             .endAngle(d => x(d.x1))
             .innerRadius(d => Math.max(0, y(d.y0)))
@@ -267,7 +231,7 @@
             const invertDirection = middleAngle > 0 && middleAngle < Math.PI; // On lower quadrants write text ccw
             if (invertDirection) { angles.reverse(); }
 
-            const path = d3.path();
+            const path = d3version4.path();
             path.arc(0, 0, r, angles[0], angles[1], invertDirection);
             return path.toString();
         };
@@ -282,16 +246,16 @@
             return d.data.name.length * CHAR_SPACE < perimeter;
         };
 
-        const svg = d3.select('#partitionSVG1').append('svg')
+        const svg = d3version4.select('#partitionSVG2').append('svg')
                 .style('width', '100vw')
                 .style('height', '100vh')
             .attr('viewBox', `${-width / 3} ${-height / 3} ${2/3*width} ${2/3*height}`)
             .on('click', () => focusOn()); // Reset zoom on canvas click
 
-        d3.json('data/my_input1.json', (error, root) => {
+        d3version4.json('data/my_input2.json', (error, root) => {
             if (error) throw error;
 
-            root = d3.hierarchy(root);
+            root = d3version4.hierarchy(root);
           	console.log(root)
             //root.sum(d => d.value);
             root.sum(d => d.value);
@@ -305,19 +269,19 @@
             const newSlice = slice.enter()
                 .append('g').attr('class', 'slice')
                 .on('click', d => {
-                    d3.event.stopPropagation();
-                    //if(d.value != d3.select("#queryDays").value){
-                    if(d.data.id != d3.select("#queryDays").value){
+                    d3version4.event.stopPropagation();
+                    //if(d.value != d3version4.select("#queryDays").value){
+                    if(d.data.id != d3version4.select("#queryDays").value){
                       console.log(d)
-                      console.log("[376] "+d.data.id +" - "+d.value +" - "+ d3.select("#queryDays").node().value)
-                      d3.select("#queryDays").node().value = d.data.id
-                      console.log(d3.select("#queryDays").node().value)
+                      console.log("[376] "+d.data.id +" - "+d.value +" - "+ d3version4.select("#queryDays").node().value)
+                      d3version4.select("#queryDays").node().value = d.data.id
+                      console.log(d3version4.select("#queryDays").node().value)
                       // PENDIENTE: AGREGAR GROUP
-                      //if(!d3.select("#queryDays").node().value)
-                      //{d3.select("#queryDays").node().value = d.data.id}
+                      //if(!d3version4.select("#queryDays").node().value)
+                      //{d3version4.select("#queryDays").node().value = d.data.id}
 
-                      if(!d3.select("#queryDays").node().value)
-                      {d3.select("#queryDays").node().value = 0}
+                      if(!d3version4.select("#queryDays").node().value)
+                      {d3version4.select("#queryDays").node().value = 0}
                       paint(d)
                     }
                     focusOn(d);
@@ -328,11 +292,13 @@
                 .text(d => d.data.name );
 
                 // Option 1: provide color names:
-                var myColor = d3.scaleOrdinal().domain(d3.range(17))
-                  .range([
-                  "123858","DC022F", "D4972D", "3F9336", "B80B24", "E72823", "26B2E0", "F9B912", "900B35", "EC5324", "D30055",
-                  "F48B21", "B07B22", "336E36", "1D83CA", "4BB037", "13558D",
-                  "FFFFFF"
+                var myColor = d3version4.scaleOrdinal().domain(d3version4.range(17))
+                  .range(["FFFFFF",
+                  "F2B729","F1B629", "F2B628", "F2B729",
+                  "F1B728", "1A3F7A", "1A3F79", "50872F",
+                  "F2B729", "1A3F79", "1A3F79", "508730",
+                  "F1B628", "E65631", "E55530", "508730"
+
                 ])
 
                 //svg.selectAll(".firstrow").data(data).enter().append("circle").attr("cx", function(d,i){return 30 + i*60}).attr("cy", 50).attr("r", 19).attr("fill", function(d){return myColor(d) })
@@ -341,7 +307,8 @@
                     .attr('class', 'main-arc')
                     .style('fill', function(d){
                       //console.log(d.data.name.indexOf("."))
-                      val = d.data.ods_class
+                      //val = d.data.ods_class
+                      val = d.data.pnd_class
                       //console.log(val)
                       return myColor(val) })
                     //color2((d.children ? d : d.parent).data.name))
@@ -383,25 +350,26 @@
                   //console.log("421")
                     //console.log(d)
 
-                  const tds = d3.selectAll("td")
+                  const tds = d3version4.selectAll("td")
                     .each(function(x, y) {
-                      d3.select(this).style("background-color", this.innerHTML == d.data.id ? "yellow" : null)
+                      d3version4.select(this).style("background-color", this.innerHTML == d.data.id ? "yellow" : null)
                     })
 
-                    var table = d3.select('#myTable')
+                    var table = d3version4.select('#myTable2')
                     var tbody = table.select('tbody');
                       var rows = tbody.selectAll('tr')
                       .each(function (d) {
-                         d3.select(this).style("visibility", function() {
+                         d3version4.select(this).style("visibility", function() {
                              return (true) ? "visible" : "hidden";
                          });
                      });
                      //tbody.selectAll('tr').selectAll(".FILA_1").style("visibility", function() {return true });
                        var rows = tbody.selectAll('tr')
                        .each(function (r) {
-                          d3.select(this).style("visibility", function() {
+                          d3version4.select(this).style("visibility", function() {
                               //console.log(r) // AQUI AQUI
-                              return (r.ODS_subgrupo == d.data.id || r.ODS_grupo == d.data.id) ? "table-cell" : "collapse";
+                              //return (r.ODS_subgrupo == d.data.id || r.ODS_grupo == d.data.id) ? "table-cell" : "collapse";
+                              return (r.PND_subgrupo == d.data.id || r.PND_grupo == d.data.id) ? "table-cell" : "collapse";
                               //return (r.VALOR%2==0) ? "table-cell" : "collapse";
                           });
                       });
@@ -413,8 +381,8 @@
             const transition = svg.transition()
                 .duration(750)
                 .tween('scale', () => {
-                    const xd = d3.interpolate(x.domain(), [d.x0, d.x1]),
-                        yd = d3.interpolate(y.domain(), [d.y0, 1]);
+                    const xd = d3version4.interpolate(x.domain(), [d.x0, d.x1]),
+                        yd = d3version4.interpolate(y.domain(), [d.y0, 1]);
                     return t => { x.domain(xd(t)); y.domain(yd(t)); };
                 });
 
@@ -428,7 +396,7 @@
                 .attrTween('display', d => () => textFits(d) ? null : 'none');
         }
 
-            d3.select("#queryDays").on("change", function() {
+            d3version4.select("#queryDays").on("change", function() {
               var v = this.value;
               console.log(v)
               moveStackToFront(v);
@@ -443,10 +411,5 @@
                                   })
                           }
             })
-    </script>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-  </body>
-</html>
+}
+ f2();

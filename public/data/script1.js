@@ -1,49 +1,4 @@
-<!doctype html>
-<html lang="es">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link type="text/css" rel="stylesheet" href="css/style1.css"/>
-    <title>Versión 2 - Ricardo Rendich</title>
-
-  </head>
-  <body>
-
-    <div class="container-fluid">
-        <h2>Objetivos de Desarrollo Sustentable (ODS)</h2>
-        <p>Haz click en las secciones de colores del gráfico de la izquierda para conocer cómo se componen los distintos Objetivos de Desarrollo Sustentable.
-        </p>
-        <p>Para volver al nivel anterior, haz click en el centro del mismo gráfico.
-        </p>
-        <p>También puedes navegar utilizando la lista de la derecha.
-        </p>
-
-        <div class="row">
-          <div class="col-md-6">
-            <div class="">
-              <svg id="partitionSVG1" width="100%" height="100%" viewBox="0 0 100 100"></svg>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <br>
-            <div id="id_select"  class="btn btn-danger "></div>
-            <br>
-            <br>
-            <div id="myTable"></div>
-          </div>
-        </div>
-    </div>
-        <footer class="text-center">
-          <p>Sitio desarrollado por Ricardo Rendich</p>
-        </footer>
-
-    <script src='https://d3js.org/d3.v4.min.js'></script>
-    <script type="text/javascript">
-
+function f1(){
     //d3.csv("data/data2.csv", function(error, data) {
     d3.csv("data/my_input.csv", function(error, data) {
 
@@ -231,9 +186,8 @@
       tabulate(data,columns)
     });
 ////
+/************************************************************************************/
 
-	</script>
-    <script>
         const width = window.innerWidth,
             height = window.innerHeight,
             maxRadius = (Math.min(width, height) / 2) - 5;
@@ -247,7 +201,7 @@
         const y = d3.scaleSqrt()
             .range([maxRadius*.1, maxRadius]);
 
-        const color2 = d3.scaleOrdinal(d3.schemeCategory20);
+        const color1 = d3.scaleOrdinal(d3.schemeCategory20);
 
 
         const partition = d3.partition();
@@ -344,14 +298,14 @@
                       val = d.data.ods_class
                       //console.log(val)
                       return myColor(val) })
-                    //color2((d.children ? d : d.parent).data.name))
+                    //color1((d.children ? d : d.parent).data.name))
                     .attr('d', arc);
 
 /*
             newSlice.append('path')
                 .attr('class', 'main-arc')
                 .style('fill', d =>
-                color2((d.children ? d : d.parent).data.name))
+                color1((d.children ? d : d.parent).data.name))
                 .attr('d', arc);
                 */
 
@@ -443,10 +397,5 @@
                                   })
                           }
             })
-    </script>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-  </body>
-</html>
+}
+f1();
