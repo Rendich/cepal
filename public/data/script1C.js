@@ -284,7 +284,7 @@ function f1(){
                 // Option 1: provide color names:
                 var myColor = d3version4.scaleOrdinal().domain(d3version4.range(17))
                   .range([
-                  "123858","DC022F", "D4972D", "3F9336", "B80B24", "E72823", "26B2E0", "F9B912", "900B35", "EC5324", "d3version40055",
+                  "123858","DC022F", "D4972D", "3F9336", "B80B24", "E72823", "26B2E0", "F9B912", "900B35", "EC5324", "D30055",
                   "F48B21", "B07B22", "336E36", "1D83CA", "4BB037", "13558D",
                   "FFFFFF"
                 ])

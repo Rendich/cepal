@@ -402,9 +402,9 @@
                         .text(d => d.data.name );
 
                         // Option 1: provide color names:
-                        var myColor = d3version4.scaleOrdinal().domain(d3version4.range(17))
+                        var myColor1 = d3version4.scaleOrdinal().domain(d3version4.range(17))
                           .range([
-                          "123858","DC022F", "D4972D", "3F9336", "B80B24", "E72823", "26B2E0", "F9B912", "900B35", "EC5324", "d3version40055",
+                          "123858","DC022F", "D4972D", "3F9336", "B80B24", "E72823", "26B2E0", "F9B912", "900B35", "EC5324", "D30055",
                           "F48B21", "B07B22", "336E36", "1D83CA", "4BB037", "13558D",
                           "FFFFFF"
                         ])
@@ -417,7 +417,7 @@
                               //console.log(d.data.name.indexOf("."))
                               val = d.data.ods_class
                               //console.log(val)
-                              return myColor(val) })
+                              return myColor1(val) })
                             //color1((d.children ? d : d.parent).data.name))
                             .attr('d', arc);
 
@@ -815,7 +815,7 @@
                         .text(d => d.data.name );
 
                         // Option 1: provide color names:
-                        var myColor = d3version4.scaleOrdinal().domain(d3version4.range(17))
+                        var myColor2 = d3version4.scaleOrdinal().domain(d3version4.range(17))
                           .range(["FFFFFF",
                           "F2B729","F1B629", "F2B628", "F2B729",
                           "F1B728", "1A3F7A", "1A3F79", "50872F",
@@ -833,7 +833,7 @@
                               //val = d.data.ods_class
                               val = d.data.pnd_class
                               //console.log(val)
-                              return myColor(val) })
+                              return myColor2(val) })
                             //color2((d.children ? d : d.parent).data.name))
                             .attr('d', arc);
 
