@@ -12,6 +12,7 @@ font-size: 10px;
 .node:hover {
 /*fill: #BBBBBB;*/
 fill: #FF0000;
+fill: #000000;
 font-size: 15px; /*Fuente del nodo que pasa el mouse*/
 }
 
@@ -31,11 +32,11 @@ stroke-width: 2px;
 
 
 .node.source {
-fill: #FF0000;
+fill: #000000;
 font-size: 15px; /*Fuente del nodo que CONECTA el que pasa el mouse*/
 }
 .node.target {
-fill: #FF0000 !important;
+fill: #000000 !important;
 font-size: 15px; /*Fuente del nodo que CONECTA el que pasa el mouse*/
 }
 
@@ -121,6 +122,13 @@ div.tooltip {
     .relation_Parcial.link {
     stroke: #0000FF; /*CONEXION azul oscuro*/
     }
+
+        .relation_Total.node {
+        stroke: #FF0000; /*CONEXION rojo oscuro*/
+        }
+        .relation_Parcial.node {
+        stroke: #0000FF  !important; /*CONEXION azul oscuro*/
+        }
 
 
     .block_relation_Total {

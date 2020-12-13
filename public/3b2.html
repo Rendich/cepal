@@ -27,6 +27,9 @@
                   <div id="bundle"></div>
                 </div>
                 <div class="col-md-6">
+                  <div id="id_select"  class="btn btn-danger "></div>
+                  <br>
+                  <br>
                   <div id="myTable3">
                   </div>
                 </div>
@@ -95,6 +98,278 @@
         //"Problemática ODS",	"Acción ODS",	"Sujeto ODS"
         //Objetivo Estratégico	Objetivo PND	ODS	Meta ODS	PND_subgrupo	PND_grupo	ODS_grupo	ODS_subgrupo
       ]
+
+
+//(r.ODS_subgrupo == e.key || r.PND_subgrupo == e.key)
+
+          var select = d3.select("#id_select")
+            .append("div")
+            .append("select").
+            attr("class", "btn btn-danger").
+            attr("id", "queryDays3")
+
+          select
+            .on("change", function(d) {
+              var v = d3.select(this).property("value");
+              console.log(v)
+              moveStackToFront(v);
+              function moveStackToFront(elD) {
+                  console.log("SI2: " + elD);
+
+                  clickfunctionValue(elD)
+/*
+                  svg.selectAll('.slice').filter(d => d.data.id == elD)
+                  //svg.selectAll('.slice').filter(d => d.value == elD)
+                      .each(function(d) {
+                          //console.log("SI")
+                          console.log("SI")
+                          console.log(d)
+                          //focusOn(d)
+                          //paint(d)
+                          clickfunctionValue(d)
+                      })
+                      */
+
+// NUEVO -->
+/*
+                        var table = d3.select('#myTable3')
+                        var tbody = table.select('tbody');
+                          var rows = tbody.selectAll('tr')
+                          .each(function (d) {
+                             d3.select(this).style("visibility", function() {
+                                 return (true) ? "visible" : "hidden";
+                             });
+                         });
+                         //tbody.selectAll('tr').selectAll(".FILA_1").style("visibility", function() {return true });
+                           var rows = tbody.selectAll('tr')
+                           .each(function (r) {
+                              d3.select(this).style("visibility", function() {
+                                  //console.log(r) // AQUI AQUI
+                                  return (r.ODS_subgrupo == elD || r.PND_subgrupo == elD) ? "table-cell" : "collapse";
+                                  //return (r.VALOR%2==0) ? "table-cell" : "collapse";
+                              });
+                          });*/
+// NUEVO <--
+                } // END function moveStackToFront(elD) {
+
+            });
+            var expensesByName = d3.nest()
+              //.key(function(d) { return d.ODS_grupo; })
+                //.key(function(d) { return d.ODS_subgrupo; })
+                /*
+                  .key(function(d) { return d.ODS_grupo; }).sort(function(a, b){
+
+                    //return d3.ascending(a.key, b.key);
+                    console.log(a)
+                    console.log(b)
+
+                                          A=a.key.split("_")
+                                          B=b.key.split("_")
+
+                                            A2=a.values//.split("_")
+                                            B2=b.values//.split("_")
+                                            console.log(A2)
+                                            console.log(A2.key)
+                                          return d3.ascending(A[0], B[0]) ||
+                                         d3.ascending(parseFloat(A[1]), parseFloat(B[1])) ||
+                                           d3.ascending(parseFloat(A[2]), parseFloat(B[2])) ||
+                                             d3.ascending(A2.key,B2.key);
+
+                  })*/
+.key(function(d) { return d.ODS_grupo; }).sortKeys(function(a,b) {
+  //console.log(a)
+    //console.log(b)
+
+                                              A=a.split("_")
+                                              B=b.split("_")
+                                            return d3.ascending(A[0], B[0]) ||
+                                           d3.ascending(parseFloat(A[1]), parseFloat(B[1])) ||
+                                             d3.ascending(parseFloat(A[2]), parseFloat(B[2])) ||
+                                               d3.ascending(A2.key,B2.key);
+  //return ODS_grupo.indexOf(a) - ODS_grupo.indexOf(b);
+})
+                    .key(function(d) { return d.ODS_subgrupo; }).sortKeys(function(a,b) {
+                      //console.log(a)
+                        //console.log(b)
+
+                                                                  A=a.split("_")
+                                                                  B=b.split("_")
+                                                                return d3.ascending(A[0], B[0]) ||
+                                                               d3.ascending(parseFloat(A[1]), parseFloat(B[1])) ||
+                                                                 d3.ascending(parseFloat(A[2]), parseFloat(B[2]))
+                                                                 })
+              .entries(data);
+              /*
+              expensesByName = expensesByName.sort(function(a, b){
+
+                //return d3.ascending(a.key, b.key);
+                console.log(a)
+                console.log(b)
+
+                                      A=a.key.split("_")
+                                      B=b.key.split("_")
+
+                                        A2=a.values//.split("_")
+                                        B2=b.values//.split("_")
+                                        console.log(A2)
+                                        console.log(A2.key)
+                                      return d3.ascending(A[0], B[0]) ||
+                                     d3.ascending(parseFloat(A[1]), parseFloat(B[1])) ||
+                                       d3.ascending(parseFloat(A[2]), parseFloat(B[2])) ||
+                                         d3.ascending(A2.key,B2.key);
+
+              })*/
+
+              //console.log(expensesByName)
+
+              var expensesByName2 = d3.nest()
+                //.key(function(d) { return d.ODS_grupo; })
+                  //.key(function(d) { return d.ODS_subgrupo; })
+                    //.key(function(d) { return d.PND_grupo; })
+                      //.key(function(d) { return d.PND_subgrupo; })
+                        .key(function(d) { return d.PND_grupo; }).sortKeys(function(a,b) {
+                          //console.log(a)
+                            //console.log(b)
+
+                                                                      A=a.split("_")
+                                                                      B=b.split("_")
+                                                                    return d3.ascending(A[0], B[0]) ||
+                                                                   d3.ascending(parseFloat(A[1]), parseFloat(B[1])) ||
+                                                                     d3.ascending(parseFloat(A[2]), parseFloat(B[2])) ||
+                                                                       d3.ascending(parseFloat(A[3]), parseFloat(B[3])) ||
+                                                                       d3.ascending(A2.key,B2.key);
+                          //return ODS_grupo.indexOf(a) - ODS_grupo.indexOf(b);
+                        })
+                                            .key(function(d) { return d.PND_subgrupo; }).sortKeys(function(a,b) {
+                                              //console.log(a)
+                                                //console.log(b)
+
+                                                                                          A=a.split("_")
+                                                                                          B=b.split("_")
+                                                                                        return d3.ascending(A[0], B[0]) ||
+                                                                                       d3.ascending(parseFloat(A[1]), parseFloat(B[1])) ||
+                                                                                         d3.ascending(parseFloat(A[2]), parseFloat(B[2]))||
+                                                                                           d3.ascending(parseFloat(A[3]), parseFloat(B[3]))
+                                                                                         })
+                .entries(data);
+                //console.log(expensesByName2)
+                //console.log(typeof(expensesByName2))
+                expensesByName2.forEach(function(e) { expensesByName.push(e); });
+
+                              //console.log("========")
+                              expensesByName = expensesByName.sort(function(a,b) {
+                                  //console.log(a.values[0])
+                                  //console.log(b.values[0])
+
+                                    A=a.key.split("_")
+                                    B=b.key.split("_")
+/*
+                                                                        console.log(
+                                                                          parseFloat(b.values.key.split("_")[2])
+                                                                        )
+                                                                                                            console.log(
+                                                                                                              parseFloat(b.values.split("_")[2])
+                                                                                                            )*/
+
+                                                                        //A2=a.values.split("_")
+                                                                        //B2=b.values.split("_")
+                                  return d3.ascending(A[0], B[0]) ||
+                                 d3.ascending(parseFloat(A[1]), parseFloat(B[1])) ||
+                                   d3.ascending(parseFloat(A[2]), parseFloat(B[2])) ||
+                                     d3.ascending(parseFloat(A[3]), parseFloat(B[3])) ||
+                                          d3.ascending(
+                                            parseFloat(a.values[0].values[0].split("_")[3]),
+                                            parseFloat(b.values[0].values[0].split("_")[3])
+                                          );
+                                  //return ODS_grupo.indexOf(a) - ODS_grupo.indexOf(b);
+                                })
+                                /*
+                                                    .key(function(d) { return d.PND_subgrupo; }).sortKeys(function(a,b) {
+                                                      //console.log(a)
+                                                        //console.log(b)
+
+                                                                                                  A=a.split("_")
+                                                                                                  B=b.split("_")
+                                                                                                return d3.ascending(A[0], B[0]) ||
+                                                                                               d3.ascending(parseFloat(A[1]), parseFloat(B[1])) ||
+                                                                                                 d3.ascending(parseFloat(A[2]), parseFloat(B[2]))||
+                                                                                                   d3.ascending(parseFloat(A[3]), parseFloat(B[3]))
+                                                                                                 }
+
+                              )*/
+                                            console.log(expensesByName)
+                                            /*
+                                            expensesByName.forEach(function(e){
+                                                //console.log(e.key)
+                                                e.values.forEach(function(e2){
+                                                    console.log("-- "+e2.key)
+                                                        //console.log(e2)
+                                                    e2.values.forEach(function(e3){
+                                                        console.log("---- "+e3["ODS_subgrupo"] + " " + e3["PND_subgrupo"] + " ")
+                                                      })
+                                                  })
+                                              }
+                                            )
+                                            */
+                                            /*
+
+                              //str =  d.key
+                              if(str.startsWith("ODS")){
+                                val = d.values[0]["Meta ODS"]
+                              }else
+                              if(str.startsWith("PND")){
+                              val = d.values[0]["Objetivo PND"]
+                              }
+                              else{
+                                console.log("ERROR")
+                              }*/
+
+                //console.log(expensesByName)
+
+
+
+              select
+    .selectAll('optgroup')
+      .data(expensesByName)
+      .enter()
+    .append('optgroup')
+      .attr('value',function (d) { return d.key })
+      .attr('label',function (d) {
+        //console.log(d)
+         return d.key})
+    .selectAll('option')
+      .data(function (d) { return d.values })
+      //.data(d3.map(expensesByName, function(d){return d.values;}).keys())
+
+      .enter()
+    .append('option')
+      .attr('value',function (d) { return d.key })
+      //.text(function (d) { return d })
+    .text(function (d, i) {
+      //console.log(i)
+      str =  d.key
+      if(str.startsWith("ODS")){
+        val = d.values[0]["Meta ODS"]
+      }else
+      if(str.startsWith("PND")){
+      val = d.values[0]["Objetivo PND"]
+      }
+      else{
+        console.log("ERROR")
+      }
+
+      max_string = 80
+      if(val.length > max_string)
+          return val.substring(0,max_string)+'...';
+      else
+          return val;
+
+     });
+
+     select.insert("option",":first-child").
+     attr('selected', 'selected').
+     attr('value', 0). // REVISAR valor default
+     text('Filtrar')
           //Eje_n	Eje	Objetivo Estratégico	Objetivo PND	Sujeto PND 	Problemática PND	Acción PND	ODS	Meta	Meta ODS	Sujeto ODS	Problemática ODS	Acción ODS	Vinculación
 
           tabulate3(data,columns)
@@ -156,6 +431,7 @@ svg.append("svg:path")
 
 //d3.json("flare-imports.json", function(classes) {
 //d3.json("data/mini.json", function(classes) {
+//d3.json("data/my_input3.json", function(classes) {
 d3.json("data/mini.json", function(classes) {
 
     var nodes = cluster.nodes(packages.root(classes)),
@@ -270,7 +546,7 @@ d3.json("data/mini.json", function(classes) {
                       //"F1B628", "E65631", "E55530", "508730"
                       //console.log("---"+i)
                       c = color_hash[d]
-                      console.log(d+" -> "+c)
+                      //console.log(d+" -> "+c)
 
                       if(c)
                       {return c}
@@ -327,9 +603,31 @@ function mouse(e) {
   return [e.pageX - rx, e.pageY - ry];
 }
 function clickfunction (e){
+  console.log(e);
+  str =  e.key
+  clickfunctionValue(str)
+  d3.select("#queryDays3").node().value = str
+}
+
+
+//function clickfunction (e){
+function clickfunctionValue (str){
   //console.log(e.key);
   //console.log(e);
-
+  console.log(str);
+  //str =  e.key
+  /*
+  sortAscending = true
+  if(str.startsWith("ODS")){
+    val = e.key
+  }else
+  if(str.startsWith("PND")){
+  val = e.key
+  }
+  else{
+    console.log("ERROR")
+  }
+  */
 
   // FILTRAR ROWS para == ekey
 
@@ -346,10 +644,34 @@ function clickfunction (e){
                          .each(function (r) {
                             d3.select(this).style("visibility", function() {
                                 //console.log(r) // AQUI AQUI
-                                return (r.ODS_subgrupo == e.key || r.PND_subgrupo == e.key) ? "table-cell" : "collapse";
+                                //return (r.ODS_subgrupo == e.key || r.PND_subgrupo == e.key) ? "table-cell" : "collapse";
+                                return (r.ODS_subgrupo == str || r.PND_subgrupo == str) ? "table-cell" : "collapse";
                                 //return (r.VALOR%2==0) ? "table-cell" : "collapse";
                             });
                         });
+
+/*
+                        if (sortAscending) {
+                            rows.sort(function(a, b) {
+                              return d3.ascending(b[val], a[val]);
+                            });
+                            sortAscending = false;
+                            this.className = 'aes';
+
+                                rows.sort(function(a, b) { return (b[k] / b.Total) - (a[k] / a.Total); });
+
+                        }
+                        else {
+                            rows.sort(function(a, b) { return d3.descending(b[val], a[val]); });
+                            sortAscending = true;
+                            this.className = 'des';
+
+                                rows.sort(function(a, b) { return (b[k] / b.Total) - (a[k] / a.Total); });
+                            }*/
+                            rows.sort(function(a, b) {
+                              return d3.ascending(a[val], b[val]);
+                            })
+
 /************************************************************************************************************
 
 AGREGAR ID AL EVENTO
@@ -454,8 +776,12 @@ function mouseout(d) {
 
 function updateNodes(name, value) {
   return function(d) {
+    //console.log(name)
+      //console.log(d)
+        //console.log(value)
     if (value) this.parentNode.appendChild(this);
     svg.select("#node-" + d[name].key).classed(name, value);
+    svg.select("#node-" + d[name].key).classed("relation_"+d["relation"], value); // AQUI
   };
 }
 

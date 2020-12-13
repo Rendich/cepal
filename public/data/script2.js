@@ -7,7 +7,7 @@ function f2(){
           .append("div")
           .append("select").
           attr("class", "btn btn-danger").
-          attr("id", "queryDays")
+          attr("id", "queryDays2")
 
         select
           .on("change", function(d) {
@@ -270,18 +270,18 @@ function f2(){
                 .append('g').attr('class', 'slice')
                 .on('click', d => {
                     d3.event.stopPropagation();
-                    //if(d.value != d3.select("#queryDays").value){
-                    if(d.data.id != d3.select("#queryDays").value){
+                    //if(d.value != d3.select("#queryDays2").value){
+                    if(d.data.id != d3.select("#queryDays2").value){
                       console.log(d)
-                      console.log("[376] "+d.data.id +" - "+d.value +" - "+ d3.select("#queryDays").node().value)
-                      d3.select("#queryDays").node().value = d.data.id
-                      console.log(d3.select("#queryDays").node().value)
+                      console.log("[376] "+d.data.id +" - "+d.value +" - "+ d3.select("#queryDays2").node().value)
+                      d3.select("#queryDays2").node().value = d.data.id
+                      console.log(d3.select("#queryDays2").node().value)
                       // PENDIENTE: AGREGAR GROUP
-                      //if(!d3.select("#queryDays").node().value)
-                      //{d3.select("#queryDays").node().value = d.data.id}
+                      //if(!d3.select("#queryDays2").node().value)
+                      //{d3.select("#queryDays2").node().value = d.data.id}
 
-                      if(!d3.select("#queryDays").node().value)
-                      {d3.select("#queryDays").node().value = 0}
+                      if(!d3.select("#queryDays2").node().value)
+                      {d3.select("#queryDays2").node().value = 0}
                       paint(d)
                     }
                     focusOn(d);
@@ -396,7 +396,7 @@ function f2(){
                 .attrTween('display', d => () => textFits(d) ? null : 'none');
         }
 
-            d3.select("#queryDays").on("change", function() {
+            d3.select("#queryDays2").on("change", function() {
               var v = this.value;
               console.log(v)
               moveStackToFront(v);

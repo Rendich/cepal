@@ -1,0 +1,1858 @@
+[
+    {
+        "name": "ODS_16*ODS_16_09",
+        "imports": [
+            [
+                "Parcial",
+                "PND_1_1*PND_1_1_1"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_03*ODS_03_02 ",
+        "imports": [
+            [
+                "Total",
+                "PND_1_1*PND_1_1_10"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_04*ODS_04_02",
+        "imports": [
+            [
+                "Total",
+                "PND_1_1*PND_1_1_11"
+            ],
+            [
+                "Parcial",
+                "PND_1_1*PND_1_1_4"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_01*ODS_01_04",
+        "imports": [
+            [
+                "Parcial",
+                "PND_1_1*PND_1_1_12"
+            ],
+            [
+                "Parcial",
+                "PND_1_4*PND_1_4_3"
+            ],
+            [
+                "Parcial",
+                "PND_1_4*PND_1_4_5"
+            ],
+            [
+                "Parcial",
+                "PND_1_4*PND_1_4_6"
+            ],
+            [
+                "Parcial",
+                "PND_2_1*PND_2_1_4"
+            ],
+            [
+                "Parcial",
+                "PND_2_2*PND_2_2_1"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_16*ODS_16_02",
+        "imports": [
+            [
+                "Parcial",
+                "PND_1_1*PND_1_1_12"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_16*ODS_16_03",
+        "imports": [
+            [
+                "Parcial",
+                "PND_1_1*PND_1_1_12"
+            ],
+            [
+                "Total",
+                "PND_4_1*PND_4_1_1"
+            ],
+            [
+                "Parcial",
+                "PND_4_1*PND_4_1_2"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_08*ODS_08_07",
+        "imports": [
+            [
+                "Parcial",
+                "PND_1_1*PND_1_1_12"
+            ],
+            [
+                "Parcial",
+                "PND_4_1*PND_4_1_4"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_10*ODS_10_02",
+        "imports": [
+            [
+                "Parcial",
+                "PND_1_1*PND_1_1_13"
+            ],
+            [
+                "Parcial",
+                "PND_1_1*PND_1_1_5"
+            ],
+            [
+                "Parcial",
+                "PND_2_1*PND_2_1_4"
+            ],
+            [
+                "Parcial",
+                "PND_2_3*PND_2_3_1"
+            ],
+            [
+                "Parcial",
+                "PND_4_1*PND_4_1_2"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_10*ODS_10_03",
+        "imports": [
+            [
+                "Parcial",
+                "PND_1_1*PND_1_1_13"
+            ],
+            [
+                "Parcial",
+                "PND_1_1*PND_1_1_3"
+            ],
+            [
+                "Parcial",
+                "PND_4_1*PND_4_1_1"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_04*ODS_04_03",
+        "imports": [
+            [
+                "Parcial",
+                "PND_1_1*PND_1_1_13"
+            ],
+            [
+                "Parcial",
+                "PND_1_1*PND_1_1_4"
+            ],
+            [
+                "Parcial",
+                "PND_1_2*PND_1_2_1"
+            ],
+            [
+                "Parcial",
+                "PND_2_1*PND_2_1_2"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_05*ODS_05_01",
+        "imports": [
+            [
+                "Parcial",
+                "PND_1_1*PND_1_1_13"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_05*ODS_05_05",
+        "imports": [
+            [
+                "Parcial",
+                "PND_1_1*PND_1_1_13"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_05*ODS_05_06",
+        "imports": [
+            [
+                "Parcial",
+                "PND_1_1*PND_1_1_13"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_05*ODS_05_0a",
+        "imports": [
+            [
+                "Parcial",
+                "PND_1_1*PND_1_1_13"
+            ],
+            [
+                "Parcial",
+                "PND_2_1*PND_2_1_4"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_05*ODS_05_0c",
+        "imports": [
+            [
+                "Parcial",
+                "PND_1_1*PND_1_1_13"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_11*ODS_11_04",
+        "imports": [
+            [
+                "Total",
+                "PND_1_1*PND_1_1_14"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_01*ODS_01_01",
+        "imports": [
+            [
+                "Parcial",
+                "PND_1_1*PND_1_1_2"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_01*ODS_01_02",
+        "imports": [
+            [
+                "Total",
+                "PND_1_1*PND_1_1_2"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_04*ODS_04_01",
+        "imports": [
+            [
+                "Parcial",
+                "PND_1_1*PND_1_1_4"
+            ],
+            [
+                "Parcial",
+                "PND_1_1*PND_1_1_5"
+            ],
+            [
+                "Parcial",
+                "PND_1_2*PND_1_2_1"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_04*ODS_04_06",
+        "imports": [
+            [
+                "Parcial",
+                "PND_1_1*PND_1_1_4"
+            ],
+            [
+                "Parcial",
+                "PND_1_1*PND_1_1_6"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_04*ODS_04_05",
+        "imports": [
+            [
+                "Parcial",
+                "PND_1_1*PND_1_1_5"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_02*ODS_02_01",
+        "imports": [
+            [
+                "Parcial",
+                "PND_1_1*PND_1_1_7"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_02*ODS_02_02",
+        "imports": [
+            [
+                "Parcial",
+                "PND_1_1*PND_1_1_7"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_03*ODS_03_03",
+        "imports": [
+            [
+                "Parcial",
+                "PND_1_1*PND_1_1_8"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_03*ODS_03_01",
+        "imports": [
+            [
+                "Total",
+                "PND_1_1*PND_1_1_9"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_03*ODS_03_08",
+        "imports": [
+            [
+                "Total",
+                "PND_1_2*PND_1_2_2"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_03*ODS_03_0c",
+        "imports": [
+            [
+                "Parcial",
+                "PND_1_2*PND_1_2_2"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_03*ODS_03_04",
+        "imports": [
+            [
+                "Total",
+                "PND_1_2*PND_1_2_4"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_03*ODS_03_06 ",
+        "imports": [
+            [
+                "Total",
+                "PND_1_2*PND_1_2_5"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_11*ODS_11_01",
+        "imports": [
+            [
+                "Parcial",
+                "PND_1_3*PND_1_3_1"
+            ],
+            [
+                "Parcial",
+                "PND_1_4*PND_1_4_3"
+            ],
+            [
+                "Parcial",
+                "PND_1_4*PND_1_4_4"
+            ],
+            [
+                "Parcial",
+                "PND_1_4*PND_1_4_5"
+            ],
+            [
+                "Parcial",
+                "PND_1_4*PND_1_4_6"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_11*ODS_11_03",
+        "imports": [
+            [
+                "Parcial",
+                "PND_1_3*PND_1_3_1"
+            ],
+            [
+                "Parcial",
+                "PND_1_3*PND_1_3_2"
+            ],
+            [
+                "Parcial",
+                "PND_1_3*PND_1_3_3"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_11*ODS_11_0a",
+        "imports": [
+            [
+                "Parcial",
+                "PND_1_3*PND_1_3_2"
+            ],
+            [
+                "Parcial",
+                "PND_1_3*PND_1_3_3"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_11*ODS_11_0b",
+        "imports": [
+            [
+                "Parcial",
+                "PND_1_3*PND_1_3_3"
+            ],
+            [
+                "Parcial",
+                "PND_3_4*PND_3_4_2"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_16*ODS_16_07",
+        "imports": [
+            [
+                "Total",
+                "PND_1_3*PND_1_3_3"
+            ],
+            [
+                "Parcial",
+                "PND_4_3*PND_4_3_1"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_06*ODS_06_0b",
+        "imports": [
+            [
+                "Parcial",
+                "PND_1_3*PND_1_3_3"
+            ],
+            [
+                "Parcial",
+                "PND_4_3*PND_4_3_1"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_11*ODS_11_06",
+        "imports": [
+            [
+                "Parcial",
+                "PND_1_4*PND_1_4_1"
+            ],
+            [
+                "Parcial",
+                "PND_1_4*PND_1_4_2"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_12*ODS_12_04",
+        "imports": [
+            [
+                "Parcial",
+                "PND_1_4*PND_1_4_1"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_12*ODS_12_05",
+        "imports": [
+            [
+                "Parcial",
+                "PND_1_4*PND_1_4_1"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_06*ODS_06_03",
+        "imports": [
+            [
+                "Parcial",
+                "PND_1_4*PND_1_4_1"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_03*ODS_03_09",
+        "imports": [
+            [
+                "Total",
+                "PND_1_4*PND_1_4_2"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_07*ODS_07_01",
+        "imports": [
+            [
+                "Total",
+                "PND_1_4*PND_1_4_3"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_07*ODS_07_0b",
+        "imports": [
+            [
+                "Parcial",
+                "PND_1_4*PND_1_4_3"
+            ],
+            [
+                "Parcial",
+                "PND_2_4*PND_2_4_3"
+            ],
+            [
+                "Parcial",
+                "PND_2_4*PND_2_4_4"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_06*ODS_06_01",
+        "imports": [
+            [
+                "Total",
+                "PND_1_4*PND_1_4_5"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_06*ODS_06_04",
+        "imports": [
+            [
+                "Parcial",
+                "PND_1_4*PND_1_4_5"
+            ],
+            [
+                "Parcial",
+                "PND_4_4*PND_4_4_1"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_06*ODS_06_02",
+        "imports": [
+            [
+                "Parcial",
+                "PND_1_4*PND_1_4_6"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_10*ODS_10_01",
+        "imports": [
+            [
+                "Total",
+                "PND_2_1*PND_2_1_1"
+            ],
+            [
+                "Parcial",
+                "PND_2_3*PND_2_3_1"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_02*ODS_02_03",
+        "imports": [
+            [
+                "Parcial",
+                "PND_2_1*PND_2_1_1"
+            ],
+            [
+                "Parcial",
+                "PND_2_2*PND_2_2_1"
+            ],
+            [
+                "Parcial",
+                "PND_2_2*PND_2_2_2"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_08*ODS_08_01",
+        "imports": [
+            [
+                "Parcial",
+                "PND_2_1*PND_2_1_1"
+            ],
+            [
+                "Total",
+                "PND_2_2*PND_2_2_4"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_04*ODS_04_04",
+        "imports": [
+            [
+                "Parcial",
+                "PND_2_1*PND_2_1_2"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_08*ODS_08_06",
+        "imports": [
+            [
+                "Total",
+                "PND_2_1*PND_2_1_2"
+            ],
+            [
+                "Parcial",
+                "PND_2_2*PND_2_2_6"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_01*ODS_01_03",
+        "imports": [
+            [
+                "Total",
+                "PND_2_1*PND_2_1_3"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_10*ODS_10_04",
+        "imports": [
+            [
+                "Parcial",
+                "PND_2_1*PND_2_1_3"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_08*ODS_08_10",
+        "imports": [
+            [
+                "Parcial",
+                "PND_2_1*PND_2_1_4"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_09*ODS_09_0c",
+        "imports": [
+            [
+                "Parcial",
+                "PND_2_2*PND_2_2_10"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_02*ODS_02_0c",
+        "imports": [
+            [
+                "Parcial",
+                "PND_2_2*PND_2_2_2"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_08*ODS_08_02",
+        "imports": [
+            [
+                "Parcial",
+                "PND_2_2*PND_2_2_2"
+            ],
+            [
+                "Parcial",
+                "PND_2_3*PND_2_3_4"
+            ],
+            [
+                "Parcial",
+                "PND_3_2*PND_3_2_2"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_09*ODS_09_05",
+        "imports": [
+            [
+                "Parcial",
+                "PND_2_2*PND_2_2_3"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_09*ODS_09_0b",
+        "imports": [
+            [
+                "Parcial",
+                "PND_2_2*PND_2_2_3"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_17*ODS_17_13",
+        "imports": [
+            [
+                "Parcial",
+                "PND_2_2*PND_2_2_5"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_08*ODS_08_05",
+        "imports": [
+            [
+                "Total",
+                "PND_2_2*PND_2_2_6"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_08*ODS_08_0b",
+        "imports": [
+            [
+                "Parcial",
+                "PND_2_2*PND_2_2_6"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_17*ODS_17_01",
+        "imports": [
+            [
+                "Total",
+                "PND_2_2*PND_2_2_7"
+            ],
+            [
+                "Parcial",
+                "PND_2_2*PND_2_2_8"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_08*ODS_08_03",
+        "imports": [
+            [
+                "Parcial",
+                "PND_2_2*PND_2_2_7"
+            ],
+            [
+                "Parcial",
+                "PND_2_3*PND_2_3_2"
+            ],
+            [
+                "Parcial",
+                "PND_3_2*PND_3_2_3"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_16*ODS_16_06",
+        "imports": [
+            [
+                "Parcial",
+                "PND_2_2*PND_2_2_8"
+            ],
+            [
+                "Parcial",
+                "PND_4_2*PND_4_2_3"
+            ],
+            [
+                "Parcial",
+                "PND_4_2*PND_4_2_5"
+            ],
+            [
+                "Parcial",
+                "PND_4_3*PND_4_3_1"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_11*ODS_11_02",
+        "imports": [
+            [
+                "Total",
+                "PND_2_2*PND_2_2_9"
+            ],
+            [
+                "Parcial",
+                "PND_3_3*PND_3_3_1"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_09*ODS_09_03",
+        "imports": [
+            [
+                "Parcial",
+                "PND_2_3*PND_2_3_2"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_08*ODS_08_04",
+        "imports": [
+            [
+                "Parcial",
+                "PND_2_3*PND_2_3_3"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_09*ODS_09_04",
+        "imports": [
+            [
+                "Parcial",
+                "PND_2_3*PND_2_3_3"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_07*ODS_07_03",
+        "imports": [
+            [
+                "Parcial",
+                "PND_2_3*PND_2_3_3"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_09*ODS_09_02",
+        "imports": [
+            [
+                "Parcial",
+                "PND_2_3*PND_2_3_3"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_15*ODS_15_01",
+        "imports": [
+            [
+                "Parcial",
+                "PND_2_4*PND_2_4_1"
+            ],
+            [
+                "Parcial",
+                "PND_4_4*PND_4_4_1"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_15*ODS_15_02",
+        "imports": [
+            [
+                "Total",
+                "PND_2_4*PND_2_4_1"
+            ],
+            [
+                "Parcial",
+                "PND_4_4*PND_4_4_1"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_15*ODS_15_05",
+        "imports": [
+            [
+                "Parcial",
+                "PND_2_4*PND_2_4_1"
+            ],
+            [
+                "Parcial",
+                "PND_4_4*PND_4_4_1"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_06*ODS_06_06",
+        "imports": [
+            [
+                "Parcial",
+                "PND_2_4*PND_2_4_1"
+            ],
+            [
+                "Total",
+                "PND_4_4*PND_4_4_1"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_12*ODS_12_02",
+        "imports": [
+            [
+                "Parcial",
+                "PND_2_4*PND_2_4_2"
+            ],
+            [
+                "Parcial",
+                "PND_2_4*PND_2_4_4"
+            ],
+            [
+                "Parcial",
+                "PND_4_4*PND_4_4_1"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_07*ODS_07_02",
+        "imports": [
+            [
+                "Total",
+                "PND_2_4*PND_2_4_3"
+            ],
+            [
+                "Total",
+                "PND_2_4*PND_2_4_4"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_10*ODS_10_07",
+        "imports": [
+            [
+                "Parcial",
+                "PND_3_1*PND_3_1_1"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_10*ODS_10_0b",
+        "imports": [
+            [
+                "Total",
+                "PND_3_1*PND_3_1_2"
+            ],
+            [
+                "Parcial",
+                "PND_3_2*PND_3_2_3"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_17*ODS_17_03",
+        "imports": [
+            [
+                "Parcial",
+                "PND_3_1*PND_3_1_2"
+            ],
+            [
+                "Parcial",
+                "PND_3_2*PND_3_2_3"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_17*ODS_17_06",
+        "imports": [
+            [
+                "Total",
+                "PND_3_1*PND_3_1_2"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_17*ODS_17_09",
+        "imports": [
+            [
+                "Parcial",
+                "PND_3_1*PND_3_1_2"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_17*ODS_17_11",
+        "imports": [
+            [
+                "Total",
+                "PND_3_2*PND_3_2_1"
+            ],
+            [
+                "Parcial",
+                "PND_3_2*PND_3_2_2"
+            ],
+            [
+                "Parcial",
+                "PND_3_3*PND_3_3_2"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_17*ODS_17_05",
+        "imports": [
+            [
+                "Parcial",
+                "PND_3_2*PND_3_2_3"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_12*ODS_12_0b",
+        "imports": [
+            [
+                "Parcial",
+                "PND_3_2*PND_3_2_4"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_08*ODS_08_09",
+        "imports": [
+            [
+                "Total",
+                "PND_3_2*PND_3_2_4"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_09*ODS_09_01",
+        "imports": [
+            [
+                "Parcial",
+                "PND_3_3*PND_3_3_1"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_07*ODS_07_0a",
+        "imports": [
+            [
+                "Parcial",
+                "PND_3_3*PND_3_3_2"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_13*ODS_13_02",
+        "imports": [
+            [
+                "Parcial",
+                "PND_3_4*PND_3_4_1"
+            ],
+            [
+                "Total",
+                "PND_3_4*PND_3_4_2"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_01*ODS_01_05",
+        "imports": [
+            [
+                "Parcial",
+                "PND_3_4*PND_3_4_2"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_13*ODS_13_01",
+        "imports": [
+            [
+                "Parcial",
+                "PND_3_4*PND_3_4_2"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_13*ODS_13_03",
+        "imports": [
+            [
+                "Total",
+                "PND_3_4*PND_3_4_2"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_13*ODS_13_0b",
+        "imports": [
+            [
+                "Total",
+                "PND_3_4*PND_3_4_2"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_16*ODS_16_0b",
+        "imports": [
+            [
+                "Parcial",
+                "PND_4_1*PND_4_1_2"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_16*ODS_16_01",
+        "imports": [
+            [
+                "Parcial",
+                "PND_4_1*PND_4_1_3"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_16*ODS_16_04",
+        "imports": [
+            [
+                "Total",
+                "PND_4_1*PND_4_1_4"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_16*ODS_16_0a",
+        "imports": [
+            [
+                "Parcial",
+                "PND_4_1*PND_4_1_4"
+            ],
+            [
+                "Parcial",
+                "PND_4_1*PND_4_1_5"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_16*ODS_16_10",
+        "imports": [
+            [
+                "Total",
+                "PND_4_2*PND_4_2_2"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_17*ODS_17_18",
+        "imports": [
+            [
+                "Parcial",
+                "PND_4_2*PND_4_2_4"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_17*ODS_17_19",
+        "imports": [
+            [
+                "Parcial",
+                "PND_4_2*PND_4_2_4"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_14*ODS_14_04",
+        "imports": [
+            [
+                "Parcial",
+                "PND_4_4*PND_4_4_1"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_14*ODS_14_06",
+        "imports": [
+            [
+                "Parcial",
+                "PND_4_4*PND_4_4_1"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_15*ODS_15_03",
+        "imports": [
+            [
+                "Parcial",
+                "PND_4_4*PND_4_4_1"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_15*ODS_15_04",
+        "imports": [
+            [
+                "Parcial",
+                "PND_4_4*PND_4_4_1"
+            ]
+        ]
+    },
+    {
+        "name": "ODS_15*ODS_15_09",
+        "imports": [
+            [
+                "Parcial",
+                "PND_4_4*PND_4_4_1"
+            ]
+        ]
+    },
+    {
+        "name": "PND_1_1*PND_1_1_1",
+        "imports": []
+    },
+    {
+        "name": "PND_1_1*PND_1_1_10",
+        "imports": []
+    },
+    {
+        "name": "PND_1_1*PND_1_1_11",
+        "imports": []
+    },
+    {
+        "name": "PND_1_1*PND_1_1_12",
+        "imports": []
+    },
+    {
+        "name": "PND_1_1*PND_1_1_12",
+        "imports": []
+    },
+    {
+        "name": "PND_1_1*PND_1_1_12",
+        "imports": []
+    },
+    {
+        "name": "PND_1_1*PND_1_1_12",
+        "imports": []
+    },
+    {
+        "name": "PND_1_1*PND_1_1_13",
+        "imports": []
+    },
+    {
+        "name": "PND_1_1*PND_1_1_13",
+        "imports": []
+    },
+    {
+        "name": "PND_1_1*PND_1_1_13",
+        "imports": []
+    },
+    {
+        "name": "PND_1_1*PND_1_1_13",
+        "imports": []
+    },
+    {
+        "name": "PND_1_1*PND_1_1_13",
+        "imports": []
+    },
+    {
+        "name": "PND_1_1*PND_1_1_13",
+        "imports": []
+    },
+    {
+        "name": "PND_1_1*PND_1_1_13",
+        "imports": []
+    },
+    {
+        "name": "PND_1_1*PND_1_1_13",
+        "imports": []
+    },
+    {
+        "name": "PND_1_1*PND_1_1_14",
+        "imports": []
+    },
+    {
+        "name": "PND_1_1*PND_1_1_2",
+        "imports": []
+    },
+    {
+        "name": "PND_1_1*PND_1_1_2",
+        "imports": []
+    },
+    {
+        "name": "PND_1_1*PND_1_1_3",
+        "imports": []
+    },
+    {
+        "name": "PND_1_1*PND_1_1_4",
+        "imports": []
+    },
+    {
+        "name": "PND_1_1*PND_1_1_4",
+        "imports": []
+    },
+    {
+        "name": "PND_1_1*PND_1_1_4",
+        "imports": []
+    },
+    {
+        "name": "PND_1_1*PND_1_1_4",
+        "imports": []
+    },
+    {
+        "name": "PND_1_1*PND_1_1_5",
+        "imports": []
+    },
+    {
+        "name": "PND_1_1*PND_1_1_5",
+        "imports": []
+    },
+    {
+        "name": "PND_1_1*PND_1_1_5",
+        "imports": []
+    },
+    {
+        "name": "PND_1_1*PND_1_1_6",
+        "imports": []
+    },
+    {
+        "name": "PND_1_1*PND_1_1_7",
+        "imports": []
+    },
+    {
+        "name": "PND_1_1*PND_1_1_7",
+        "imports": []
+    },
+    {
+        "name": "PND_1_1*PND_1_1_8",
+        "imports": []
+    },
+    {
+        "name": "PND_1_1*PND_1_1_9",
+        "imports": []
+    },
+    {
+        "name": "PND_1_2*PND_1_2_1",
+        "imports": []
+    },
+    {
+        "name": "PND_1_2*PND_1_2_1",
+        "imports": []
+    },
+    {
+        "name": "PND_1_2*PND_1_2_2",
+        "imports": []
+    },
+    {
+        "name": "PND_1_2*PND_1_2_2",
+        "imports": []
+    },
+    {
+        "name": "PND_1_2*PND_1_2_4",
+        "imports": []
+    },
+    {
+        "name": "PND_1_2*PND_1_2_5",
+        "imports": []
+    },
+    {
+        "name": "PND_1_3*PND_1_3_1",
+        "imports": []
+    },
+    {
+        "name": "PND_1_3*PND_1_3_1",
+        "imports": []
+    },
+    {
+        "name": "PND_1_3*PND_1_3_2",
+        "imports": []
+    },
+    {
+        "name": "PND_1_3*PND_1_3_2",
+        "imports": []
+    },
+    {
+        "name": "PND_1_3*PND_1_3_3",
+        "imports": []
+    },
+    {
+        "name": "PND_1_3*PND_1_3_3",
+        "imports": []
+    },
+    {
+        "name": "PND_1_3*PND_1_3_3",
+        "imports": []
+    },
+    {
+        "name": "PND_1_3*PND_1_3_3",
+        "imports": []
+    },
+    {
+        "name": "PND_1_3*PND_1_3_3",
+        "imports": []
+    },
+    {
+        "name": "PND_1_4*PND_1_4_1",
+        "imports": []
+    },
+    {
+        "name": "PND_1_4*PND_1_4_1",
+        "imports": []
+    },
+    {
+        "name": "PND_1_4*PND_1_4_1",
+        "imports": []
+    },
+    {
+        "name": "PND_1_4*PND_1_4_1",
+        "imports": []
+    },
+    {
+        "name": "PND_1_4*PND_1_4_2",
+        "imports": []
+    },
+    {
+        "name": "PND_1_4*PND_1_4_2",
+        "imports": []
+    },
+    {
+        "name": "PND_1_4*PND_1_4_3",
+        "imports": []
+    },
+    {
+        "name": "PND_1_4*PND_1_4_3",
+        "imports": []
+    },
+    {
+        "name": "PND_1_4*PND_1_4_3",
+        "imports": []
+    },
+    {
+        "name": "PND_1_4*PND_1_4_3",
+        "imports": []
+    },
+    {
+        "name": "PND_1_4*PND_1_4_4",
+        "imports": []
+    },
+    {
+        "name": "PND_1_4*PND_1_4_5",
+        "imports": []
+    },
+    {
+        "name": "PND_1_4*PND_1_4_5",
+        "imports": []
+    },
+    {
+        "name": "PND_1_4*PND_1_4_5",
+        "imports": []
+    },
+    {
+        "name": "PND_1_4*PND_1_4_5",
+        "imports": []
+    },
+    {
+        "name": "PND_1_4*PND_1_4_6",
+        "imports": []
+    },
+    {
+        "name": "PND_1_4*PND_1_4_6",
+        "imports": []
+    },
+    {
+        "name": "PND_1_4*PND_1_4_6",
+        "imports": []
+    },
+    {
+        "name": "PND_2_1*PND_2_1_1",
+        "imports": []
+    },
+    {
+        "name": "PND_2_1*PND_2_1_1",
+        "imports": []
+    },
+    {
+        "name": "PND_2_1*PND_2_1_1",
+        "imports": []
+    },
+    {
+        "name": "PND_2_1*PND_2_1_2",
+        "imports": []
+    },
+    {
+        "name": "PND_2_1*PND_2_1_2",
+        "imports": []
+    },
+    {
+        "name": "PND_2_1*PND_2_1_2",
+        "imports": []
+    },
+    {
+        "name": "PND_2_1*PND_2_1_3",
+        "imports": []
+    },
+    {
+        "name": "PND_2_1*PND_2_1_3",
+        "imports": []
+    },
+    {
+        "name": "PND_2_1*PND_2_1_4",
+        "imports": []
+    },
+    {
+        "name": "PND_2_1*PND_2_1_4",
+        "imports": []
+    },
+    {
+        "name": "PND_2_1*PND_2_1_4",
+        "imports": []
+    },
+    {
+        "name": "PND_2_1*PND_2_1_4",
+        "imports": []
+    },
+    {
+        "name": "PND_2_2*PND_2_2_1",
+        "imports": []
+    },
+    {
+        "name": "PND_2_2*PND_2_2_1",
+        "imports": []
+    },
+    {
+        "name": "PND_2_2*PND_2_2_10",
+        "imports": []
+    },
+    {
+        "name": "PND_2_2*PND_2_2_2",
+        "imports": []
+    },
+    {
+        "name": "PND_2_2*PND_2_2_2",
+        "imports": []
+    },
+    {
+        "name": "PND_2_2*PND_2_2_2",
+        "imports": []
+    },
+    {
+        "name": "PND_2_2*PND_2_2_3",
+        "imports": []
+    },
+    {
+        "name": "PND_2_2*PND_2_2_3",
+        "imports": []
+    },
+    {
+        "name": "PND_2_2*PND_2_2_4",
+        "imports": []
+    },
+    {
+        "name": "PND_2_2*PND_2_2_5",
+        "imports": []
+    },
+    {
+        "name": "PND_2_2*PND_2_2_6",
+        "imports": []
+    },
+    {
+        "name": "PND_2_2*PND_2_2_6",
+        "imports": []
+    },
+    {
+        "name": "PND_2_2*PND_2_2_6",
+        "imports": []
+    },
+    {
+        "name": "PND_2_2*PND_2_2_7",
+        "imports": []
+    },
+    {
+        "name": "PND_2_2*PND_2_2_7",
+        "imports": []
+    },
+    {
+        "name": "PND_2_2*PND_2_2_8",
+        "imports": []
+    },
+    {
+        "name": "PND_2_2*PND_2_2_8",
+        "imports": []
+    },
+    {
+        "name": "PND_2_2*PND_2_2_9",
+        "imports": []
+    },
+    {
+        "name": "PND_2_3*PND_2_3_1",
+        "imports": []
+    },
+    {
+        "name": "PND_2_3*PND_2_3_1",
+        "imports": []
+    },
+    {
+        "name": "PND_2_3*PND_2_3_2",
+        "imports": []
+    },
+    {
+        "name": "PND_2_3*PND_2_3_2",
+        "imports": []
+    },
+    {
+        "name": "PND_2_3*PND_2_3_3",
+        "imports": []
+    },
+    {
+        "name": "PND_2_3*PND_2_3_3",
+        "imports": []
+    },
+    {
+        "name": "PND_2_3*PND_2_3_3",
+        "imports": []
+    },
+    {
+        "name": "PND_2_3*PND_2_3_3",
+        "imports": []
+    },
+    {
+        "name": "PND_2_3*PND_2_3_4",
+        "imports": []
+    },
+    {
+        "name": "PND_2_4*PND_2_4_1",
+        "imports": []
+    },
+    {
+        "name": "PND_2_4*PND_2_4_1",
+        "imports": []
+    },
+    {
+        "name": "PND_2_4*PND_2_4_1",
+        "imports": []
+    },
+    {
+        "name": "PND_2_4*PND_2_4_1",
+        "imports": []
+    },
+    {
+        "name": "PND_2_4*PND_2_4_2",
+        "imports": []
+    },
+    {
+        "name": "PND_2_4*PND_2_4_3",
+        "imports": []
+    },
+    {
+        "name": "PND_2_4*PND_2_4_3",
+        "imports": []
+    },
+    {
+        "name": "PND_2_4*PND_2_4_4",
+        "imports": []
+    },
+    {
+        "name": "PND_2_4*PND_2_4_4",
+        "imports": []
+    },
+    {
+        "name": "PND_2_4*PND_2_4_4",
+        "imports": []
+    },
+    {
+        "name": "PND_3_1*PND_3_1_1",
+        "imports": []
+    },
+    {
+        "name": "PND_3_1*PND_3_1_2",
+        "imports": []
+    },
+    {
+        "name": "PND_3_1*PND_3_1_2",
+        "imports": []
+    },
+    {
+        "name": "PND_3_1*PND_3_1_2",
+        "imports": []
+    },
+    {
+        "name": "PND_3_1*PND_3_1_2",
+        "imports": []
+    },
+    {
+        "name": "PND_3_2*PND_3_2_1",
+        "imports": []
+    },
+    {
+        "name": "PND_3_2*PND_3_2_2",
+        "imports": []
+    },
+    {
+        "name": "PND_3_2*PND_3_2_2",
+        "imports": []
+    },
+    {
+        "name": "PND_3_2*PND_3_2_3",
+        "imports": []
+    },
+    {
+        "name": "PND_3_2*PND_3_2_3",
+        "imports": []
+    },
+    {
+        "name": "PND_3_2*PND_3_2_3",
+        "imports": []
+    },
+    {
+        "name": "PND_3_2*PND_3_2_3",
+        "imports": []
+    },
+    {
+        "name": "PND_3_2*PND_3_2_4",
+        "imports": []
+    },
+    {
+        "name": "PND_3_2*PND_3_2_4",
+        "imports": []
+    },
+    {
+        "name": "PND_3_3*PND_3_3_1",
+        "imports": []
+    },
+    {
+        "name": "PND_3_3*PND_3_3_1",
+        "imports": []
+    },
+    {
+        "name": "PND_3_3*PND_3_3_2",
+        "imports": []
+    },
+    {
+        "name": "PND_3_3*PND_3_3_2",
+        "imports": []
+    },
+    {
+        "name": "PND_3_4*PND_3_4_1",
+        "imports": []
+    },
+    {
+        "name": "PND_3_4*PND_3_4_2",
+        "imports": []
+    },
+    {
+        "name": "PND_3_4*PND_3_4_2",
+        "imports": []
+    },
+    {
+        "name": "PND_3_4*PND_3_4_2",
+        "imports": []
+    },
+    {
+        "name": "PND_3_4*PND_3_4_2",
+        "imports": []
+    },
+    {
+        "name": "PND_3_4*PND_3_4_2",
+        "imports": []
+    },
+    {
+        "name": "PND_3_4*PND_3_4_2",
+        "imports": []
+    },
+    {
+        "name": "PND_4_1*PND_4_1_1",
+        "imports": []
+    },
+    {
+        "name": "PND_4_1*PND_4_1_1",
+        "imports": []
+    },
+    {
+        "name": "PND_4_1*PND_4_1_2",
+        "imports": []
+    },
+    {
+        "name": "PND_4_1*PND_4_1_2",
+        "imports": []
+    },
+    {
+        "name": "PND_4_1*PND_4_1_2",
+        "imports": []
+    },
+    {
+        "name": "PND_4_1*PND_4_1_3",
+        "imports": []
+    },
+    {
+        "name": "PND_4_1*PND_4_1_4",
+        "imports": []
+    },
+    {
+        "name": "PND_4_1*PND_4_1_4",
+        "imports": []
+    },
+    {
+        "name": "PND_4_1*PND_4_1_4",
+        "imports": []
+    },
+    {
+        "name": "PND_4_1*PND_4_1_5",
+        "imports": []
+    },
+    {
+        "name": "PND_4_2*PND_4_2_2",
+        "imports": []
+    },
+    {
+        "name": "PND_4_2*PND_4_2_3",
+        "imports": []
+    },
+    {
+        "name": "PND_4_2*PND_4_2_4",
+        "imports": []
+    },
+    {
+        "name": "PND_4_2*PND_4_2_4",
+        "imports": []
+    },
+    {
+        "name": "PND_4_2*PND_4_2_5",
+        "imports": []
+    },
+    {
+        "name": "PND_4_3*PND_4_3_1",
+        "imports": []
+    },
+    {
+        "name": "PND_4_3*PND_4_3_1",
+        "imports": []
+    },
+    {
+        "name": "PND_4_3*PND_4_3_1",
+        "imports": []
+    },
+    {
+        "name": "PND_4_4*PND_4_4_1",
+        "imports": []
+    },
+    {
+        "name": "PND_4_4*PND_4_4_1",
+        "imports": []
+    },
+    {
+        "name": "PND_4_4*PND_4_4_1",
+        "imports": []
+    },
+    {
+        "name": "PND_4_4*PND_4_4_1",
+        "imports": []
+    },
+    {
+        "name": "PND_4_4*PND_4_4_1",
+        "imports": []
+    },
+    {
+        "name": "PND_4_4*PND_4_4_1",
+        "imports": []
+    },
+    {
+        "name": "PND_4_4*PND_4_4_1",
+        "imports": []
+    },
+    {
+        "name": "PND_4_4*PND_4_4_1",
+        "imports": []
+    },
+    {
+        "name": "PND_4_4*PND_4_4_1",
+        "imports": []
+    },
+    {
+        "name": "PND_4_4*PND_4_4_1",
+        "imports": []
+    },
+    {
+        "name": "PND_4_4*PND_4_4_1",
+        "imports": []
+    }
+]
