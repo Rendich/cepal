@@ -40,7 +40,7 @@ font-size: 15px; /*Fuente del nodo que CONECTA el que pasa el mouse*/
 }
 
 .link.source {
-stroke: #FFFF00; /*CONEXION amarillo*/
+stroke: #0000FF; /*CONEXION azul*/
 stroke: #FF8800; /*CONEXION naranja*/
 }
 .link.target {
@@ -119,7 +119,7 @@ div.tooltip {
     stroke: #FF0000; /*CONEXION rojo oscuro*/
     }
     .relation_Parcial.link {
-    stroke: #FFFF00; /*CONEXION amarillo oscuro*/
+    stroke: #0000FF; /*CONEXION azul oscuro*/
     }
 
 
@@ -128,5 +128,6 @@ div.tooltip {
     }
 
     .block_relation_Parcial {
-      background-color: #FFFF00;
+      background-color: #0000FF;
+        background-color: #0000FF;
     }
