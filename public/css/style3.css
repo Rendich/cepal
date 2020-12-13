@@ -139,3 +139,13 @@ div.tooltip {
       background-color: #0000FF;
         background-color: #0000FF;
     }
+
+        .background_relation_Total {
+          background-color: #FF0000 !important;
+            background-color:rgba(255, 0, 0, 0.2)  !important;
+        }
+
+        .background_relation_Parcial {
+            background-color: #0000FF !important;
+                background-color:rgba(0, 0, 255, 0.2)  !important;
+        }

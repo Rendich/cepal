@@ -20,14 +20,14 @@
               <br />
               <p>El gráfico de la izquierda muestra las relaciones de los Objetivos de Desarrollo Sustentable (ODS) con el Plan Nacional de Desarrollo (PND).</p>
               <p>Pasa el mouse sobre los distintos textos para destacar las relaciones, o haz click en ellos para mostrar la lista en la tabla de la derecha.</p>
-              <p>El color amarillo (<span class='block_relation_Parcial'>&#9634;</span>) indica una vinculación parcial, mientras que el color color rojo (<span class='block_relation_Total'>&#9634;</span>) indica una vinculación total.</p>
+              <p>El color azul (<span class='block_relation_Parcial'>&#9634;</span>) indica una vinculación parcial, mientras que el color color rojo (<span class='block_relation_Total'>&#9634;</span>) indica una vinculación total.</p>
 
               <div class="row">
                 <div class="col-md-6">
                   <div id="bundle"></div>
                 </div>
                 <div class="col-md-6">
-                  <div id="id_select"  class="btn btn-danger "></div>
+                  <div id="id_select3"  class="btn btn-danger "></div>
                   <br>
                   <br>
                   <div id="myTable3">
@@ -40,12 +40,16 @@
 
       <script type="text/javascript" src="https://www.google.com/jsapi"></script>
       <script type="text/javascript" src="libs/d3.v3.min.js"></script>
+
       <script type="text/javascript" src="libs/packages.js"></script>
     <script type="text/javascript">
 
+      d3version3 = d3
+      window.d3 = null
       ///////////////////
+
       var tabulate3 = function (data,columns) {
-          var table = d3.select('#myTable3')
+          var table = d3version3.select('#myTable3')
           var thead = table.append('thead')
           var tbody = table.append('tbody')
 
@@ -68,8 +72,21 @@
                 return d.PND_subgrupo +" "+d.ODS_subgrupo
                }) //AQUI
                  .each(function (d) {
-                    d3.select(this).style("visibility", "collapse");
-                    //d3.select(this).style("visibility", "visible");
+                    d3version3.select(this).style("visibility", "collapse");
+                    //d3version3.select(this).style("visibility", "visible");
+                    v = d.Vinculación;
+                    console.log(v);
+                    if(v == "Total")
+                    {
+                      //d3version3.select(this).style("background", "red");
+                    }
+                    else {
+                      //d3version3.select(this).style("background", "blue");
+                    }
+                    //background-color:rgba(0, 0, 0, 0.5);
+                    //this.classed("background_relation_"+d["relation"], v); // AQUI
+                    d3version3.select(this).attr("class", "background_relation_"+v)
+
                 });
 
 
@@ -86,9 +103,9 @@
 
           return table;
         }
-        //d3.csv("data/data.csv", function(error, data) {
-        //d3.csv("data/data3.csv", function(error, data) {
-        d3.csv("data/my_input3.csv", function(error, data) {
+        //d3version3.csv("data/data.csv", function(error, data) {
+        //d3version3.csv("data/data3.csv", function(error, data) {
+        d3version3.csv("data/my_input3.csv", function(error, data) {
           //const columns = ["VALOR",'Eje','Objetivo Estratégico','Objetivo PND','Indicadores']
           //const columns = ['Eje','Objetivo Estratégico','Objetivo PND','Indicadores']
           //const columns = ["Objetivo","Meta ODS", "Objetivo Estratégico","Vinculación","Problemática ODS","Acción ODS","Sujeto ODS"]
@@ -100,9 +117,9 @@
       ]
 
 
-//(r.ODS_subgrupo == e.key || r.PND_subgrupo == e.key)
+      //(r.ODS_subgrupo == e.key || r.PND_subgrupo == e.key)
 
-          var select = d3.select("#id_select")
+          var select = d3version3.select("#id_select3")
             .append("div")
             .append("select").
             attr("class", "btn btn-danger").
@@ -110,14 +127,14 @@
 
           select
             .on("change", function(d) {
-              var v = d3.select(this).property("value");
+              var v = d3version3.select(this).property("value");
               console.log(v)
               moveStackToFront(v);
               function moveStackToFront(elD) {
                   console.log("SI2: " + elD);
 
                   clickfunctionValue(elD)
-/*
+      /*
                   svg.selectAll('.slice').filter(d => d.data.id == elD)
                   //svg.selectAll('.slice').filter(d => d.value == elD)
                       .each(function(d) {
@@ -130,36 +147,36 @@
                       })
                       */
 
-// NUEVO -->
-/*
-                        var table = d3.select('#myTable3')
+      // NUEVO -->
+      /*
+                        var table = d3version3.select('#myTable3')
                         var tbody = table.select('tbody');
                           var rows = tbody.selectAll('tr')
                           .each(function (d) {
-                             d3.select(this).style("visibility", function() {
+                             d3version3.select(this).style("visibility", function() {
                                  return (true) ? "visible" : "hidden";
                              });
                          });
                          //tbody.selectAll('tr').selectAll(".FILA_1").style("visibility", function() {return true });
                            var rows = tbody.selectAll('tr')
                            .each(function (r) {
-                              d3.select(this).style("visibility", function() {
+                              d3version3.select(this).style("visibility", function() {
                                   //console.log(r) // AQUI AQUI
                                   return (r.ODS_subgrupo == elD || r.PND_subgrupo == elD) ? "table-cell" : "collapse";
                                   //return (r.VALOR%2==0) ? "table-cell" : "collapse";
                               });
                           });*/
-// NUEVO <--
+      // NUEVO <--
                 } // END function moveStackToFront(elD) {
 
             });
-            var expensesByName = d3.nest()
+            var expensesByName = d3version3.nest()
               //.key(function(d) { return d.ODS_grupo; })
                 //.key(function(d) { return d.ODS_subgrupo; })
                 /*
                   .key(function(d) { return d.ODS_grupo; }).sort(function(a, b){
 
-                    //return d3.ascending(a.key, b.key);
+                    //return d3version3.ascending(a.key, b.key);
                     console.log(a)
                     console.log(b)
 
@@ -170,39 +187,39 @@
                                             B2=b.values//.split("_")
                                             console.log(A2)
                                             console.log(A2.key)
-                                          return d3.ascending(A[0], B[0]) ||
-                                         d3.ascending(parseFloat(A[1]), parseFloat(B[1])) ||
-                                           d3.ascending(parseFloat(A[2]), parseFloat(B[2])) ||
-                                             d3.ascending(A2.key,B2.key);
+                                          return d3version3.ascending(A[0], B[0]) ||
+                                         d3version3.ascending(parseFloat(A[1]), parseFloat(B[1])) ||
+                                           d3version3.ascending(parseFloat(A[2]), parseFloat(B[2])) ||
+                                             d3version3.ascending(A2.key,B2.key);
 
                   })*/
-.key(function(d) { return d.ODS_grupo; }).sortKeys(function(a,b) {
-  //console.log(a)
-    //console.log(b)
+      .key(function(d) { return d.ODS_grupo; }).sortKeys(function(a,b) {
+      //console.log(a)
+      //console.log(b)
 
                                               A=a.split("_")
                                               B=b.split("_")
-                                            return d3.ascending(A[0], B[0]) ||
-                                           d3.ascending(parseFloat(A[1]), parseFloat(B[1])) ||
-                                             d3.ascending(parseFloat(A[2]), parseFloat(B[2])) ||
-                                               d3.ascending(A2.key,B2.key);
-  //return ODS_grupo.indexOf(a) - ODS_grupo.indexOf(b);
-})
+                                            return d3version3.ascending(A[0], B[0]) ||
+                                           d3version3.ascending(parseFloat(A[1]), parseFloat(B[1])) ||
+                                             d3version3.ascending(parseFloat(A[2]), parseFloat(B[2])) ||
+                                               d3version3.ascending(A2.key,B2.key);
+      //return ODS_grupo.indexOf(a) - ODS_grupo.indexOf(b);
+      })
                     .key(function(d) { return d.ODS_subgrupo; }).sortKeys(function(a,b) {
                       //console.log(a)
                         //console.log(b)
 
                                                                   A=a.split("_")
                                                                   B=b.split("_")
-                                                                return d3.ascending(A[0], B[0]) ||
-                                                               d3.ascending(parseFloat(A[1]), parseFloat(B[1])) ||
-                                                                 d3.ascending(parseFloat(A[2]), parseFloat(B[2]))
+                                                                return d3version3.ascending(A[0], B[0]) ||
+                                                               d3version3.ascending(parseFloat(A[1]), parseFloat(B[1])) ||
+                                                                 d3version3.ascending(parseFloat(A[2]), parseFloat(B[2]))
                                                                  })
               .entries(data);
               /*
               expensesByName = expensesByName.sort(function(a, b){
 
-                //return d3.ascending(a.key, b.key);
+                //return d3version3.ascending(a.key, b.key);
                 console.log(a)
                 console.log(b)
 
@@ -213,16 +230,16 @@
                                         B2=b.values//.split("_")
                                         console.log(A2)
                                         console.log(A2.key)
-                                      return d3.ascending(A[0], B[0]) ||
-                                     d3.ascending(parseFloat(A[1]), parseFloat(B[1])) ||
-                                       d3.ascending(parseFloat(A[2]), parseFloat(B[2])) ||
-                                         d3.ascending(A2.key,B2.key);
+                                      return d3version3.ascending(A[0], B[0]) ||
+                                     d3version3.ascending(parseFloat(A[1]), parseFloat(B[1])) ||
+                                       d3version3.ascending(parseFloat(A[2]), parseFloat(B[2])) ||
+                                         d3version3.ascending(A2.key,B2.key);
 
               })*/
 
               //console.log(expensesByName)
 
-              var expensesByName2 = d3.nest()
+              var expensesByName2 = d3version3.nest()
                 //.key(function(d) { return d.ODS_grupo; })
                   //.key(function(d) { return d.ODS_subgrupo; })
                     //.key(function(d) { return d.PND_grupo; })
@@ -233,11 +250,11 @@
 
                                                                       A=a.split("_")
                                                                       B=b.split("_")
-                                                                    return d3.ascending(A[0], B[0]) ||
-                                                                   d3.ascending(parseFloat(A[1]), parseFloat(B[1])) ||
-                                                                     d3.ascending(parseFloat(A[2]), parseFloat(B[2])) ||
-                                                                       d3.ascending(parseFloat(A[3]), parseFloat(B[3])) ||
-                                                                       d3.ascending(A2.key,B2.key);
+                                                                    return d3version3.ascending(A[0], B[0]) ||
+                                                                   d3version3.ascending(parseFloat(A[1]), parseFloat(B[1])) ||
+                                                                     d3version3.ascending(parseFloat(A[2]), parseFloat(B[2])) ||
+                                                                       d3version3.ascending(parseFloat(A[3]), parseFloat(B[3])) ||
+                                                                       d3version3.ascending(A2.key,B2.key);
                           //return ODS_grupo.indexOf(a) - ODS_grupo.indexOf(b);
                         })
                                             .key(function(d) { return d.PND_subgrupo; }).sortKeys(function(a,b) {
@@ -246,10 +263,10 @@
 
                                                                                           A=a.split("_")
                                                                                           B=b.split("_")
-                                                                                        return d3.ascending(A[0], B[0]) ||
-                                                                                       d3.ascending(parseFloat(A[1]), parseFloat(B[1])) ||
-                                                                                         d3.ascending(parseFloat(A[2]), parseFloat(B[2]))||
-                                                                                           d3.ascending(parseFloat(A[3]), parseFloat(B[3]))
+                                                                                        return d3version3.ascending(A[0], B[0]) ||
+                                                                                       d3version3.ascending(parseFloat(A[1]), parseFloat(B[1])) ||
+                                                                                         d3version3.ascending(parseFloat(A[2]), parseFloat(B[2]))||
+                                                                                           d3version3.ascending(parseFloat(A[3]), parseFloat(B[3]))
                                                                                          })
                 .entries(data);
                 //console.log(expensesByName2)
@@ -263,7 +280,7 @@
 
                                     A=a.key.split("_")
                                     B=b.key.split("_")
-/*
+      /*
                                                                         console.log(
                                                                           parseFloat(b.values.key.split("_")[2])
                                                                         )
@@ -273,11 +290,11 @@
 
                                                                         //A2=a.values.split("_")
                                                                         //B2=b.values.split("_")
-                                  return d3.ascending(A[0], B[0]) ||
-                                 d3.ascending(parseFloat(A[1]), parseFloat(B[1])) ||
-                                   d3.ascending(parseFloat(A[2]), parseFloat(B[2])) ||
-                                     d3.ascending(parseFloat(A[3]), parseFloat(B[3])) ||
-                                          d3.ascending(
+                                  return d3version3.ascending(A[0], B[0]) ||
+                                 d3version3.ascending(parseFloat(A[1]), parseFloat(B[1])) ||
+                                   d3version3.ascending(parseFloat(A[2]), parseFloat(B[2])) ||
+                                     d3version3.ascending(parseFloat(A[3]), parseFloat(B[3])) ||
+                                          d3version3.ascending(
                                             parseFloat(a.values[0].values[0].split("_")[3]),
                                             parseFloat(b.values[0].values[0].split("_")[3])
                                           );
@@ -290,10 +307,10 @@
 
                                                                                                   A=a.split("_")
                                                                                                   B=b.split("_")
-                                                                                                return d3.ascending(A[0], B[0]) ||
-                                                                                               d3.ascending(parseFloat(A[1]), parseFloat(B[1])) ||
-                                                                                                 d3.ascending(parseFloat(A[2]), parseFloat(B[2]))||
-                                                                                                   d3.ascending(parseFloat(A[3]), parseFloat(B[3]))
+                                                                                                return d3version3.ascending(A[0], B[0]) ||
+                                                                                               d3version3.ascending(parseFloat(A[1]), parseFloat(B[1])) ||
+                                                                                                 d3version3.ascending(parseFloat(A[2]), parseFloat(B[2]))||
+                                                                                                   d3version3.ascending(parseFloat(A[3]), parseFloat(B[3]))
                                                                                                  }
 
                               )*/
@@ -329,23 +346,23 @@
 
 
               select
-    .selectAll('optgroup')
+      .selectAll('optgroup')
       .data(expensesByName)
       .enter()
-    .append('optgroup')
+      .append('optgroup')
       .attr('value',function (d) { return d.key })
       .attr('label',function (d) {
         //console.log(d)
          return d.key})
-    .selectAll('option')
+      .selectAll('option')
       .data(function (d) { return d.values })
-      //.data(d3.map(expensesByName, function(d){return d.values;}).keys())
+      //.data(d3version3.map(expensesByName, function(d){return d.values;}).keys())
 
       .enter()
-    .append('option')
+      .append('option')
       .attr('value',function (d) { return d.key })
       //.text(function (d) { return d })
-    .text(function (d, i) {
+      .text(function (d, i) {
       //console.log(i)
       str =  d.key
       if(str.startsWith("ODS")){
@@ -364,82 +381,82 @@
       else
           return val;
 
-     });
+      });
 
-     select.insert("option",":first-child").
-     attr('selected', 'selected').
-     attr('value', 0). // REVISAR valor default
-     text('Filtrar')
+      select.insert("option",":first-child").
+      attr('selected', 'selected').
+      attr('value', 0). // REVISAR valor default
+      text('Filtrar')
           //Eje_n	Eje	Objetivo Estratégico	Objetivo PND	Sujeto PND 	Problemática PND	Acción PND	ODS	Meta	Meta ODS	Sujeto ODS	Problemática ODS	Acción ODS	Vinculación
 
           tabulate3(data,columns)
         });
-    ////
+      ////
 
-    /*
-    Basado en
+      /*
+      Basado en
       https://jsfiddle.net/Twisty/192m0uyc/2/
-    */
+      */
       var count_aux = 10;
 
-var w = 740,
-    h = 700,
-    rx = w / 2,
-    ry = h / 2,
-    m0,
-    rotate = 0
-    pi = Math.PI;
+      var w = 740,
+      h = 700,
+      rx = w / 2,
+      ry = h / 2,
+      m0,
+      rotate = 0
+      pi = Math.PI;
 
-var splines = [];
+      var splines = [];
 
-var cluster = d3.layout.cluster()
-    .size([360, ry - 180])
-    // http://bl.ocks.org/mayblue9/dcc49ef6e3888f37f755177c4a248f2c ORDENAR
-    .sort(function(a, b) {
+      var cluster = d3version3.layout.cluster()
+      .size([360, ry - 180])
+      // http://bl.ocks.org/mayblue9/dcc49ef6e3888f37f755177c4a248f2c ORDENAR
+      .sort(function(a, b) {
       //console.log(a.key +" - "+ b.key);
-    //return d3.ascending(a.key, b.key);
-    A=a.key.split("_")
-    B=b.key.split("_")
-    return d3.ascending(A[0], B[0]) ||
-   d3.ascending(parseFloat(A[1]), parseFloat(B[1])) ||
-     d3.ascending(parseFloat(A[2]), parseFloat(B[2]));
-  });
+      //return d3version3.ascending(a.key, b.key);
+      A=a.key.split("_")
+      B=b.key.split("_")
+      return d3version3.ascending(A[0], B[0]) ||
+      d3version3.ascending(parseFloat(A[1]), parseFloat(B[1])) ||
+      d3version3.ascending(parseFloat(A[2]), parseFloat(B[2]));
+      });
 
-var bundle = d3.layout.bundle();
+      var bundle = d3version3.layout.bundle();
 
-var line = d3.svg.line.radial()
-    .interpolate("bundle")
-    .tension(.85)
-    .radius(function(d) { return d.y; })
-    .angle(function(d) { return d.x / 180 * Math.PI; });
+      var line = d3version3.svg.line.radial()
+      .interpolate("bundle")
+      .tension(.85)
+      .radius(function(d) { return d.y; })
+      .angle(function(d) { return d.x / 180 * Math.PI; });
 
-var div = d3.select("#bundle")
-    .style("width", w + "px")
-    .style("height", w + "px")
-    .style("position", "absolute");
+      var div = d3version3.select("#bundle")
+      .style("width", w + "px")
+      .style("height", w + "px")
+      .style("position", "absolute");
 
-var svg = div.append("svg:svg")
-    .attr("width", w)
-    .attr("height", w)
-  .append("svg:g")
-    .attr("transform", "translate(" + rx + "," + ry + ")");
+      var svg = div.append("svg:svg")
+      .attr("width", w)
+      .attr("height", w)
+      .append("svg:g")
+      .attr("transform", "translate(" + rx + "," + ry + ")");
 
-svg.append("svg:path")
-    .attr("class", "arc")
-    .attr("d", d3.svg.arc().outerRadius(ry - 180).innerRadius(0).startAngle(0).endAngle(2 * Math.PI))
-    .on("mousedown", mousedown);
+      svg.append("svg:path")
+      .attr("class", "arc")
+      .attr("d", d3version3.svg.arc().outerRadius(ry - 180).innerRadius(0).startAngle(0).endAngle(2 * Math.PI))
+      .on("mousedown", mousedown);
 
-//d3.json("flare-imports.json", function(classes) {
-//d3.json("data/mini.json", function(classes) {
-//d3.json("data/my_input3.json", function(classes) {
-d3.json("data/mini.json", function(classes) {
+      //d3version3.json("flare-imports.json", function(classes) {
+      //d3version3.json("data/mini.json", function(classes) {
+      //d3version3.json("data/my_input3.json", function(classes) {
+      d3version3.json("data/mini.json", function(classes) {
 
-    var nodes = cluster.nodes(packages.root(classes)),
+      var nodes = cluster.nodes(packages.root(classes)),
         //links = packages.imports(nodes), // NOMBRE de las conexiones imports(nodes),
         links = packages.imports(nodes),
         splines = bundle(links);
 
-    var path = svg.selectAll("path.link")
+      var path = svg.selectAll("path.link")
         .data(links)
       .enter().append("svg:path")
         .attr("class", function(d) {
@@ -451,7 +468,7 @@ d3.json("data/mini.json", function(classes) {
         })
         .attr("d", function(d, i) { return line(splines[i]); });
 
-    var groupData = svg.selectAll("g.group")
+      var groupData = svg.selectAll("g.group")
       .data(nodes.filter(function(d) {
           //return (d.key=='ODS_16_9' || d.key == 'ODS_3' || d.key == 'ODS_4' || d.key == 'ODS_16'
           //|| d.key == 'PND_1_1') && d.children;
@@ -467,20 +484,20 @@ d3.json("data/mini.json", function(classes) {
           }
           return root_list.includes(d.key) && d.children;
       }))
-    .enter().append("group")
+      .enter().append("group")
       .attr("class", "group");
 
-    var groupArc = d3.svg.arc()
-    .innerRadius(ry - 177)
-    .outerRadius(ry - 157)
-  	//.padAngle(.02)
-    .startAngle(function(d) { return (findStartAngle(d.__data__.children) - 2) * pi / 180;})
-    .endAngle(function(d) { return (findEndAngle(d.__data__.children) + 2) * pi / 180});
+      var groupArc = d3version3.svg.arc()
+      .innerRadius(ry - 177)
+      .outerRadius(ry - 157)
+      //.padAngle(.02)
+      .startAngle(function(d) { return (findStartAngle(d.__data__.children) - 2) * pi / 180;})
+      .endAngle(function(d) { return (findEndAngle(d.__data__.children) + 2) * pi / 180});
 
-    var nODS = 17;
-    var nPND = 4*4;
-    /*
-    var colorScaleArc = d3.scale.quantize()
+      var nODS = 17;
+      var nPND = 4*4;
+      /*
+      var colorScaleArc = d3version3.scale.quantize()
       //.domain([0,3])
       .domain([0,6])
       .range(["#FF0000", // Grupo 0 (fill: rgb(255, 0, 0); fill-opacity: 0.5;)
@@ -537,7 +554,7 @@ d3.json("data/mini.json", function(classes) {
                       }
 
                       // ODS COLORS
-                      //"123858","DC022F", "D4972D", "3F9336", "B80B24", "E72823", "26B2E0", "F9B912", "900B35", "EC5324", "D30055",
+                      //"123858","DC022F", "D4972D", "3F9336", "B80B24", "E72823", "26B2E0", "F9B912", "900B35", "EC5324", "d3version30055",
                       //"F48B21", "B07B22", "336E36", "1D83CA", "4BB037", "13558D",
                       // PND COLORS
                       //"F2B729","F1B629", "F2B628", "F2B729",
@@ -553,14 +570,14 @@ d3.json("data/mini.json", function(classes) {
                       return "00FF00"
                     }
 
-    svg.selectAll("g.arc")
-    .data(groupData[0])
-  .enter().append("svg:path")
-    .attr("d", groupArc)
-    .attr("class", "groupArc")
-    //.style("fill", "#1f77b4")
-    //.style("fill-opacity", 0.5);
-    .call(text => text.append("title").text( (d,i) =>
+      svg.selectAll("g.arc")
+      .data(groupData[0])
+      .enter().append("svg:path")
+      .attr("d", groupArc)
+      .attr("class", "groupArc")
+      //.style("fill", "#1f77b4")
+      //.style("fill-opacity", 0.5);
+      .call(text => text.append("title").text( (d,i) =>
       {
         N = d.__data__.children.length;
         msg = `${d.__data__.name} :
@@ -569,15 +586,15 @@ d3.json("data/mini.json", function(classes) {
           {msg+="s"}
         return  msg;
       }
-    ))
-    .style("fill", function(d, i) {
+      ))
+      .style("fill", function(d, i) {
       //console.log(i+": "+d.__data__.name);
       return colorScaleArc(d.__data__.name);
-    }) // ARCOS ROJOS
-    //.style("fill-opacity", 0.5);
-    .style("fill-opacity", 1);
+      }) // ARCOS ROJOS
+      //.style("fill-opacity", 0.5);
+      .style("fill-opacity", 1);
 
-    svg.selectAll("g.node")
+      svg.selectAll("g.node")
         .data(nodes.filter(function(n) { return !n.children; }))
       .enter().append("svg:g")
         .attr("class", "node")
@@ -593,56 +610,56 @@ d3.json("data/mini.json", function(classes) {
         .on("mouseout", mouseout)
         .on("click", clickfunction)
         .on("mousemove", function(){return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");});
-});
+      });
 
-d3.select(window)
-    .on("mousemove", mousemove)
-    .on("mouseup", mouseup);
+      d3version3.select(window)
+      .on("mousemove", mousemove)
+      .on("mouseup", mouseup);
 
-function mouse(e) {
-  return [e.pageX - rx, e.pageY - ry];
-}
-function clickfunction (e){
-  console.log(e);
-  str =  e.key
-  clickfunctionValue(str)
-  d3.select("#queryDays3").node().value = str
-}
+      function mouse(e) {
+      return [e.pageX - rx, e.pageY - ry];
+      }
+      function clickfunction (e){
+      console.log(e);
+      str =  e.key
+      clickfunctionValue(str)
+      d3version3.select("#queryDays3").node().value = str
+      }
 
 
-//function clickfunction (e){
-function clickfunctionValue (str){
-  //console.log(e.key);
-  //console.log(e);
-  console.log(str);
-  //str =  e.key
-  /*
-  sortAscending = true
-  if(str.startsWith("ODS")){
-    val = e.key
-  }else
-  if(str.startsWith("PND")){
-  val = e.key
-  }
-  else{
-    console.log("ERROR")
-  }
-  */
+      //function clickfunction (e){
+      function clickfunctionValue (str){
+      //console.log(e.key);
+      //console.log(e);
+      console.log(str);
+      //str =  e.key
+      /*
+      sortAscending = true
+      if(str.startsWith("ODS")){
+      val = e.key
+      }else
+      if(str.startsWith("PND")){
+      val = e.key
+      }
+      else{
+      console.log("ERROR")
+      }
+      */
 
-  // FILTRAR ROWS para == ekey
+      // FILTRAR ROWS para == ekey
 
-                      var table = d3.select('#myTable3')
+                      var table = d3version3.select('#myTable3')
                       var tbody = table.select('tbody');
                         var rows = tbody.selectAll('tr')
                         .each(function (d) {
-                           d3.select(this).style("visibility", function() {
+                           d3version3.select(this).style("visibility", function() {
                                return (true) ? "visible" : "hidden";
                            });
                        });
                        //tbody.selectAll('tr').selectAll(".FILA_1").style("visibility", function() {return true });
                          var rows = tbody.selectAll('tr')
                          .each(function (r) {
-                            d3.select(this).style("visibility", function() {
+                            d3version3.select(this).style("visibility", function() {
                                 //console.log(r) // AQUI AQUI
                                 //return (r.ODS_subgrupo == e.key || r.PND_subgrupo == e.key) ? "table-cell" : "collapse";
                                 return (r.ODS_subgrupo == str || r.PND_subgrupo == str) ? "table-cell" : "collapse";
@@ -650,10 +667,10 @@ function clickfunctionValue (str){
                             });
                         });
 
-/*
+      /*
                         if (sortAscending) {
                             rows.sort(function(a, b) {
-                              return d3.ascending(b[val], a[val]);
+                              return d3version3.ascending(b[val], a[val]);
                             });
                             sortAscending = false;
                             this.className = 'aes';
@@ -662,40 +679,40 @@ function clickfunctionValue (str){
 
                         }
                         else {
-                            rows.sort(function(a, b) { return d3.descending(b[val], a[val]); });
+                            rows.sort(function(a, b) { return d3version3.descending(b[val], a[val]); });
                             sortAscending = true;
                             this.className = 'des';
 
                                 rows.sort(function(a, b) { return (b[k] / b.Total) - (a[k] / a.Total); });
                             }*/
                             rows.sort(function(a, b) {
-                              return d3.ascending(a[val], b[val]);
+                              return d3version3.ascending(a[val], b[val]);
                             })
 
-/************************************************************************************************************
+      /************************************************************************************************************
 
-AGREGAR ID AL EVENTO
- {name: "root.Jobs.Bayard", relation: "Total", imports: Array(3), parent: {…}, key: "Bayard", …}
-FILTRAR CLASS == ID
-*************************************************************************************************************/
+      AGREGAR ID AL EVENTO
+      {name: "root.Jobs.Bayard", relation: "Total", imports: Array(3), parent: {…}, key: "Bayard", …}
+      FILTRAR CLASS == ID
+      *************************************************************************************************************/
 
-}
-function mousedown() {
-  m0 = mouse(d3.event);
-  d3.event.preventDefault();
-}
+      }
+      function mousedown() {
+      m0 = mouse(d3version3.event);
+      d3version3.event.preventDefault();
+      }
 
-function mousemove() {
-  if (m0) {
-    var m1 = mouse(d3.event),
+      function mousemove() {
+      if (m0) {
+      var m1 = mouse(d3version3.event),
         dm = Math.atan2(cross(m0, m1), dot(m0, m1)) * 180 / Math.PI;
-    div.style("-webkit-transform", "translate3d(0," + (ry - rx) + "px,0)rotate3d(0,0,0," + dm + "deg)translate3d(0," + (rx - ry) + "px,0)");
-  }
-}
+      div.style("-webkit-transform", "translate3d(0," + (ry - rx) + "px,0)rotate3d(0,0,0," + dm + "deg)translate3d(0," + (rx - ry) + "px,0)");
+      }
+      }
 
-function mouseup() {
-    if (m0) {
-        var m1 = mouse(d3.event),
+      function mouseup() {
+      if (m0) {
+        var m1 = mouse(d3version3.event),
             dm = Math.atan2(cross(m0, m1), dot(m0, m1)) * 180 / Math.PI;
 
         rotate += dm;
@@ -710,33 +727,33 @@ function mouseup() {
             .attr("dx", function(d) { return (d.x + rotate) % 360 < 180 ? 25 : -25; })
             .attr("text-anchor", function(d) { return (d.x + rotate) % 360 < 180 ? "start" : "end"; })
             .attr("transform", function(d) { return (d.x + rotate) % 360 < 180 ? null : "rotate(180)"; });
-    }
-}
+      }
+      }
 
-var tooltip = d3.select("body")
-	.append("div")
-  .attr("class", "tooltip")
-	.style("position", "absolute")
-	.style("z-index", "10")
-	.style("visibility", "hidden");//.text("Tooltip");
-  //.html('<h1>ALGO</h1>'+'Otro<br />asd');
+      var tooltip = d3version3.select("body")
+      .append("div")
+      .attr("class", "tooltip")
+      .style("position", "absolute")
+      .style("z-index", "10")
+      .style("visibility", "hidden");//.text("Tooltip");
+      //.html('<h1>ALGO</h1>'+'Otro<br />asd');
 
-function mouseover(d) {
-  //console.log(d)
-  //link source-ODS_16.9 target-PND_1.1.1 relation_Parcial
-    svg.selectAll("path.link.target-" + d.key)
+      function mouseover(d) {
+      //console.log(d)
+      //link source-ODS_16.9 target-PND_1.1.1 relation_Parcial
+      svg.selectAll("path.link.target-" + d.key)
         .classed("target", true)
         .each(updateNodes("source", true));
 
-    svg.selectAll("path.link.source-" + d.key)
+      svg.selectAll("path.link.source-" + d.key)
         .classed("source", true)
         .each(updateNodes("target", true));
 
         // SECCION TOOLTIP
-if(false){
+      if(false){
       var msg = "<ul>";
       var node = (svg.selectAll("path.link.source-" + d.key)).filter(function(d2){
-          msa = d3.select(this).attr('class');
+          msa = d3version3.select(this).attr('class');
           msa.split(" ").forEach(function(a) {
             class_name = "target-";
             if(a != "link" && (a.includes(class_name)))
@@ -745,7 +762,7 @@ if(false){
         }); // filter
 
       var node = (svg.selectAll("path.link.target-" + d.key)).filter(function(d2){
-          msa = d3.select(this).attr('class');
+          msa = d3version3.select(this).attr('class');
           msa.split(" ").forEach(function(a) {
             class_name = "source-";
             if(a != "link" && (a.includes(class_name)))
@@ -761,60 +778,60 @@ if(false){
         }
         return tooltip.style("visibility", "visible");}
 
-}
+      }
 
-function mouseout(d) {
-    svg.selectAll("path.link.source-" + d.key)
+      function mouseout(d) {
+      svg.selectAll("path.link.source-" + d.key)
         .classed("source", false)
         .each(updateNodes("target", false));
 
-    svg.selectAll("path.link.target-" + d.key)
+      svg.selectAll("path.link.target-" + d.key)
         .classed("target", false)
         .each(updateNodes("source", false));
-    return tooltip.style("visibility", "hidden");
-}
+      return tooltip.style("visibility", "hidden");
+      }
 
-function updateNodes(name, value) {
-  return function(d) {
-    //console.log(name)
+      function updateNodes(name, value) {
+      return function(d) {
+      //console.log(name)
       //console.log(d)
         //console.log(value)
-    if (value) this.parentNode.appendChild(this);
-    svg.select("#node-" + d[name].key).classed(name, value);
-    svg.select("#node-" + d[name].key).classed("relation_"+d["relation"], value); // AQUI
-  };
-}
+      if (value) this.parentNode.appendChild(this);
+      svg.select("#node-" + d[name].key).classed(name, value);
+      svg.select("#node-" + d[name].key).classed("relation_"+d["relation"], value); // AQUI
+      };
+      }
 
-function cross(a, b) {
-  return a[0] * b[1] - a[1] * b[0];
-}
+      function cross(a, b) {
+      return a[0] * b[1] - a[1] * b[0];
+      }
 
-function dot(a, b) {
-  return a[0] * b[0] + a[1] * b[1];
-}
+      function dot(a, b) {
+      return a[0] * b[0] + a[1] * b[1];
+      }
 
-function findStartAngle(children) {
-    var min = children[0].x;
-    children.forEach(function(d) {
+      function findStartAngle(children) {
+      var min = children[0].x;
+      children.forEach(function(d) {
        if (d.x < min)
            min = d.x;
-    });
-    return min;
-}
+      });
+      return min;
+      }
 
-function findEndAngle(children) {
-    var max = children[0].x;
-    children.forEach(function(d) {
+      function findEndAngle(children) {
+      var max = children[0].x;
+      children.forEach(function(d) {
        if (d.x > max)
            max = d.x;
-    });
-    return max;
-}
-///////////////////
+      });
+      return max;
+      }
+      ///////////////////
 
 
-    </script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-  </body>
-</html>
+      </script>
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+      </body>
+      </html>
