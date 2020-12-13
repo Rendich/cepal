@@ -43,7 +43,7 @@
                 </div>
               </div>
 
-              
+
               <h2>Plan Nacional de Desarrollo de Paraguay (PND)</h2>
               <p>Haz click en las secciones de colores del gráfico de la izquierda para conocer cómo se compone el Plan Nacional de Desarrollo de Paraguay (PND).
               </p>
@@ -1311,9 +1311,10 @@
                 .classed("source", true)
                 .each(updateNodes("target", true));
 
-                // SECCION TOOLTIP
 
-              var msg = "<ul>";
+                        // SECCION TOOLTIP
+                if(false){
+                      var msg = "<ul>";
               var node = (svg.selectAll("path.link.source-" + d.key)).filter(function(d2){
                   msa = d3version3.select(this).attr('class');
                   msa.split(" ").forEach(function(a) {
@@ -1339,6 +1340,7 @@
                   tooltip.html( d.key+' tiene <b>'+N+'</b> conexiones'+ msg+"</li>" );
                 }
                 return tooltip.style("visibility", "visible");
+              }
 
         }
 
