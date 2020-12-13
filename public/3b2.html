@@ -220,23 +220,24 @@ d3.json("data/mini.json", function(classes) {
                     var colorScaleArc = function(d) {
                       //ODS_16
                       color_hash = {
-                        "ODS_1":"123858",
-                        "ODS_2":"DC022F",
-                        "ODS_3":"D4972D",
-                        "ODS_4":"3F9336",
-                        "ODS_5":"B80B24",
-                        "ODS_6":"E72823",
-                        "ODS_7":"26B2E0",
-                        "ODS_8":"F9B912",
-                        "ODS_9":"900B35",
-                        "ODS_10":"EC5324",
-                        "ODS_11":"D30055",
-                        "ODS_12":"F48B21",
-                        "ODS_13":"B07B22",
-                        "ODS_14":"336E36",
-                        "ODS_15":"1D83CA",
-                        "ODS_16":"4BB037",
-                        "ODS_17":"13558D",
+                        //"ODS_1":"123858",
+                        "ODS_1":"DC022F",
+                        "ODS_2":"D4972D",
+                        "ODS_3":"3F9336",
+                        "ODS_4":"B80B24",
+                        "ODS_5":"E72823",
+                        "ODS_6":"26B2E0",
+                        "ODS_7":"F9B912",
+                        "ODS_8":"900B35",
+                        "ODS_9":"EC5324",
+                        "ODS_10":"D30055",
+                        "ODS_11":"F48B21",
+                        "ODS_12":"B07B22",
+                        "ODS_13":"336E36",
+                        "ODS_14":"1D83CA",
+                        "ODS_15":"4BB037",
+                        "ODS_16":"13558D",
+                        "ODS_17":"123858",
 
                         "PND_1_1":"F2B729",
                         "PND_1_2":"F1B629",
@@ -269,7 +270,7 @@ d3.json("data/mini.json", function(classes) {
                       //"F1B628", "E65631", "E55530", "508730"
                       //console.log("---"+i)
                       c = color_hash[d]
-                      //console.log(c)
+                      console.log(d+" -> "+c)
 
                       if(c)
                       {return c}
@@ -297,7 +298,8 @@ d3.json("data/mini.json", function(classes) {
       //console.log(i+": "+d.__data__.name);
       return colorScaleArc(d.__data__.name);
     }) // ARCOS ROJOS
-    .style("fill-opacity", 0.5);
+    //.style("fill-opacity", 0.5);
+    .style("fill-opacity", 1);
 
     svg.selectAll("g.node")
         .data(nodes.filter(function(n) { return !n.children; }))
