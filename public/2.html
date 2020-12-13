@@ -292,8 +292,10 @@
         };
 
         const svg = d3.select('#partitionSVG').append('svg')
-                .style('width', '100vw')
-                .style('height', '100vh')
+                //.style('width', '100vw')
+                //.style('height', '100vh')
+                .style('width', '100%')
+                .style('height', '100%')
             .attr('viewBox', `${-width / 3} ${-height / 3} ${2/3*width} ${2/3*height}`)
             .on('click', () => focusOn()); // Reset zoom on canvas click
 

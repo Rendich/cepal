@@ -13,13 +13,80 @@
     <link type="text/css" rel="stylesheet" href="css/style3.css"/>
     <title>Versión 2 - Ricardo Rendich</title>
 
+        <style>
+        html {
+          scroll-behavior: smooth;
+        }
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background: #ddd;
+  color: black;
+}
+.main {
+}
+.section{
+  margin-top: 20px
+}a.anchor {
+    display: block;
+    position: relative;
+    top: -550px;
+    visibility: hidden;
+}
+footer{
+
+    background-color: black;
+    /*
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    color: white;*/
+
+
+
+             position:fixed;
+                      /*position:absolute;*/
+         bottom:0px;
+         width: 100%;
+         color: white;
+         left:0px;
+}
+        </style>
 
   </head>
   <body>
+    <div class="navbar">
+      <a href="#ODS">Objetivos de Desarrollo Sustentable (ODS)</a>
+      <a href="#PND">Plan Nacional de Desarrollo de Paraguay (PND)</a>
+      <a href="#relaciones">Relaciones entre ODS y PND</a>
+    </div>
 
 
-          <div class="container-fluid">
-              <h2>Objetivos de Desarrollo Sustentable (ODS)</h2>
+          <div class="container-fluid main">
+
+
+              <!--h2 class="section" id="ODS">Objetivos de Desarrollo Sustentable (ODS)</h2-->
+              <a name="myanchor" id="ODS">
+                <h1 style="padding-top: 100px;">Objetivos de Desarrollo Sustentable (ODS)</h1>
+            </a>
               <p>Haz click en las secciones de colores del gráfico de la izquierda para conocer cómo se componen los distintos Objetivos de Desarrollo Sustentable.
               </p>
               <p>Para volver al nivel anterior, haz click en el centro del mismo gráfico.
@@ -44,7 +111,10 @@
               </div>
 
 
-              <h2>Plan Nacional de Desarrollo de Paraguay (PND)</h2>
+              <!--h2 class="section" id="PND">Plan Nacional de Desarrollo de Paraguay (PND)</h2-->
+              <a name="myanchor" id="PND">
+                <h1 style="padding-top: 100px;">Plan Nacional de Desarrollo de Paraguay (PND)</h1>
+            </a>
               <p>Haz click en las secciones de colores del gráfico de la izquierda para conocer cómo se compone el Plan Nacional de Desarrollo de Paraguay (PND).
               </p>
               <p>Para volver al nivel anterior, haz click en el centro del mismo gráfico.
@@ -73,9 +143,10 @@
 
 
 
-              <h2>Relaciones entre ODS y PND</h2>
-              <br />
-              <br />
+              <!--h2 class="section" id="relaciones">Relaciones entre ODS y PND</h2-->
+              <a name="myanchor" id="relaciones">
+                <h1 style="padding-top: 100px;">Relaciones entre ODS y PND</h1>
+            </a>
               <p>El gráfico de la izquierda muestra las relaciones de los Objetivos de Desarrollo Sustentable (ODS) con el Plan Nacional de Desarrollo (PND).</p>
               <p>Pasa el mouse sobre los distintos textos para destacar las relaciones, o haz click en ellos para mostrar la lista en la tabla de la derecha.</p>
               <p>El color amarillo (<span class='block_relation_Parcial'>&#9634;</span>) indica una vinculación parcial, mientras que el color color rojo (<span class='block_relation_Total'>&#9634;</span>) indica una vinculación total.</p>
@@ -90,6 +161,9 @@
                 </div>
               </div>
             </div>
+      <footer class="text-center">
+        Sitio desarrollado por Ricardo Rendich
+      </footer>
 
 
       <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -359,8 +433,10 @@
                 const svg = d3version4.select('#partitionSVG1').append('svg')
                         //.style('width', '100vw')
                         //.style('height', '100vh')
-                        .style('width', '700px')
-                        .style('height', '700px')
+                        //.style('width', '700px')
+                        //.style('height', '700px')
+                        .style('width', '100%')
+                        .style('height', '100%')
                     .attr('viewBox', `${-width / 3} ${-height / 3} ${2/3*width} ${2/3*height}`)
                     .on('click', () => focusOn()); // Reset zoom on canvas click
 
@@ -772,8 +848,10 @@
                 const svg = d3version4.select('#partitionSVG2').append('svg')
                         //.style('width', '100vw')
                         //.style('height', '100vh')
-                        .style('width', '700')
-                        .style('height', '700')
+                        //.style('width', '700')
+                        //.style('height', '700')
+                        .style('width', '100%')
+                        .style('height', '100%')
                     .attr('viewBox', `${-width / 3} ${-height / 3} ${2/3*width} ${2/3*height}`)
                     .on('click', () => focusOn()); // Reset zoom on canvas click
 
@@ -1396,6 +1474,8 @@
         // test it worked
         console.log('v3', d3version3.version)
         console.log('v4', d3version4.version)
+        ///
+
       </script>
       <script type="text/javascript" src="libs/packages.js"></script>
       <!--script type="text/javascript" src="data/script3C.js"></script-->
