@@ -488,7 +488,7 @@ footer{
 
                     //newSlice.append('title').text(d => d.data.name + '\n' + formatNumber(d.value));
                     newSlice.append('title')
-                        .text(d => d.data.name );
+                        .text(d => "Metas ODS " + d.data.name );
 
                         // Option 1: provide color names:
                         var myColor1 = d3version4.scaleOrdinal().domain(d3version4.range(17))
@@ -668,8 +668,8 @@ footer{
                .data(expensesByName)
                .enter()
              .append('optgroup')
-               .attr('value',function (d) { return d.key })
-               .attr('label',function (d) { return d.key})
+               .attr('value',function (d) { return d.key.replace("_", " ") })
+               .attr('label',function (d) { return d.key.replace("_", " ")})
              .selectAll('option')
                .data(function (d) { return d.values })
                //.data(d3version4.map(expensesByName, function(d){return d.values;}).keys())
@@ -902,7 +902,7 @@ footer{
 
                     //newSlice.append('title').text(d => d.data.name + '\n' + formatNumber(d.value));
                     newSlice.append('title')
-                        .text(d => d.data.name );
+                        .text(d => "Objetivos " + d.data.name.replace("_", " ") );
 
                         // Option 1: provide color names:
                         var myColor2 = d3version4.scaleOrdinal().domain(d3version4.range(17))
@@ -947,7 +947,7 @@ footer{
                     text.append('textPath')
                         .attr('startOffset','50%')
                         .attr('xlink:href', (_, i) => `#hiddenArc${i}` )
-                        .text(d => d.data.name)
+                        .text(d => d.data.name.replace("_", " "))
                         .style('fill', 'none')
                         .style('stroke', '#fff')
                         .style('stroke-width', 5)
@@ -956,7 +956,7 @@ footer{
                     text.append('textPath')
                         .attr('startOffset','50%')
                         .attr('xlink:href', (_, i) => `#hiddenArc${i}` )
-                        .text(d => d.data.name);
+                        .text(d => d.data.name.replace("_", " "));
                 });
 
                         function paint(d){
@@ -1303,7 +1303,7 @@ footer{
                                                                                                            }
 
                                         )*/
-                                                      console.log(expensesByName)
+                                                      //console.log(expensesByName)
                                                       /*
                                                       expensesByName.forEach(function(e){
                                                           //console.log(e.key)
@@ -1342,7 +1342,7 @@ footer{
                 .attr('value',function (d) { return d.key })
                 .attr('label',function (d) {
                   //console.log(d)
-                   return d.key})
+                   return d.key.replace("_", " ").replace("_", " ")})
                 .selectAll('option')
                 .data(function (d) { return d.values })
                 //.data(d3version3.map(expensesByName, function(d){return d.values;}).keys())
@@ -1569,7 +1569,7 @@ footer{
                 .call(text => text.append("title").text( (d,i) =>
                 {
                   N = d.__data__.children.length;
-                  msg = `${d.__data__.name} :
+                  msg = `${d.__data__.name.replace("_", " ").replace("_", " ")} :
                   Se compone de ${N} elemento`
                   if(N>1)
                     {msg+="s"}
