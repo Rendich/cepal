@@ -293,7 +293,7 @@ d3.json("data/mini.json", function(classes) {
     ))
     .style("fill", function(d, i) {
       //console.log(i+": "+d.__data__.name);
-      return colorScaleArc(d.__data__.name);
+      return "#"+colorScaleArc(d.__data__.name);
     }) // ARCOS ROJOS
     .style("fill-opacity", 0.5);
 

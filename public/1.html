@@ -284,10 +284,8 @@
         };
 
         const svg = d3.select('#partitionSVG1').append('svg')
-                //.style('width', '100vw')
-                //.style('height', '100vh')
-                .style('width', '100%')
-                .style('height', '100%')
+                .style('width', '100vw')
+                .style('height', '100vh')
             .attr('viewBox', `${-width / 3} ${-height / 3} ${2/3*width} ${2/3*height}`)
             .on('click', () => focusOn()); // Reset zoom on canvas click
 
@@ -346,8 +344,8 @@
                       //console.log(d.data.name.indexOf("."))
                       val = d.data.ods_class
                       //console.log(val)
-                      return myColor(val) })
-                    //color2((d.children ? d : d.parent).data.name))
+                      return "#"+ myColor(val) })
+                    //color2((d.children ? d : d.parent).data.name)
                     .attr('d', arc);
 
 /*
