@@ -121,11 +121,27 @@ var w = 740,
 
 var splines = [];
 
+console.log(parseInt("1"))
+console.log(parseInt("b"))
+console.log(parseInt("2"))
+console.log(parseInt("3"))
+console.log(parseInt("a"))
+
 var cluster = d3.layout.cluster()
     .size([360, ry - 180])
     // http://bl.ocks.org/mayblue9/dcc49ef6e3888f37f755177c4a248f2c ORDENAR
-    .sort(function(a, b) { //console.log(a.key +" - "+ b.key);
-    return d3.ascending(a.key, b.key);
+    .sort(function(a, b) {
+      //console.log(a.key +" - "+ b.key);
+      A = a.key.split("_");
+      B = b.key.split("_");
+
+            return d3.ascending( A[0],B[0] ) ||
+                  d3.ascending(parseInt(A[1]), parseInt(B[1])) ||
+                  d3.ascending(parseInt(A[2]), parseInt(B[2])) ||
+                  d3.ascending((A[2]), (B[2])) ||
+                  d3.ascending(parseInt(A[3]), parseInt(B[3])) ||
+                  d3.ascending((A[3]), (B[3]));
+
   });
 
 var bundle = d3.layout.bundle();
@@ -154,7 +170,7 @@ svg.append("svg:path")
 
 //d3.json("flare-imports.json", function(classes) {
 //d3.json("data/mini.json", function(classes) {
-d3.json("data/mini.json", function(classes) {
+d3.json("data/my_input3.json", function(classes) {
 
     var nodes = cluster.nodes(packages.root(classes)),
         //links = packages.imports(nodes), // NOMBRE de las conexiones imports(nodes),

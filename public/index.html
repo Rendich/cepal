@@ -1411,13 +1411,26 @@ footer{
                 .size([360, ry - 180])
                 // http://bl.ocks.org/mayblue9/dcc49ef6e3888f37f755177c4a248f2c ORDENAR
                 .sort(function(a, b) {
-                //console.log(a.key +" - "+ b.key);
-                //return d3version3.ascending(a.key, b.key);
-                A=a.key.split("_")
-                B=b.key.split("_")
-                return d3version3.ascending(A[0], B[0]) ||
-                d3version3.ascending(parseFloat(A[1]), parseFloat(B[1])) ||
-                d3version3.ascending(parseFloat(A[2]), parseFloat(B[2]));
+                    /*
+                  //console.log(a.key +" - "+ b.key);
+                  //return d3version3.ascending(a.key, b.key);
+                  A=a.key.split("_")
+                  B=b.key.split("_")
+                  return d3version3.ascending(A[0], B[0]) ||
+                  d3version3.ascending(parseFloat(A[1]), parseFloat(B[1])) ||
+                  d3version3.ascending(parseFloat(A[2]), parseFloat(B[2]));
+                  */
+
+
+                  A = a.key.split("_");
+                  B = b.key.split("_");
+
+                      return d3version3.ascending( A[0],B[0] ) ||
+                            d3version3.ascending(parseInt(A[1]), parseInt(B[1])) ||
+                            d3version3.ascending(parseInt(A[2]), parseInt(B[2])) ||
+                            d3version3.ascending((A[2]), (B[2])) ||
+                            d3version3.ascending(parseInt(A[3]), parseInt(B[3])) ||
+                            d3version3.ascending((A[3]), (B[3]));
                 });
 
                 var bundle = d3version3.layout.bundle();
