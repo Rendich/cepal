@@ -55,6 +55,14 @@
 footer{
 
     background-color: black;
+    /*
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    color: white;*/
+
+
 
              position:fixed;
                       /*position:absolute;*/
@@ -142,6 +150,10 @@ footer{
               </div>
 
 
+
+
+
+
               <!--h2 class="section" id="relaciones">Relaciones entre ODS y PND</h2-->
               <a name="myanchor" id="relaciones">
                 <h1 style="padding-top: 100px;">Relaciones entre ODS y PND</h1>
@@ -178,14 +190,31 @@ footer{
       <script type="text/javascript" src="https://www.google.com/jsapi"></script>
       <script type="text/javascript" src="js/bootstrap.min.js"></script>
 
-      <script src='libs/d3.v4.min.js'></script>
 
+      <!--script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.10.0/d3.min.js"></script>
+      <script>
+        d3version4 = d3
+        window.d3 = null
+      </script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+      <script>
+        d3version3 = d3
+        window.d3 = null
+        // test it worked
+        console.log('v3', d3version3.version)
+        console.log('v4', d3version4.version)
+      </script-->
+
+
+      <script src='libs/d3.v4.min.js'></script>
+      <!--script type="text/javascript" src="data/script2C.js"></script-->
       <script>
         d3version4 = d3
         window.d3 = null
         ////////
         function f1(){
-
+            //d3version4.csv("data/data2.csv", function(error, data) {
+            //d3version4.csv("data/my_input.csv", function(error, data) {
             d3version4.csv("data/my_input1.csv", function(error, data) {
 
                 var select = d3version4.select("#id_select")
@@ -202,6 +231,7 @@ footer{
                     function moveStackToFront(elD) {
                         console.log("SI2: " + elD);
                         svg.selectAll('.slice').filter(d => d.data.id == elD)
+                        //svg.selectAll('.slice').filter(d => d.value == elD)
                             .each(function(d) {
                                 //console.log("SI")
                                 focusOn(d)
@@ -212,6 +242,21 @@ footer{
                     .key(function(d) { return d.ODS_grupo; })
                       .key(function(d) { return d.ODS_subgrupo; })
                     .entries(data);
+                    //console.log(expensesByName)
+                    /*
+                    expensesByName.forEach((item, i) => {
+                      console.log(i+":")
+                      console.log(item)
+
+                      item.values.forEach((item2, i2) => {
+                        console.log(i2+":")
+                        console.log(item2)
+
+                      });
+                    });*/
+
+
+
 
                     select
           .selectAll('optgroup')
@@ -222,10 +267,12 @@ footer{
             .attr('label',function (d) { return d.key})
           .selectAll('option')
             .data(function (d) { return d.values })
+            //.data(d3version4.map(expensesByName, function(d){return d.values;}).keys())
 
             .enter()
           .append('option')
             .attr('value',function (d) { return d.key })
+            //.text(function (d) { return d })
           .text(function (d) {
 
             max_string = 80 //18 // CARACTERES DE CADA OPTION DEL SELECT (LARGO)
@@ -235,6 +282,7 @@ footer{
                else
                    return val;
 
+                   //console.log(d)
                    return val;
            });
 
@@ -268,6 +316,8 @@ footer{
                     .data(data)
                     .enter()
                   .append('tr').attr('class', function (d) {
+                    //console.log("267");
+                      //console.log(d);
                      //return "FILA_"+d.VALOR +" "+d.Grupo
                     return d.ODS_grupo +" "+d.ODS_subgrupo
                    }) //AQUI
@@ -284,7 +334,11 @@ footer{
                       })
                   })
                   .enter()
-                .append('td')
+                .append('td')/*
+                  .text(function (d) {
+                    //https://www.un.org/sustainabledevelopment/es/wp-content/uploads/sites/3/2016/01/S_SDG_Icons-01-12.jpg
+                    return d.value
+                  })*/
                     //.text(function (d, i) {if (i != 1 && i != 2) return d.value })
                     //.text(function (d, i) {if (i >0) return d.value })
                     .text(function (d, i) {if (i != 0 && i != 3) return d.value })
@@ -311,6 +365,10 @@ footer{
 
                 // https://www.stp.gov.py/v1/pnd-en-construccion/
                 	var imgData = [];
+                  //console.log(d)
+                  //console.log(d[i])
+                  //console.log(i)
+        //          console.log("---")
                   imgData.push(d.value);
                   //the_image = "https://www.un.org/sustainabledevelopment/es/wp-content/uploads/sites/3/2016/01/S_SDG_Icons-01-"
                   //if(d.value<10){the_image+="0"}
@@ -333,7 +391,12 @@ footer{
 
               return table;
             }
+            //d3version4.csv("data/data2.csv", function(error, data) {
             d3version4.csv("data/my_input1.csv", function(error, data) {
+              //const columns = ["VALOR",'Eje','Objetivo Estratégico','Objetivo PND','Indicadores']
+              //const columns = ['Eje','Objetivo Estratégico','Objetivo PND','Indicadores']
+              //const columns = ["Objetivo Estratégico","Objetivo PND","ODS","Meta ODS"]
+              //const columns = ["ODS","Meta ODS","Objetivo Estratégico","Objetivo PND", "PND_grupo"]
               const columns = ["ODS","Meta ODS","Objetivo PND", "PND_grupo"]
               tabulate(data,columns)
             });
@@ -389,6 +452,10 @@ footer{
                 };
 
                 const svg = d3version4.select('#partitionSVG1').append('svg')
+                        //.style('width', '100vw')
+                        //.style('height', '100vh')
+                        //.style('width', '700px')
+                        //.style('height', '700px')
                         .style('width', '100%')
                         .style('height', '100%')
                     .attr('viewBox', `${-width / 3} ${-height / 3} ${2/3*width} ${2/3*height}`)
@@ -398,8 +465,10 @@ footer{
                     if (error) throw error;
 
                     root = d3version4.hierarchy(root);
-
+                  	//console.log(root)
+                    //root.sum(d => d.value);
                     root.sum(d => d.value);
+                    //root.sum(d => d.id);
 
                     const slice = svg.selectAll('g.slice')
                         .data(partition(root).descendants());
@@ -410,8 +479,16 @@ footer{
                         .append('g').attr('class', 'slice')
                         .on('click', d => {
                             d3version4.event.stopPropagation();
+                            //if(d.value != d3version4.select("#queryDays").value){
                             if(d.data.id != d3version4.select("#queryDays").value){
+                              //console.log(d)
+                              //console.log("[376] "+d.data.id +" - "+d.value +" - "+ d3version4.select("#queryDays").node().value)
                               d3version4.select("#queryDays").node().value = d.data.id
+                              //console.log(d3version4.select("#queryDays").node().value)
+                              // PENDIENTE: AGREGAR GROUP
+                              //if(!d3version4.select("#queryDays").node().value)
+                              //{d3version4.select("#queryDays").node().value = d.data.id}
+
                               if(!d3version4.select("#queryDays").node().value)
                               {d3version4.select("#queryDays").node().value = 0}
                               paint(d)
@@ -419,6 +496,7 @@ footer{
                             focusOn(d);
                         });
 
+                    //newSlice.append('title').text(d => d.data.name + '\n' + formatNumber(d.value));
                     newSlice.append('title')
                         .text(d => "Metas ODS " + d.data.name );
 
@@ -429,6 +507,8 @@ footer{
                           "F48B21", "B07B22", "336E36", "1D83CA", "4BB037", "13558D","123858", "FFFFFF",
                         ])
 
+                        //svg.selectAll(".firstrow").data(data).enter().append("circle").attr("cx", function(d,i){return 30 + i*60}).attr("cy", 50).attr("r", 19).attr("fill", function(d){return myColor(d) })
+
                         newSlice.append('path')
                             .attr('class', 'main-arc')
                             .style('fill', function(d){
@@ -437,6 +517,14 @@ footer{
                               return "#"+myColor1(val) })
                             //color1((d.children ? d : d.parent).data.name))
                             .attr('d', arc);
+
+        /*
+                    newSlice.append('path')
+                        .attr('class', 'main-arc')
+                        .style('fill', d =>
+                        color1((d.children ? d : d.parent).data.name))
+                        .attr('d', arc);
+                        */
 
                     newSlice.append('path')
                         .attr('class', 'hidden-arc')
@@ -561,6 +649,29 @@ footer{
                     .entries(data);
                     //console.log(expensesByName)
 
+        /*
+                    select
+          .selectAll('optgroup')
+            .data(expensesByName)
+            .enter()
+          .append('optgroup')
+            .attr('value',function (d) { return d.key })
+            .attr('label',function (d) { return d.key})
+          .selectAll('option')
+            .data(function (d) { return d.values })
+            .enter()
+          .append('option')
+            //.attr('value',function (d) { return d.ODS_subgrupo })
+            .attr('value',function (d) { return d.PND_subgrupo })
+            //.text(function (d) { return d })
+          .text(function (d) {
+            max_string = 80 //18 // CARACTERES DE CADA OPTION DEL SELECT (LARGO)
+               if(d['Objetivo PND'].length > max_string)
+                   return d['Objetivo PND'].substring(0,max_string)+'...';
+               else
+                   return d['Objetivo PND'];
+           });*/
+
            select
              .selectAll('optgroup')
                .data(expensesByName)
@@ -599,12 +710,18 @@ footer{
               var thead = table.append('thead')
               var tbody = table.append('tbody')
 
+
+                //data = data
+                //.sort((a,b) => d3version4.ascending(a.PND_grupo, b.PND_grupo))
+
                 thead.append('tr')
                   .selectAll('th')
                     .data(columns)
                     .enter()
                   .append('th')
                     .text(function (d,i) {
+                      //console.log(["113"]+i)
+                      //if(i==3)
                       if(i==0)
                       {return "Objetivo Estratégico"}
 
@@ -631,7 +748,13 @@ footer{
                       })
                   })
                   .enter()
-                .append('td')
+                .append('td')/*
+                  .text(function (d) {
+                    //https://www.un.org/sustainabledevelopment/es/wp-content/uploads/sites/3/2016/01/S_SDG_Icons-01-12.jpg
+                    return d.value
+                  })*/
+                    //.text(function (d, i) {if (i != 1 && i != 2) return d.value })
+                    //.text(function (d, i) {if (i >0) return d.value })
                     .text(function (d, i) {if (i != 0 && i != 3) return d.value })
           	.each(function(d, i) {
           		//if (i == 0) {
@@ -656,8 +779,15 @@ footer{
               //if(i == 3){
               if(i == 0){
 
+                // https://www.stp.gov.py/v1/pnd-en-construccion/
                 	var imgData = [];
+                  //console.log(d)
+                  //console.log(d[i])
+                  //console.log(i)
+        //          console.log("---")
                   imgData.push(d.value);
+                  //the_image = "https://www.un.org/sustainabledevelopment/es/wp-content/uploads/sites/3/2016/01/S_SDG_Icons-01-"
+                  //if(d.value<10){the_image+="0"}
                   the_image="img/"+d.value;
                   //the_image="img/pnd1.1";
 
@@ -764,8 +894,14 @@ footer{
                             d3version4.event.stopPropagation();
                             //if(d.value != d3version4.select("#queryDays").value){
                             if(d.data.id != d3version4.select("#queryDays2").value){
+                              //console.log(d)
+                              //console.log("[376] "+d.data.id +" - "+d.value +" - "+ d3version4.select("#queryDays2").node().value)
+                              d3version4.select("#queryDays2").node().value = d.data.id
+                              //console.log(d3version4.select("#queryDays2").node().value)
+                              // PENDIENTE: AGREGAR GROUP
+                              //if(!d3version4.select("#queryDays").node().value)
+                              //{d3version4.select("#queryDays").node().value = d.data.id}
 
-                              d3version4.select("#queryDays2").node().value = d.data.id;
                               if(!d3version4.select("#queryDays2").node().value)
                               {d3version4.select("#queryDays2").node().value = 0}
                               paint(d)
@@ -786,6 +922,9 @@ footer{
                           "F1B628", "E65631", "E55530", "508730"
 
                         ])
+
+                        //svg.selectAll(".firstrow").data(data).enter().append("circle").attr("cx", function(d,i){return 30 + i*60}).attr("cy", 50).attr("r", 19).attr("fill", function(d){return myColor(d) })
+
                         newSlice.append('path')
                             .attr('class', 'main-arc')
                             .style('fill', function(d){
@@ -796,6 +935,14 @@ footer{
                               return "#"+myColor2(val) })
                             //color2((d.children ? d : d.parent).data.name))
                             .attr('d', arc);
+
+        /*
+                    newSlice.append('path')
+                        .attr('class', 'main-arc')
+                        .style('fill', d =>
+                        color2((d.children ? d : d.parent).data.name))
+                        .attr('d', arc);
+                        */
 
                     newSlice.append('path')
                         .attr('class', 'hidden-arc')
@@ -842,7 +989,10 @@ footer{
                                var rows = tbody.selectAll('tr')
                                .each(function (r) {
                                   d3version4.select(this).style("visibility", function() {
+                                      //console.log(r) // AQUI AQUI
+                                      //return (r.ODS_subgrupo == d.data.id || r.ODS_grupo == d.data.id) ? "table-cell" : "collapse";
                                       return (r.PND_subgrupo == d.data.id || r.PND_grupo == d.data.id) ? "table-cell" : "collapse";
+                                      //return (r.VALOR%2==0) ? "table-cell" : "collapse";
                                   });
                               });
 
@@ -912,7 +1062,12 @@ footer{
                           .data(data)
                           .enter()
                         .append('tr').attr('class', function (d) {
-                            return d.PND_subgrupo +" "+d.ODS_subgrupo
+                          //console.log(d)
+                          // Objetivo:
+                          // "Numero" de Objetivo PND. Es "1.1.1" de "1.1.1 Garantizar a toda la población el derecho universal a la identidad."
+                          // Meta:
+                          // "Numero" de Meta Meta ODS. Es "16.9" de "16.9 De aquí a 2030, proporcionar acceso a una identidad jurídica para todos, en particular mediante el registro de nacimientos."
+                          return d.PND_subgrupo +" "+d.ODS_subgrupo
                          }) //AQUI
                            .each(function (d) {
                               d3version3.select(this).style("visibility", "collapse");
@@ -977,13 +1132,69 @@ footer{
                             console.log("SI2: " + elD);
 
                             clickfunctionValue(elD)
+                /*
+                            svg.selectAll('.slice').filter(d => d.data.id == elD)
+                            //svg.selectAll('.slice').filter(d => d.value == elD)
+                                .each(function(d) {
+                                    //console.log("SI")
+                                    console.log("SI")
+                                    console.log(d)
+                                    //focusOn(d)
+                                    //paint(d)
+                                    clickfunctionValue(d)
+                                })
+                                */
 
+                // NUEVO -->
+                /*
+                                  var table = d3version3.select('#myTable3')
+                                  var tbody = table.select('tbody');
+                                    var rows = tbody.selectAll('tr')
+                                    .each(function (d) {
+                                       d3version3.select(this).style("visibility", function() {
+                                           return (true) ? "visible" : "hidden";
+                                       });
+                                   });
+                                   //tbody.selectAll('tr').selectAll(".FILA_1").style("visibility", function() {return true });
+                                     var rows = tbody.selectAll('tr')
+                                     .each(function (r) {
+                                        d3version3.select(this).style("visibility", function() {
+                                            //console.log(r) // AQUI AQUI
+                                            return (r.ODS_subgrupo == elD || r.PND_subgrupo == elD) ? "table-cell" : "collapse";
+                                            //return (r.VALOR%2==0) ? "table-cell" : "collapse";
+                                        });
+                                    });*/
+                // NUEVO <--
                           } // END function moveStackToFront(elD) {
 
                       });
                       var expensesByName = d3version3.nest()
+                        //.key(function(d) { return d.ODS_grupo; })
+                          //.key(function(d) { return d.ODS_subgrupo; })
+                          /*
+                            .key(function(d) { return d.ODS_grupo; }).sort(function(a, b){
 
+                              //return d3version3.ascending(a.key, b.key);
+                              console.log(a)
+                              console.log(b)
+
+                                                    A=a.key.split("_")
+                                                    B=b.key.split("_")
+
+                                                      A2=a.values//.split("_")
+                                                      B2=b.values//.split("_")
+                                                      console.log(A2)
+                                                      console.log(A2.key)
+                                                    return d3version3.ascending(A[0], B[0]) ||
+                                                   d3version3.ascending(parseFloat(A[1]), parseFloat(B[1])) ||
+                                                     d3version3.ascending(parseFloat(A[2]), parseFloat(B[2])) ||
+                                                       d3version3.ascending(A2.key,B2.key);
+
+                            })*/
                 .key(function(d) { return d.ODS_grupo; }).sortKeys(function(a,b) {
+                //console.log(a)
+                //console.log(b)
+
                                                         A=a.split("_")
                                                         B=b.split("_")
                                                       return d3version3.ascending(A[0], B[0]) ||
@@ -1003,9 +1214,37 @@ footer{
                                                                            d3version3.ascending(parseFloat(A[2]), parseFloat(B[2]))
                                                                            })
                         .entries(data);
+                        /*
+                        expensesByName = expensesByName.sort(function(a, b){
+
+                          //return d3version3.ascending(a.key, b.key);
+                          console.log(a)
+                          console.log(b)
+
+                                                A=a.key.split("_")
+                                                B=b.key.split("_")
+
+                                                  A2=a.values//.split("_")
+                                                  B2=b.values//.split("_")
+                                                  console.log(A2)
+                                                  console.log(A2.key)
+                                                return d3version3.ascending(A[0], B[0]) ||
+                                               d3version3.ascending(parseFloat(A[1]), parseFloat(B[1])) ||
+                                                 d3version3.ascending(parseFloat(A[2]), parseFloat(B[2])) ||
+                                                   d3version3.ascending(A2.key,B2.key);
+
+                        })*/
+
+                        //console.log(expensesByName)
 
                         var expensesByName2 = d3version3.nest()
+                          //.key(function(d) { return d.ODS_grupo; })
+                            //.key(function(d) { return d.ODS_subgrupo; })
+                              //.key(function(d) { return d.PND_grupo; })
+                                //.key(function(d) { return d.PND_subgrupo; })
                                   .key(function(d) { return d.PND_grupo; }).sortKeys(function(a,b) {
+                                    //console.log(a)
+                                      //console.log(b)
 
                                                                                 A=a.split("_")
                                                                                 B=b.split("_")
@@ -1014,8 +1253,11 @@ footer{
                                                                                d3version3.ascending(parseFloat(A[2]), parseFloat(B[2])) ||
                                                                                  d3version3.ascending(parseFloat(A[3]), parseFloat(B[3])) ||
                                                                                  d3version3.ascending(A2.key,B2.key);
+                                    //return ODS_grupo.indexOf(a) - ODS_grupo.indexOf(b);
                                   })
                                                       .key(function(d) { return d.PND_subgrupo; }).sortKeys(function(a,b) {
+                                                        //console.log(a)
+                                                          //console.log(b)
 
                                                                                                     A=a.split("_")
                                                                                                     B=b.split("_")
@@ -1056,6 +1298,49 @@ footer{
                                                     );
                                             //return ODS_grupo.indexOf(a) - ODS_grupo.indexOf(b);
                                           })
+                                          /*
+                                                              .key(function(d) { return d.PND_subgrupo; }).sortKeys(function(a,b) {
+                                                                //console.log(a)
+                                                                  //console.log(b)
+
+                                                                                                            A=a.split("_")
+                                                                                                            B=b.split("_")
+                                                                                                          return d3version3.ascending(A[0], B[0]) ||
+                                                                                                         d3version3.ascending(parseFloat(A[1]), parseFloat(B[1])) ||
+                                                                                                           d3version3.ascending(parseFloat(A[2]), parseFloat(B[2]))||
+                                                                                                             d3version3.ascending(parseFloat(A[3]), parseFloat(B[3]))
+                                                                                                           }
+
+                                        )*/
+                                                      //console.log(expensesByName)
+                                                      /*
+                                                      expensesByName.forEach(function(e){
+                                                          //console.log(e.key)
+                                                          e.values.forEach(function(e2){
+                                                              console.log("-- "+e2.key)
+                                                                  //console.log(e2)
+                                                              e2.values.forEach(function(e3){
+                                                                  console.log("---- "+e3["ODS_subgrupo"] + " " + e3["PND_subgrupo"] + " ")
+                                                                })
+                                                            })
+                                                        }
+                                                      )
+                                                      */
+                                                      /*
+
+                                        //str =  d.key
+                                        if(str.startsWith("ODS")){
+                                          val = d.values[0]["Meta ODS"]
+                                        }else
+                                        if(str.startsWith("PND")){
+                                        val = d.values[0]["Objetivo PND"]
+                                        }
+                                        else{
+                                          console.log("ERROR")
+                                        }*/
+
+                          //console.log(expensesByName)
+
 
 
                         select
@@ -1126,6 +1411,15 @@ footer{
                 .size([360, ry - 180])
                 // http://bl.ocks.org/mayblue9/dcc49ef6e3888f37f755177c4a248f2c ORDENAR
                 .sort(function(a, b) {
+                    /*
+                  //console.log(a.key +" - "+ b.key);
+                  //return d3version3.ascending(a.key, b.key);
+                  A=a.key.split("_")
+                  B=b.key.split("_")
+                  return d3version3.ascending(A[0], B[0]) ||
+                  d3version3.ascending(parseFloat(A[1]), parseFloat(B[1])) ||
+                  d3version3.ascending(parseFloat(A[2]), parseFloat(B[2]));
+                  */
 
 
                   A = a.key.split("_");
@@ -1270,6 +1564,15 @@ footer{
                                   "PND_4_4":"508730",
                                 }
 
+                                // ODS COLORS
+                                //"123858","DC022F", "D4972D", "3F9336", "B80B24", "E72823", "26B2E0", "F9B912", "900B35", "EC5324", "d3version30055",
+                                //"F48B21", "B07B22", "336E36", "1D83CA", "4BB037", "13558D",
+                                // PND COLORS
+                                //"F2B729","F1B629", "F2B628", "F2B729",
+                                //"F1B728", "1A3F7A", "1A3F79", "50872F",
+                                //"F2B729", "1A3F79", "1A3F79", "508730",
+                                //"F1B628", "E65631", "E55530", "508730"
+                                //console.log("---"+i)
                                 c = color_hash[d]
                                 //console.log(d+" -> "+c)
 
@@ -1340,7 +1643,19 @@ footer{
                 //console.log(e.key);
                 //console.log(e);
                 console.log(str);
-
+                //str =  e.key
+                /*
+                sortAscending = true
+                if(str.startsWith("ODS")){
+                val = e.key
+                }else
+                if(str.startsWith("PND")){
+                val = e.key
+                }
+                else{
+                console.log("ERROR")
+                }
+                */
 
                 // FILTRAR ROWS para == ekey
 
@@ -1363,9 +1678,34 @@ footer{
                                       });
                                   });
 
+                /*
+                                  if (sortAscending) {
+                                      rows.sort(function(a, b) {
+                                        return d3version3.ascending(b[val], a[val]);
+                                      });
+                                      sortAscending = false;
+                                      this.className = 'aes';
+
+                                          rows.sort(function(a, b) { return (b[k] / b.Total) - (a[k] / a.Total); });
+
+                                  }
+                                  else {
+                                      rows.sort(function(a, b) { return d3version3.descending(b[val], a[val]); });
+                                      sortAscending = true;
+                                      this.className = 'des';
+
+                                          rows.sort(function(a, b) { return (b[k] / b.Total) - (a[k] / a.Total); });
+                                      }*/
                                       rows.sort(function(a, b) {
                                         return d3version3.ascending(a[val], b[val]);
                                       })
+
+                /************************************************************************************************************
+
+                AGREGAR ID AL EVENTO
+                {name: "root.Jobs.Bayard", relation: "Total", imports: Array(3), parent: {…}, key: "Bayard", …}
+                FILTRAR CLASS == ID
+                *************************************************************************************************************/
 
                 }
                 function mousedown() {
@@ -1512,6 +1852,18 @@ footer{
       </script>
       <script type="text/javascript" src="libs/packages.js"></script>
       <!--script type="text/javascript" src="data/script3C.js"></script-->
+
+
+
+<!--
+
+<script type="text/javascript" src="libs/d3.v3.min.js"></script>
+<script type="text/javascript" src="data/script3.js"></script>
+
+  <script src='https://d3js.org/d3.v4.min.js'></script>
+  <script type="text/javascript" src="libs/packages.js"></script>
+<script type="text/javascript" src="data/script2.js"></script>
+ -->
 
 
  <!--script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script-->
