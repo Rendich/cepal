@@ -678,7 +678,6 @@ footer{
               return table;
             }
             d3version4.csv("data/my_input2.csv", function(error, data) {
-              //const columns = ["ODS","Meta ODS","Objetivo PND", "PND_grupo"]
               const columns = ["PND_grupo","Objetivo PND","Meta ODS", "ODS"]
               tabulate(data,columns)
             });
@@ -948,15 +947,12 @@ footer{
                   }
                   //d3version3.csv("data/data.csv", function(error, data) {
                   //d3version3.csv("data/data3.csv", function(error, data) {
+                  // Objetivo de Desarrollo Sustentable (ODS)
+                  // Plan Nacional de Desarrollo de Paraguay (PND)
                   d3version3.csv("data/my_input3.csv", function(error, data) {
-                    //const columns = ["VALOR",'Eje','Objetivo Estratégico','Objetivo PND','Indicadores']
-                    //const columns = ['Eje','Objetivo Estratégico','Objetivo PND','Indicadores']
-                    //const columns = ["Objetivo","Meta ODS", "Objetivo Estratégico","Vinculación","Problemática ODS","Acción ODS","Sujeto ODS"]
-                    //const columns = ["Meta ODS", "Objetivo Estratégico","Vinculación","Problemática ODS","Acción ODS","Sujeto ODS"]
-                    const columns = ["Meta ODS","Objetivo PND", //"PND_grupo",
+                    const columns = ["Meta ODS",
+                    "Objetivo PND",
                   "Vinculación",
-                  //"Problemática ODS",	"Acción ODS",	"Sujeto ODS"
-                  //Objetivo Estratégico	Objetivo PND	ODS	Meta ODS	PND_subgrupo	PND_grupo	ODS_grupo	ODS_subgrupo
                 ]
 
 
@@ -1036,16 +1032,7 @@ footer{
 
                                               A=a.key.split("_")
                                               B=b.key.split("_")
-                /*
-                                                                                  console.log(
-                                                                                    parseFloat(b.values.key.split("_")[2])
-                                                                                  )
-                                                                                                                      console.log(
-                                                                                                                        parseFloat(b.values.split("_")[2])
-                                                                                                                      )*/
 
-                                                                                  //A2=a.values.split("_")
-                                                                                  //B2=b.values.split("_")
                                             return d3version3.ascending(A[0], B[0]) ||
                                            d3version3.ascending(parseFloat(A[1]), parseFloat(B[1])) ||
                                              d3version3.ascending(parseFloat(A[2]), parseFloat(B[2])) ||
@@ -1100,8 +1087,6 @@ footer{
                 attr('selected', 'selected').
                 attr('value', 0). // REVISAR valor default
                 text('Filtrar')
-                    //Eje_n	Eje	Objetivo Estratégico	Objetivo PND	Sujeto PND 	Problemática PND	Acción PND	ODS	Meta	Meta ODS	Sujeto ODS	Problemática ODS	Acción ODS	Vinculación
-
                     tabulate3(data,columns)
                   });
                 ////
