@@ -1,151 +1,115 @@
-
-
 path.arc {
-cursor: move;
-fill: #fff;
+  cursor: move;
+  fill: #fff;
 }
-
 .node {
-font-size: 10px;
+  font-size: 10px;
 }
-
 .node:hover {
-/*fill: #BBBBBB;*/
-fill: #FF0000;
-fill: #000000;
-font-size: 15px; /*Fuente del nodo que pasa el mouse*/
+  fill: #FF0000;
+  fill: #000000;
+  font-size: 15px; /*Fuente del nodo que pasa el mouse*/
 }
-
 .link {
-fill: none;
-/*stroke: #1f77b4;*/
-/*stroke: #BBBBBB;*/
-stroke: #FF0000;
-stroke-opacity: .2;
-pointer-events: none;
+  fill: none;
+  stroke: #FF0000;
+  stroke-opacity: .2;
+  pointer-events: none;
 }
-
 .link.source, .link.target {
-stroke-opacity: 1;
-stroke-width: 2px;
+  stroke-opacity: 1;
+  stroke-width: 2px;
 }
-
-
 .node.source {
-fill: #000000;
-font-size: 15px; /*Fuente del nodo que CONECTA el que pasa el mouse*/
+  fill: #000000;
+  font-size: 15px; /*Fuente del nodo que CONECTA el que pasa el mouse*/
 }
 .node.target {
-fill: #000000 !important;
-font-size: 15px; /*Fuente del nodo que CONECTA el que pasa el mouse*/
+  fill: #000000 !important;
+  font-size: 15px; /*Fuente del nodo que CONECTA el que pasa el mouse*/
 }
-
 .link.source {
-stroke: #0000FF; /*CONEXION azul*/
-stroke: #FF8800; /*CONEXION naranja*/
+  stroke: #0000FF; /*CONEXION azul*/
+  stroke: #FF8800; /*CONEXION naranja*/
 }
 .link.target {
-stroke: #FF0000; /*CONEXION rojo*/
+  stroke: #FF0000; /*CONEXION rojo*/
 }
-
-
 div.tooltip {
   position: absolute;
-  /*text-align: center;*/
   width: 260px;
   height: 120px;
   padding: 2px;
   font: 12px sans-serif;
-  /*background: lightsteelblue;*/
   opacity: 1;
   border: 0px;
   border-radius: 8px;
 }
 /**************/
-
-  .bold-green-font {
-    font-weight: bold;
-    color: green;
-  }
-
-  .bold-font {
-    font-weight: bold;
-  }
-
-  .right-text {
-    text-align: right;
-  }
-
-  .large-font {
-    font-size: 15px;
-  }
-
-  .italic-darkblue-font {
-    font-style: italic;
-    color: darkblue;
-  }
-
-  .italic-purple-font {
-    font-style: italic;
-    color: purple;
-  }
-
-  .underline-blue-font {
-    text-decoration: underline;
-    color: blue;
-  }
-
-  .gold-border {
-    border: 3px solid gold;
-  }
-
-  .deeppink-border {
-    border: 3px solid deeppink;
-  }
-
-  .orange-background {
-    background-color: orange;
-  }
-
-  .orchid-background {
-    background-color: orchid;
-  }
-
-  .beige-background {
-    background-color: beige;
-  }
-
-
-    .relation_Total.link {
-    stroke: #FF0000; /*CONEXION rojo oscuro*/
-    }
-    .relation_Parcial.link {
-    stroke: #0000FF; /*CONEXION azul oscuro*/
-    }
-
-        .relation_Total.node {
-        stroke: #FF0000; /*CONEXION rojo oscuro*/
-        }
-        .relation_Parcial.node {
-        stroke: #0000FF  !important; /*CONEXION azul oscuro*/
-        }
-
-
-    .block_relation_Total {
-      background-color: #FF0000;
-    }
-
-    .block_relation_Parcial {
-      background-color: #0000FF;
-        background-color: #0000FF;
-    }
-
-        .background_relation_Total {
-          background-color: #FF0000 !important;
-            background-color:rgba(255, 0, 0, 0.2)  !important;
-        }
-
-        .background_relation_Parcial {
-            background-color: #0000FF !important;
-                background-color:rgba(0, 0, 255, 0.2)  !important;
-        }
+.bold-green-font {
+  font-weight: bold;
+  color: green;
+}
+.bold-font {
+  font-weight: bold;
+}
+.right-text {
+  text-align: right;
+}
+.large-font {
+  font-size: 15px;
+}
+.italic-darkblue-font {
+  font-style: italic;
+  color: darkblue;
+}
+.italic-purple-font {
+  font-style: italic;
+  color: purple;
+}
+.underline-blue-font {
+  text-decoration: underline;
+  color: blue;
+}
+.gold-border {
+  border: 3px solid gold;
+}
+.deeppink-border {
+  border: 3px solid deeppink;
+}
+.orange-background {
+  background-color: orange;
+}
+.orchid-background {
+  background-color: orchid;
+}
+.beige-background {
+  background-color: beige;
+}
+.relation_Total.link {
+  stroke: #FF0000; /*CONEXION rojo oscuro*/
+}
+.relation_Parcial.link {
+  stroke: #0000FF; /*CONEXION azul oscuro*/
+}
+.relation_Total.node {
+  stroke: #FF0000; /*CONEXION rojo oscuro*/
+}
+.relation_Parcial.node {
+  stroke: #0000FF  !important; /*CONEXION azul oscuro*/
+}
+.block_relation_Total {
+  background-color: #FF0000;
+}
+.block_relation_Parcial {
+  background-color: #0000FF;
+  background-color: #0000FF;
+}
+.background_relation_Total {
+  background-color: #FF0000 !important;
+  background-color:rgba(255, 0, 0, 0.2)  !important;
+}
+.background_relation_Parcial {
+  background-color: #0000FF !important;
+  background-color:rgba(0, 0, 255, 0.2)  !important;
+}
