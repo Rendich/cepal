@@ -163,63 +163,60 @@
         ////////
         function f1(){
 
-            d3version4.csv("data/my_input1.csv", function(error, data) {
-                var select = d3version4.select("#id_select")
-                  .append("div")
-                  .append("select").
-                  attr("class", "btn btn-danger").
-                  attr("id", "queryDays");
+          d3version4.csv("data/my_input1.csv", function(error, data) {
+            var select = d3version4.select("#id_select")
+              .append("div")
+              .append("select").
+              attr("class", "btn btn-danger").
+              attr("id", "queryDays");
 
-                select
-                  .on("change", function(d) {
-                    var v = d3version4.select(this).property("value");
-                    //console.log(v)
-                    moveStackToFront(v);
-                    function moveStackToFront(elD) {
-                        //console.log("SI2: " + elD);
-                        svg.selectAll('.slice').filter(d => d.data.id == elD)
-                            .each(function(d) {
-                                focusOn(d)
-                                paint(d)
-                            });
-                    }
-                  });
-                  var expensesByName = d3version4.nest()
-                    .key(function(d) { return d.ODS_grupo; })
-                      .key(function(d) { return d.ODS_subgrupo; })
-                    .entries(data);
+            select
+              .on("change", function(d) {
+                var v = d3version4.select(this).property("value");
+                //console.log(v)
+                moveStackToFront(v);
+                function moveStackToFront(elD) {
+                    //console.log("SI2: " + elD);
+                    svg.selectAll('.slice').filter(d => d.data.id == elD)
+                        .each(function(d) {
+                            focusOn(d)
+                            paint(d)
+                        });
+                }
+              });
+            var expensesByName = d3version4.nest()
+              .key(function(d) { return d.ODS_grupo; })
+                .key(function(d) { return d.ODS_subgrupo; })
+              .entries(data);
 
-                    select
-          .selectAll('optgroup')
-            .data(expensesByName)
-            .enter()
-          .append('optgroup')
-            .attr('value',function (d) { return d.key })
-            .attr('label',function (d) { return d.key})
-          .selectAll('option')
-            .data(function (d) { return d.values })
+            select
+              .selectAll('optgroup')
+                .data(expensesByName)
+                .enter()
+              .append('optgroup')
+                .attr('value',function (d) { return d.key })
+                .attr('label',function (d) { return d.key})
+              .selectAll('option')
+                .data(function (d) { return d.values })
+                .enter()
+              .append('option')
+                .attr('value',function (d) { return d.key })
+              .text(function (d) {
+                max_string = 80; //length of each option item in select
+                val = d.values[0]["Meta ODS"]
+                   if(val.length > max_string)
+                       return val.substring(0,max_string)+'...';
+                   else
+                       return val;
+               });
 
-            .enter()
-          .append('option')
-            .attr('value',function (d) { return d.key })
-          .text(function (d) {
+            select
+              .insert("option",":first-child")
+              .attr('selected', 'selected')
+              .attr('value', 0)
+              .text('Filtrar');
 
-            max_string = 80 //length of each option item in select
-            val = d.values[0]["Meta ODS"]
-               if(val.length > max_string)
-                   return val.substring(0,max_string)+'...';
-               else
-                   return val;
-
-                   return val;
-           });
-
-           select.insert("option",":first-child").
-           attr('selected', 'selected').
-           attr('value', 0).
-           text('Filtrar')
-
-          });
+         }); // d3version4.csv("data/my_input1.csv", function(error, data) {
 
           ///////////////////
           var tabulate = function (data,columns) {
@@ -248,7 +245,6 @@
                         d3version4.select(this).style("visibility", "collapse");
                     });
 
-
                 var cells = rows.selectAll('td')
                     .data(function(row, row_index) {
                         return columns.map(function (column, column_index) {
@@ -271,9 +267,7 @@
                   .attr("src", the_image+".jpg")
                   .attr("height", "110px")
                   .attr("width", "110px");
-              }
-              else
-              if(i == 3){
+              } else if(i == 3){
                 	var imgData = [];
                   imgData.push(d.value);
                   the_image="img/"+d.value;
@@ -285,17 +279,13 @@
                     .attr("src", the_image+".png")
                     .attr("height", "110px")
                     .attr("width", "110px");
-
-              }
-          	})
-
-                return table;
-
+                  }
+          	  });
               return table;
             }
             d3version4.csv("data/my_input1.csv", function(error, data) {
-              const columns = ["ODS","Meta ODS","Objetivo PND", "PND_grupo"]
-              tabulate(data,columns)
+              const columns = ["ODS","Meta ODS","Objetivo PND", "PND_grupo"];
+              tabulate(data,columns);
             });
         ////
         /************************************************************************************/
@@ -340,17 +330,15 @@
 
                 const textFits = d => {
                     const CHAR_SPACE = 6;
-
                     const deltaAngle = x(d.x1) - x(d.x0);
                     const r = Math.max(0, (y(d.y0) + y(d.y1)) / 2);
                     const perimeter = r * deltaAngle;
-
                     return d.data.name.length * CHAR_SPACE < perimeter;
                 };
 
                 const svg = d3version4.select('#partitionSVG1').append('svg')
-                        .style('width', '100%')
-                        .style('height', '100%')
+                    .style('width', '100%')
+                    .style('height', '100%')
                     .attr('viewBox', `${-width / 3} ${-height / 3} ${2/3*width} ${2/3*height}`)
                     .on('click', () => focusOn()); // Reset zoom on canvas click
 
@@ -371,10 +359,10 @@
                         .on('click', d => {
                             d3version4.event.stopPropagation();
                             if(d.data.id != d3version4.select("#queryDays").value){
-                              d3version4.select("#queryDays").node().value = d.data.id
+                              d3version4.select("#queryDays").node().value = d.data.id;
                               if(!d3version4.select("#queryDays").node().value)
-                              {d3version4.select("#queryDays").node().value = 0}
-                              paint(d)
+                              {d3version4.select("#queryDays").node().value = 0;}
+                              paint(d);
                             }
                             focusOn(d);
                         });
@@ -392,7 +380,7 @@
                             .attr('class', 'main-arc')
                             .style('fill', function(d){
                               val = d.data.ods_class
-                              return "#"+myColor1(val) })
+                              return "#"+myColor1(val); })
                             .attr('d', arc);
 
                     newSlice.append('path')
@@ -422,29 +410,27 @@
                         function paint(d){
                           const tds = d3version4.selectAll("td")
                             .each(function(x, y) {
-                              d3version4.select(this).style("background-color", this.innerHTML == d.data.id ? "yellow" : null)
+                              d3version4.select(this).style("background-color", this.innerHTML == d.data.id ? "yellow" : null);
                             })
 
-                            var table = d3version4.select('#myTable')
+                            var table = d3version4.select('#myTable');
                             var tbody = table.select('tbody');
-                              var rows = tbody.selectAll('tr')
+                            var rows = tbody.selectAll('tr')
                               .each(function (d) {
-                                 d3version4.select(this).style("visibility", function() {
-                                     return (true) ? "visible" : "hidden";
-                                 });
-                             });
+                                d3version4.select(this).style("visibility", function() {
+                                  return (true) ? "visible" : "hidden";
+                                });
+                              });
 
-                               var rows = tbody.selectAll('tr')
-                               .each(function (r) {
+                              var rows = tbody.selectAll('tr')
+                                .each(function (r) {
                                   d3version4.select(this).style("visibility", function() {
                                       return (r.ODS_subgrupo == d.data.id || r.ODS_grupo == d.data.id) ? "table-cell" : "collapse";
                                   });
                               });
-
                         }
                 function focusOn(d = { x0: 0, x1: 1, y0: 0, y1: 1 }) {
                     // Reset to top-level if no data point specified
-
                     const transition = svg.transition()
                         .duration(750)
                         .tween('scale', () => {
@@ -465,18 +451,16 @@
 
                 d3version4.select("#queryDays").on("change", function() {
                   var v = this.value;
-                  console.log(v)
+                  //console.log(v)
                   moveStackToFront(v);
                   function moveStackToFront(elD) {
-                      console.log("SI2: " + elD)
                       svg.selectAll('.slice').filter(d => d.id == elD)
-                          .each(function(d) {
-                              console.log("SI")
-                              focusOn(d)
-                              paint(d)
-                          })
+                        .each(function(d) {
+                            focusOn(d);
+                            paint(d);
+                        });
                   }
-                })
+                }) // d3version4.select("#queryDays").on("change", function() {
         }
         f1();
 
@@ -563,7 +547,6 @@
                         d3version4.select(this).style("visibility", "collapse");
                     });
 
-
                 var cells = rows.selectAll('td')
                     .data(function(row, row_index) {
                         return columns.map(function (column, column_index) {
@@ -586,9 +569,7 @@
                   .attr("src", the_image+".jpg")
                   .attr("height", "110px")
                   .attr("width", "110px");
-              }
-              else
-              if(i == 0){
+              } else if(i == 0){
                 	var imgData = [];
                   imgData.push(d.value);
                   the_image="img/"+d.value;
@@ -600,7 +581,6 @@
                     .attr("src", the_image+".png")
                     .attr("height", "110px")
                     .attr("width", "110px");
-
               }
           	});
             return table;
@@ -831,8 +811,6 @@
                 return table;
               } // var tabulate3 = function (data,columns) {
 
-              // Objetivo de Desarrollo Sostenible (ODS)
-              // Plan Nacional de Desarrollo de Paraguay (PND)
               d3version3.csv("data/my_input3.csv", function(error, data) {
                 const columns = ["Meta ODS",
                   "Objetivo PND",
@@ -857,8 +835,8 @@
                   });
                 var expensesByName = d3version3.nest()
                   .key(function(d) { return d.ODS_grupo; }).sortKeys(function(a,b) {
-                      A=a.split("_")
-                      B=b.split("_")
+                      A=a.split("_");
+                      B=b.split("_");
                       return d3version3.ascending(A[0], B[0]) ||
                       d3version3.ascending(parseFloat(A[1]), parseFloat(B[1])) ||
                       d3version3.ascending(parseFloat(A[2]), parseFloat(B[2])) ||
@@ -869,14 +847,14 @@
                       B=b.split("_")
                       return d3version3.ascending(A[0], B[0]) ||
                       d3version3.ascending(parseFloat(A[1]), parseFloat(B[1])) ||
-                      d3version3.ascending(parseFloat(A[2]), parseFloat(B[2]))
+                      d3version3.ascending(parseFloat(A[2]), parseFloat(B[2]));
                     })
                     .entries(data);
 
                 var expensesByName2 = d3version3.nest()
                   .key(function(d) { return d.PND_grupo; }).sortKeys(function(a,b) {
-                      A=a.split("_")
-                      B=b.split("_")
+                      A=a.split("_");
+                      B=b.split("_");
                       return d3version3.ascending(A[0], B[0]) ||
                       d3version3.ascending(parseFloat(A[1]), parseFloat(B[1])) ||
                       d3version3.ascending(parseFloat(A[2]), parseFloat(B[2])) ||
@@ -884,8 +862,8 @@
                       d3version3.ascending(A2.key,B2.key);
                   })
                   .key(function(d) { return d.PND_subgrupo; }).sortKeys(function(a,b) {
-                      A=a.split("_")
-                      B=b.split("_")
+                      A=a.split("_");
+                      B=b.split("_");
                       return d3version3.ascending(A[0], B[0]) ||
                       d3version3.ascending(parseFloat(A[1]), parseFloat(B[1])) ||
                       d3version3.ascending(parseFloat(A[2]), parseFloat(B[2]))||
@@ -895,8 +873,8 @@
                   expensesByName2.forEach(function(e) { expensesByName.push(e); });
 
                 expensesByName = expensesByName.sort(function(a,b) {
-                    A=a.key.split("_")
-                    B=b.key.split("_")
+                    A=a.key.split("_");
+                    B=b.key.split("_");
 
                     return d3version3.ascending(A[0], B[0]) ||
                     d3version3.ascending(parseFloat(A[1]), parseFloat(B[1])) ||
@@ -908,7 +886,6 @@
                     );
                 });
 
-
                 select
                   .selectAll('optgroup')
                   .data(expensesByName)
@@ -919,23 +896,20 @@
                      return d.key.replace("_", " ").replace("_", " ")})
                   .selectAll('option')
                   .data(function (d) { return d.values })
-
                   .enter()
                   .append('option')
                   .attr('value',function (d) { return d.key })
                   .text(function (d, i) {
                       str =  d.key
                       if(str.startsWith("ODS")){
-                        val = d.values[0]["Meta ODS"]
-                      }else
-                      if(str.startsWith("PND")){
-                      val = d.values[0]["Objetivo PND"]
+                        val = d.values[0]["Meta ODS"];
+                      }else if(str.startsWith("PND")){
+                        val = d.values[0]["Objetivo PND"];
                       }
                       else{
-                        console.log("ERROR")
+                        console.log("ERROR");
                       }
-
-                      max_string = 80 //length of each option item in select
+                      max_string = 80; //length of each option item in select
                       if(val.length > max_string)
                           return val.substring(0,max_string)+'...';
                       else
