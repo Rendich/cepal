@@ -117,7 +117,6 @@
         window.d3 = null
         ////////
         function f1(){
-
           d3version4.csv("data/my_input1.csv", function(error, data) {
             var select = d3version4.select("#id_select")
               .append("div")
@@ -897,7 +896,6 @@
 
             var cluster = d3version3.layout.cluster()
             .size([360, ry - 180])
-            // http://bl.ocks.org/mayblue9/dcc49ef6e3888f37f755177c4a248f2c ORDENAR
             .sort(function(a, b) {
               A = a.key.split("_");
               B = b.key.split("_");
